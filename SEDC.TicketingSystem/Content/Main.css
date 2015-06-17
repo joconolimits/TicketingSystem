@@ -89,6 +89,8 @@ margin-top:25%;
 .loginbtn{
     margin-top:10px;
     margin-left:20%;
+    background-color:#1E8BC3;
+    color:white;
 }
 .loginWrap{
     margin-top:2%;
@@ -101,10 +103,6 @@ margin-top:25%;
     display:inline-block;
     margin-top:2%;
     margin-left:40%;
-}
-.notMember a{
-    margin-left:5%;
-    text-decoration:none;
 }
 .registerBody{
     -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
@@ -120,4 +118,9 @@ position:absolute;
 
 header {
 background-color:#1E8BC3;
+}
+
+.underline {
+text-decoration:underline;
+margin-left:10%;
 }
