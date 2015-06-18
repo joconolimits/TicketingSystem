@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "MyTickets";
+}
+
+<h2>MyTickets</h2>
+@if (Session["LogedUserFullname"] != null)
+{
+    <text>
+        Welcome @Session["LogedUserFullname"].ToString()
+    </text>
+}
