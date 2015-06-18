@@ -92,6 +92,9 @@ margin-top:25%;
     background-color:#1E8BC3;
     color:white;
 }
+.loginbtnreg {
+margin-left:30%;
+}
 .loginWrap{
     margin-top:2%;
     position:absolute;
@@ -122,5 +125,9 @@ background-color:#1E8BC3;
 
 .underline {
 text-decoration:underline;
-margin-left:10%;
+margin-left:37%;
+}
+.registerbutton {
+background-color:#1E8BC3;
+color:white;
 }
