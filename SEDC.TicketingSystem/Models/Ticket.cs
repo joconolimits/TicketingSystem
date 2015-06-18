@@ -20,11 +20,13 @@ namespace SEDC.TicketingSystem.Models
 
         public int Status { get; set; }
 
-        [ForeignKey("User")]
+        [ForeignKey("Owner")]
         public int OwnerID { get; set; }
+        public User Owner { get; set; }
 
-        [ForeignKey("Passport")]
+        [ForeignKey("Moderator")]
         public int ModeratorID { get; set; }
+        public User Moderator { get; set; }
 
         public DateTime OpenDate { get; set; }
 
