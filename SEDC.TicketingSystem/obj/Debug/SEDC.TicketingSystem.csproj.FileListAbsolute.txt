@@ -56,3 +56,7 @@ D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.xml
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.dll
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
