@@ -1,21 +1,20 @@
 ﻿
 #custom-bootstrap-menu.navbar-default .navbar-brand {
-    color: rgba(255, 255, 255, 1);
+    color: white;
 }
 #custom-bootstrap-menu.navbar-default {
     font-size: 14px;
-    background-color: #1E8BC3!important;
-    border-width: 0px;
-    
+    background-color: white;
+    border-width: 0px; 
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
-    color: rgba(255, 255, 255, 1);
+    color: white;
     background-color: #1E8BC3!important;
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
-    color: rgba(51, 51, 51, 1)!important;
-    background-color: #1E8BC3!important;
+    color: white;
+    background-color: white;
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
@@ -24,14 +23,14 @@
     background-color: #1E8BC3!important;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle {
-    border-color: #1E8BC3;
+    border-color: white;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
 #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
-    background-color: #1E8BC3!important;
+    background-color: white;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
-    background-color: #1E8BC3!important;
+    background-color:white;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
 #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
@@ -55,11 +54,12 @@
     height:500px;
 }
 footer {
-    height:200px;
     background-color:#3498DB;
     border-width: 2px;
-
-
+    width:100%;
+    left:0px;
+    right:0px;
+    bottom:0px;  
 }
 .columnPost {
     color:white;
@@ -83,8 +83,8 @@ body {
     -moz-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
     box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
     width:500px;
-    height:200px;
-    margin-top:25%;
+    height:40%;
+    margin-top:30%;
 }
 .shadow1 {
     -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);

@@ -2,7 +2,6 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -10,15 +9,17 @@
     <link href="~/Content/Main.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
         <header>
              <div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
                 <div class="container-fluid navigacija">
                     <div class="container">
-                    <div class="navbar-header">
-                        <img src="~/img/logo1.png" class="logo"/>
+                      <div class="navbar-header">
+                        <img src="~/img/logo1.png" class="img-responsive logo" />
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
-                            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                         </button>
                     </div>
                         <div class="collapse navbar-collapse navbar-menubuilder">
@@ -42,23 +43,24 @@
         <div>
             @RenderBody()
         </div>
-        <footer class="footer">
-            <div class="container">
-                <section class="col-md-4">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <section class="col-sm-4">
                     <h3 class="columnPostH">Column1</h3>
                     <p class="columnPostH">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit...
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
                     </p>
                 </section>
-                <section class="col-md-4">
+                <section class="col-sm-4">
                     <h3 class="columnPostH">Column1</h3>
                     <p class="columnPost">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit...
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
                     </p>
                 </section>
-                <section class="col-md-4">
+                <section class="col-sm-4">
                     <h3 class="columnPostH">Column1</h3>
                     <p class="columnPost">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit...
@@ -66,9 +68,9 @@
                     </p>
                 </section>
             </div>
-        </footer>
-    </div>
-    <script src="~/Scripts/bootstrap.js"></script>
+        </div>
+    </footer>  
     <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>
