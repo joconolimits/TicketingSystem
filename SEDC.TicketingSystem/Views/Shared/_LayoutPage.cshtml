@@ -33,7 +33,16 @@
                                 <li>
                                     <a href="/contact">Contact Us</a>
                                 </li>
-                                <li><a href="~/Home/Logout">Logout</a></li>
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    
+                                    <li>
+                                        <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
+                                    </li>
+                                }
+                                <li>
+                                    <a href="~/Home/Logout">Logout</a>
+                                </li>
                             </ul>
 
                         </div>

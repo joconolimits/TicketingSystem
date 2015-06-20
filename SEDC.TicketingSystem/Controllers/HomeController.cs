@@ -44,12 +44,18 @@ namespace SEDC.TicketingSystem.Controllers
                         FormsAuthentication.SetAuthCookie(v.Username, false);
                         // Trying something out with Session 
                         Session["Username"] = v.Username.ToString();
+                        Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();
                         Session["IsAdmin"] = v.IsAdmin;
 
                             return RedirectToAction("MyTickets");
                        
                     }
+                    else
+                    {
+                        ViewBag.Message = "OOPS :(  You most likely forgot your email or Password!!!";
+                    }
+
                 }
             }
             return View();
@@ -59,7 +65,7 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult logout()
         {
             FormsAuthentication.SignOut();
-            Session.Abandon();
+            Session.Clear();
             var Message = Session["Username"]+ " you are succesfully logged out.";
             return RedirectToAction("Login", new {LogoutMessage = Message});
             

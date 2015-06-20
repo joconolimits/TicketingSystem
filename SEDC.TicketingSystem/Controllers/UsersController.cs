@@ -21,6 +21,7 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Users/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -59,6 +60,7 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
