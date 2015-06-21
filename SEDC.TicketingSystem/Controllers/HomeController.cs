@@ -1,4 +1,5 @@
-﻿using SEDC.TicketingSystem.Models;
+﻿using SEDC.TicketingSystem.Authorization_Filters;
+using SEDC.TicketingSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,14 +66,15 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult logout()
         {
             FormsAuthentication.SignOut();
-            Session.Clear();
             var Message = Session["Username"]+ " you are succesfully logged out.";
+            Session.Clear();
             return RedirectToAction("Login", new {LogoutMessage = Message});
             
             
         }
 
         [Authorize]
+        [IsAdmin]
         public ActionResult MyTickets()
         {
             if (Session["Username"] != null)
