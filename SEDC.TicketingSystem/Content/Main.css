@@ -59,7 +59,8 @@ footer {
     width:100%;
     left:0px;
     right:0px;
-    bottom:0px;  
+    bottom:0px;
+    height:200px;  
 }
 .columnPost {
     color:white;
@@ -69,6 +70,8 @@ footer {
 }
 body {
     background-color: #ECF0F1;
+    height:100%;
+    width:100%;
 }
 
 .login {
@@ -140,5 +143,14 @@ header {
     color:white;
 }
 .colorletter {
-color:#1E8BC3!important;
+    color:#1E8BC3!important;
+}
+.wrapper{
+    min-height:100%;
+    position:relative;
+    margin-bottom:-200px;
+}
+.clearfooter{
+    height:200px;
+    clear:both;
 }
