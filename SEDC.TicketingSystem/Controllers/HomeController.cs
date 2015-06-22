@@ -89,6 +89,10 @@ namespace SEDC.TicketingSystem.Controllers
         {
             return View();
         }
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
         public ActionResult Register() 
         {
             return View();

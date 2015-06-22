@@ -162,3 +162,29 @@ header {
     height:200px;
     clear:both;
 }
+.centering{
+    height:10%;
+    width:100%;
+    clear:both;
+}
+.glava {
+    color: #36A0FF;
+    font-size: 27px;
+    margin-left:-12%;
+    margin-top:2%;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+    height:20px;
+    width:20px;
+}
+.controlText {
+    color:#1E8BC3!important;
+    margin-left:-29%;
+}
+.dividerDiv{
+    width:100%;
+    height:10%;
+}
