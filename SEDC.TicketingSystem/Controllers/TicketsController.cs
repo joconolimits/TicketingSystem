@@ -58,7 +58,7 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new {id = ticket.OwnerID });
             }
 
             ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name", ticket.ModeratorID);
@@ -124,7 +124,7 @@ namespace SEDC.TicketingSystem.Controllers
             Ticket ticket = db.Tickets.Find(id);
             db.Tickets.Remove(ticket);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = ticket.OwnerID });
         }
 
         protected override void Dispose(bool disposing)

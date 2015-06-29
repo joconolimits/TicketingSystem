@@ -27,7 +27,7 @@ namespace SEDC.TicketingSystem.Controllers
         // GET: Users/Details/5
        // [Authorize (Roles = "Admin")]
         public ActionResult Details(int? id)
-        {
+            {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
