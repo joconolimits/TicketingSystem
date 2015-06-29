@@ -37,11 +37,7 @@
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                                 {
                                     <li>
-<<<<<<< HEAD
-                                        <a href="~/Home/MyTickets">My Tickets</a>
-=======
-                                        <a href="~/Home/MyTickets/@Session["LogedUserID"]">My Tickets</a>
->>>>>>> fc45617fc7c635cfbf4dd802e895d56681557117
+                                        <a href="~/Tickets/Index/@Session["LogedUserID"]">My Tickets</a>
                                     </li>
                                     <li>
                                         <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
