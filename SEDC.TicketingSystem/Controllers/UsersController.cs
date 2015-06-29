@@ -10,18 +10,22 @@ using SEDC.TicketingSystem.Models;
 
 namespace SEDC.TicketingSystem.Controllers
 {
+    
     public class UsersController : Controller
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
         // GET: Users
+        
+
         public ActionResult Index()
         {
+            
             return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
-        [Authorize]
+       // [Authorize (Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -61,6 +65,7 @@ namespace SEDC.TicketingSystem.Controllers
 
         // GET: Users/Edit/5
         [Authorize]
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)

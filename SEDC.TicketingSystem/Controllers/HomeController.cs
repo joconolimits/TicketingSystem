@@ -1,4 +1,4 @@
-﻿using SEDC.TicketingSystem.Authorization_Filters;
+﻿
 using SEDC.TicketingSystem.Models;
 using System;
 using System.Collections.Generic;
@@ -48,6 +48,12 @@ namespace SEDC.TicketingSystem.Controllers
                         Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();
                         Session["IsAdmin"] = v.IsAdmin;
+                        if (v.IsAdmin)
+                        {
+                            string Username = v.Username;
+                            string RoleName = "Admin";
+                            Roles.AddUserToRole(Username, RoleName);
+                        }
 
                             return RedirectToAction("MyTickets");
                        
@@ -74,7 +80,7 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         [Authorize]
-        [IsAdmin]
+        
         public ActionResult MyTickets()
         {
             if (Session["Username"] != null)
