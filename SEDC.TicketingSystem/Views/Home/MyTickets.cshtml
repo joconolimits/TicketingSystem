@@ -3,10 +3,24 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-<h2>MyTickets</h2>
-@if (Session["LogedUserFullname"] != null)
-{
-    <text>
-        Welcome @Session["LogedUserFullname"].ToString()
-    </text>
-}
+<div class="container-fluid wraperHome">
+    <div class="shadow2">
+        <div class="centering"></div>
+        <div class="welcomeMessage">
+            @if (Session["LogedUserFullname"] != null)
+            {
+                <text>
+                    Welcome @Session["LogedUserFullname"].ToString()
+                </text>
+            }
+        </div>
+        <p class="welcomeMessage">
+            @Html.ActionLink("Create Ticket", "Create",
+            "Tickets")
+        </p>
+        <h3 class="colorletter container-fluid">My Tickets</h3>
+        <p class="container-fluid">
+
+        </p>
+    </div>
+</div>
