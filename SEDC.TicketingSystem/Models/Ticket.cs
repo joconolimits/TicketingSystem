@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SEDC.TicketingSystem.Models
 {
@@ -16,6 +17,7 @@ namespace SEDC.TicketingSystem.Models
         public string Title { get; set; }
 
         [Required]
+        [UIHint("tinymce_jquery_full"), AllowHtml]
         public string Body { get; set; }
 
         public int Status { get; set; }
