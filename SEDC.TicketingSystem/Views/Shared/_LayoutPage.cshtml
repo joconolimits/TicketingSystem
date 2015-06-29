@@ -36,10 +36,13 @@
                                 </li>
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                                 {
-                                    
+                                    <li>
+                                        <a href="~/Home/MyTickets/@Session["LogedUserID"]">My Tickets</a>
+                                    </li>
                                     <li>
                                         <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
                                     </li>
+                                    
                                 }
                                 <li>
                                     <a href="~/Home/Logout">Logout</a>
@@ -55,7 +58,6 @@
             @RenderBody()
         </div>
     </div>
-    <div class="clearfooter"></div>
         <footer class="footer">
             <div class="container">
                 <div class="row">
