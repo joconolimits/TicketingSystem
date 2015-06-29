@@ -78,6 +78,7 @@
     </dl>
 </div>
 <p>
+
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { id = Model.OwnerID})  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
 </p>

@@ -10,14 +10,17 @@ using SEDC.TicketingSystem.Models;
 
 namespace SEDC.TicketingSystem.Controllers
 {
+    [Authorize]
     public class TicketsController : Controller
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
         // GET: Tickets
-        public ActionResult Index()
+        // Show My tickets page.
+        public ActionResult Index(int? id)
         {
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+            var tickets = db.Tickets.Where(x => x.OwnerID == id);
+           // var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
             return View(tickets.ToList());
         }
 
@@ -91,7 +94,7 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new {id = ticket.OwnerID });  /*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user */
             }
             ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name", ticket.ModeratorID);
             ViewBag.OwnerID = new SelectList(db.Users, "ID", "Name", ticket.OwnerID);

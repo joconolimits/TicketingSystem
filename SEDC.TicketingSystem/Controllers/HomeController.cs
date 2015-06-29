@@ -52,10 +52,10 @@ namespace SEDC.TicketingSystem.Controllers
                         {
                             string Username = v.Username;
                             string RoleName = "Admin";
-                            Roles.AddUserToRole(Username, RoleName);
+                           // Roles.AddUserToRole(Username, RoleName);
                         }
 
-                            return RedirectToAction("MyTickets");
+                        return RedirectToAction("Index", "Tickets", new{id = v.ID});
                        
                     }
                     else
@@ -79,20 +79,20 @@ namespace SEDC.TicketingSystem.Controllers
             
         }
 
-        [Authorize]
+        //[Authorize]
         
-        public ActionResult MyTickets()
-        {
-            if (Session["Username"] != null)
-            {
+        //public ActionResult MyTickets()
+        //{
+        //    if (Session["Username"] != null)
+        //    {
 
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
+        //}
         public ActionResult AboutUs()
         {
             return View();

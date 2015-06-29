@@ -90,5 +90,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new {id = Model.OwnerID }) @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
 </div>
