@@ -93,6 +93,14 @@ namespace SEDC.TicketingSystem.Controllers
                 return RedirectToAction("Login");
             }
         }
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
         public ActionResult Register() 
         {
             return View();

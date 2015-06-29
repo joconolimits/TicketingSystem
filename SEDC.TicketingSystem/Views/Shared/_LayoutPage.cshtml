@@ -9,29 +9,30 @@
     <link href="~/Content/Main.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="wrapper">
         <header>
-             <div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
+            <div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
                 <div class="container-fluid navigacija">
                     <div class="container">
-                      <div class="navbar-header">
-                        <img src="~/img/logo1.png" class="img-responsive logo" />
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
+                        <div class="navbar-header">
+                            <img src="~/img/logo1.png" class="img-responsive logo" />
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
                         <div class="collapse navbar-collapse navbar-menubuilder">
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <a href="/">Home</a>
                                 </li>
                                 <li>
-                                    <a href="/about-us">About Us</a>
+                                    <a href="~/Home/AboutUs">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="/contact">Contact Us</a>
+                                    <a href="~/Home/ContactUs">Contact Us</a>
                                 </li>
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                                 {
@@ -55,34 +56,36 @@
         <div>
             @RenderBody()
         </div>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <section class="col-sm-4">
-                    <h3 class="columnPostH">Column1</h3>
-                    <p class="columnPostH">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-                    </p>
-                </section>
-                <section class="col-sm-4">
-                    <h3 class="columnPostH">Column1</h3>
-                    <p class="columnPost">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-                    </p>
-                </section>
-                <section class="col-sm-4">
-                    <h3 class="columnPostH">Column1</h3>
-                    <p class="columnPost">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-                    </p>
-                </section>
+    </div>
+    <div class="clearfooter"></div>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <section class="col-xs-4">
+                        <h3 class="columnPostH">Column1</h3>
+                        <p class="columnPostH">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+                        </p>
+                    </section>
+                    <section class="col-xs-4">
+                        <h3 class="columnPostH">Column1</h3>
+                        <p class="columnPost">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+                        </p>
+                    </section>
+                    <section class="col-xs-4">
+                        <h3 class="columnPostH">Column1</h3>
+                        <p class="columnPost">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+                        </p>
+                    </section>
+                </div>
             </div>
-        </div>
-    </footer>  
-    <script src="~/Scripts/jquery-2.1.4.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+        </footer>
+        <script src="~/Scripts/jquery-2.1.4.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>
