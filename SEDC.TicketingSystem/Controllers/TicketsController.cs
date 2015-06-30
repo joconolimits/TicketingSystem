@@ -52,10 +52,11 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Body,Status,OwnerID,ModeratorID,OpenDate,CloseDate,WorkHours")] Ticket ticket)
+        public ActionResult Create([Bind(Include = "ID,Title,Body,Status,OwnerID,ModeratorID,CloseDate,WorkHours")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
+                ticket.OpenDate = DateTime.Now;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index", new {id = ticket.OwnerID });
