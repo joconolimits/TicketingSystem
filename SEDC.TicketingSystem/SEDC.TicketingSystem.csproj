@@ -378,6 +378,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enums\TicketStatus.cs" />
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\SEDCTicketingSystemContext.cs" />
     <Compile Include="Models\Ticket.cs" />

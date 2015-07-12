@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.ViewModels;
+using SEDC.TicketingSystem.Models.Enums;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -65,6 +66,7 @@ namespace SEDC.TicketingSystem.Controllers
                 ticket.ModeratorID = 1; // Jordan All tickets are assigned to one Moderator. He will reasign them to others.
                 ticket.OpenDate = DateTime.Now;
                 ticket.CloseDate = DateTime.MaxValue;
+                ticket.Status = TicketStatus.Pending;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index", new {id = ticket.OwnerID });
