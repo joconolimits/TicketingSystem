@@ -46,8 +46,8 @@ namespace SEDC.TicketingSystem.Controllers
         // GET: Tickets/Create
         public ActionResult Create()
         {
-            ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name");
-            ViewBag.OwnerID = new SelectList(db.Users, "ID", "Name");
+            //ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name");
+            //ViewBag.OwnerID = new SelectList(db.Users, "ID", "Name");
             return View();
         }
 
@@ -56,11 +56,15 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Body,Status,OwnerID,ModeratorID,CloseDate,WorkHours")] Ticket ticket)
+        public ActionResult Create([Bind(Include = "ID,Title,Body")] Ticket ticket)
         {
+           
             if (ModelState.IsValid)
             {
+                ticket.OwnerID = Convert.ToInt32(Session["LogedUserID"]); // Jordan Set The owner Id to the id of the Current user.
+                ticket.ModeratorID = 1; // Jordan All tickets are assigned to one Moderator. He will reasign them to others.
                 ticket.OpenDate = DateTime.Now;
+                ticket.CloseDate = DateTime.MaxValue;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index", new {id = ticket.OwnerID });
