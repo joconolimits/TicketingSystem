@@ -66,9 +66,17 @@
             @Html.DisplayFor(modelItem => item.WorkHours)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            
+            @if((int)item.Status == 3){
+            <span>Edit | Details | Delete</span>
+
+            }
+            else{
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) <span>|</span> 
+                @Html.ActionLink("Details", "Details", new { id=item.ID })    <span>|</span>
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            }
+            
         </td>
     </tr>
 }

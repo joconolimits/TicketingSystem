@@ -9,6 +9,8 @@
 
 <div>
     <h4>Ticket</h4>
+
+    @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }) |
     <hr />
     <dl class="dl-horizontal">
         <dt>

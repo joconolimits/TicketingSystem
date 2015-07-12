@@ -44,6 +44,19 @@ namespace SEDC.TicketingSystem.Controllers
             return View(ticketAndRepliesViewModel);
         }
 
+        // Jordan Method for the user to close his ticket
+        public ActionResult Close(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+            db.Tickets.Find(id).Status = TicketStatus.Closed;
+            db.SaveChanges();
+            return RedirectToAction("index", new { id = Convert.ToInt32(Session["LogedUserID"]) });
+        }
+
         // GET: Tickets/Create
         public ActionResult Create()
         {
