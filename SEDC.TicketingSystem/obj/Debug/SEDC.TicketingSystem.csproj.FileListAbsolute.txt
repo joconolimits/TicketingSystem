@@ -59,4 +59,3 @@ D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
