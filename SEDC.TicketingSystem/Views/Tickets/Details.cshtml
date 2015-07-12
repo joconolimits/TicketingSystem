@@ -1,4 +1,4 @@
-﻿@model SEDC.TicketingSystem.Models.Ticket
+﻿@model SEDC.TicketingSystem.ViewModels.TicketAndRepliesViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -12,73 +12,124 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Moderator.Name)
+            @Html.DisplayNameFor(model => model.Ticket.Moderator.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Moderator.Name)
+            @Html.DisplayFor(model => model.Ticket.Moderator.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Owner.Name)
+            @Html.DisplayNameFor(model => model.Ticket.Owner.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Owner.Name)
+            @Html.DisplayFor(model => model.Ticket.Owner.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Ticket.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Ticket.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Body)
+            @Html.DisplayNameFor(model => model.Ticket.Body)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Body)
+            @Html.DisplayFor(model => model.Ticket.Body)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.Ticket.Status)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.Ticket.Status)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OpenDate)
+            @Html.DisplayNameFor(model => model.Ticket.OpenDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OpenDate)
+            @Html.DisplayFor(model => model.Ticket.OpenDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CloseDate)
+            @Html.DisplayNameFor(model => model.Ticket.CloseDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CloseDate)
+            @Html.DisplayFor(model => model.Ticket.CloseDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WorkHours)
+            @Html.DisplayNameFor(model => model.Ticket.WorkHours)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WorkHours)
+            @Html.DisplayFor(model => model.Ticket.WorkHours)
         </dd>
 
     </dl>
 </div>
 <p>
 
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index", new { id = Model.OwnerID})  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }) |
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
 </p>
+
+@using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Reply</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+
+            <div class="col-md-10">
+
+                <textarea id="reply" name="replyBody"></textarea>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" id="submitReply" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<table class="table " id="replies">
+
+
+    @foreach (var item in Model.Replies)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ticket.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReplyBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeStamp)
+            </td>
+
+        </tr>
+    }
+
+</table>

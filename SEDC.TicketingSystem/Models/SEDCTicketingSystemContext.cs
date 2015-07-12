@@ -30,6 +30,8 @@ namespace SEDC.TicketingSystem.Models
         public System.Data.Entity.DbSet<SEDC.TicketingSystem.Models.User> Users { get; set; }
 
         public System.Data.Entity.DbSet<SEDC.TicketingSystem.Models.Ticket> Tickets { get; set; }
+
+        public System.Data.Entity.DbSet<SEDC.TicketingSystem.Models.Reply> Replies { get; set; }
     
     }
 }

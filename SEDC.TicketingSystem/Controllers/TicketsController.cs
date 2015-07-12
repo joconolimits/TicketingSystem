@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.ViewModels;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -32,11 +33,14 @@ namespace SEDC.TicketingSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ticket ticket = db.Tickets.Find(id);
+            TicketAndRepliesViewModel ticketAndRepliesViewModel = new TicketAndRepliesViewModel();
+            ticketAndRepliesViewModel.Ticket = ticket;
+            ticketAndRepliesViewModel.Replies = db.Replies.Where(x => x.TicketID == id).OrderByDescending(x => x.TimeStamp);
             if (ticket == null)
             {
                 return HttpNotFound();
             }
-            return View(ticket);
+            return View(ticketAndRepliesViewModel);
         }
 
         // GET: Tickets/Create
