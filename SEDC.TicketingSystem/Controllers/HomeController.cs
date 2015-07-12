@@ -101,7 +101,11 @@ namespace SEDC.TicketingSystem.Controllers
         {
             return View();
         }
-        public ActionResult Register() 
+        public ActionResult WelcomePage()
+        {
+            return View();
+        }
+        public ActionResult Register()
         {
             return View();
         }

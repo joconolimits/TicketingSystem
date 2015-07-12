@@ -26,9 +26,18 @@
                         </div>
                         <div class="collapse navbar-collapse navbar-menubuilder">
                             <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="/">Home</a>
-                                </li>
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="~/Home/WelcomePage">Home</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                }
                                 <li>
                                     <a href="~/Home/AboutUs">About Us</a>
                                 </li>
@@ -45,9 +54,13 @@
                                     </li>
                                     
                                 }
-                                <li>
-                                    <a href="~/Home/Logout">Logout</a>
-                                </li>
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="~/Home/Logout">Logout</a>
+                                    </li>
+                                }
+                                
                             </ul>
 
                         </div>
