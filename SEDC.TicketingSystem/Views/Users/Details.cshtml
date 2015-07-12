@@ -9,8 +9,8 @@
         <div class="centering"></div>
         <h3 class="colorletter container-fluid">User Details</h3>
         <p class="container-fluid">
-            <div>
-                
+            <div>       
+                <h4 class="container-fluid">@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</h4>
                 <hr />
                 <dl class="dl-horizontal">
                     <dt>
@@ -60,10 +60,12 @@
                     <dd>
                         @Html.DisplayFor(model => model.IsAdmin)
                     </dd>
-
+                     
                 </dl>
+                
             </div>
+            
         </p>
     </div>
-</div>
+
 

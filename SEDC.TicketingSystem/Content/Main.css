@@ -87,7 +87,7 @@ body {
     box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
     width:500px;
     height:40%;
-    margin-top:30%;
+    margin-top:20%;
 }
 .shadow1 {
     -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
@@ -178,6 +178,10 @@ header {
 .controlText {
     color:#1E8BC3!important;
     margin-left:-29%;
+}
+.msgText {
+    color:#1E8BC3!important;
+    margin-top:10%;
 }
 html{
     height:100%;
