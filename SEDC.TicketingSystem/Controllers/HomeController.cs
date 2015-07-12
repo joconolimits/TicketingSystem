@@ -44,6 +44,7 @@ namespace SEDC.TicketingSystem.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(v.Username, false);
                         // Trying something out with Session 
+                        Session["CurrentUser"] = v;
                         Session["Username"] = v.Username.ToString();
                         Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();

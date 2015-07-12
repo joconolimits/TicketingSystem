@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Models.Enums;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -60,6 +61,14 @@ namespace SEDC.TicketingSystem.Controllers
             reply.TicketID = id;
             reply.ReplyBody = replyBody;
             db.Replies.Add(reply);
+            if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+            {
+                db.Tickets.Find(id).Status = TicketStatus.WaitReply;
+            }
+            else
+            {
+                db.Tickets.Find(id).Status = TicketStatus.Pending;
+            }
             db.SaveChanges();
             return RedirectToAction("Details", "Tickets", new { id = id });
             //if (ModelState.IsValid)

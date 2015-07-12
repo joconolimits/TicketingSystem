@@ -68,10 +68,13 @@
         <td>
             
             @if((int)item.Status == 3){
-            <span>Edit | Details | Delete</span>
+            <span>Edit |</span>
+                @Html.ActionLink("Details", "Details", new { id = item.ID })    <span>|</span>
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 
             }
-            else{
+            else
+            {
                 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) <span>|</span> 
                 @Html.ActionLink("Details", "Details", new { id=item.ID })    <span>|</span>
                 @Html.ActionLink("Delete", "Delete", new { id=item.ID })
