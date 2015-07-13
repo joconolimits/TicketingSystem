@@ -56,7 +56,7 @@ namespace SEDC.TicketingSystem.Controllers
                            // Roles.AddUserToRole(Username, RoleName);
                         }
 
-                        return RedirectToAction("Index", "Tickets", new{id = v.ID});
+                        return RedirectToAction("WelcomePage", "Home", new{id = v.ID});
                        
                     }
                     else
