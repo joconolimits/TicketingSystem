@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEDC.TicketingSystem.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,7 +21,7 @@ namespace SEDC.TicketingSystem.Models
         [UIHint("tinymce_jquery_full"), AllowHtml]
         public string Body { get; set; }
 
-        public int Status { get; set; }
+        public TicketStatus Status { get; set; }
 
         [ForeignKey("Owner")]
         public int OwnerID { get; set; }

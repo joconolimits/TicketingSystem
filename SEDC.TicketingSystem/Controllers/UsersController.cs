@@ -91,7 +91,7 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new{id = user.ID });
             }
             return View(user);
         }

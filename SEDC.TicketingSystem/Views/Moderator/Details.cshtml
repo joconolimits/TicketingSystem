@@ -11,6 +11,7 @@
     <h4>Ticket</h4>
 
     @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }) |
+    @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID })
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -84,35 +85,34 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }) |
     @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
 </p>
-@if ((int)Model.Ticket.Status != 3) { 
 
-    
-    using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Reply</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
 
-            <div class="form-group">
+    <div class="form-horizontal">
+        <h4>Reply</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <div class="col-md-10">
+        <div class="form-group">
 
-                    <textarea id="reply" name="replyBody"></textarea>
+            <div class="col-md-10">
 
-                </div>
-            </div>
+                <textarea id="reply" name="replyBody"></textarea>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" id="submitReply" />
-                </div>
             </div>
         </div>
-    }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" id="submitReply" />
+            </div>
+        </div>
+    </div>
 }
+
 
 <table class="table " id="replies">
 

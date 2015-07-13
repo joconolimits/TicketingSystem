@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.ViewModels;
+using SEDC.TicketingSystem.Models.Enums;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -43,6 +44,19 @@ namespace SEDC.TicketingSystem.Controllers
             return View(ticketAndRepliesViewModel);
         }
 
+        // Jordan Method for the user to close his ticket
+        public ActionResult Close(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+            db.Tickets.Find(id).Status = TicketStatus.Closed;
+            db.SaveChanges();
+            return RedirectToAction("index", new { id = Convert.ToInt32(Session["LogedUserID"]) });
+        }
+
         // GET: Tickets/Create
         public ActionResult Create()
         {
@@ -65,6 +79,7 @@ namespace SEDC.TicketingSystem.Controllers
                 ticket.ModeratorID = 1; // Jordan All tickets are assigned to one Moderator. He will reasign them to others.
                 ticket.OpenDate = DateTime.Now;
                 ticket.CloseDate = DateTime.MaxValue;
+                ticket.Status = TicketStatus.Pending;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index", new {id = ticket.OwnerID });
