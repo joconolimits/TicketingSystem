@@ -367,7 +367,9 @@
     <Content Include="Scripts\tinymce\utils\form_utils.js" />
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -418,6 +420,7 @@
     <Content Include="Views\Home\WelcomePage.cshtml" />
     <Content Include="Views\Moderator\AllTickets.cshtml" />
     <Content Include="Views\Moderator\Details.cshtml" />
+    <Content Include="Views\Moderator\AssignTicket.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

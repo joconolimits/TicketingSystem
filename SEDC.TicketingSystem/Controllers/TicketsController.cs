@@ -36,7 +36,7 @@ namespace SEDC.TicketingSystem.Controllers
             Ticket ticket = db.Tickets.Find(id);
             TicketAndRepliesViewModel ticketAndRepliesViewModel = new TicketAndRepliesViewModel();
             ticketAndRepliesViewModel.Ticket = ticket;
-            ticketAndRepliesViewModel.Replies = db.Replies.Where(x => x.TicketID == id).OrderByDescending(x => x.TimeStamp);
+            ticketAndRepliesViewModel.Replies = db.Replies.Where(x => x.TicketID == id && x.IsAdminMessage == false).OrderByDescending(x => x.TimeStamp);
             if (ticket == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,14 @@ namespace SEDC.TicketingSystem.Controllers
             }
             
             db.Tickets.Find(id).Status = TicketStatus.Closed;
+            db.Tickets.Find(id).CloseDate = DateTime.Now;
+            var workHours = (db.Tickets.Find(id).CloseDate - db.Tickets.Find(id).OpenDate).TotalHours;
+            db.Tickets.Find(id).WorkHours = (int)workHours;
             db.SaveChanges();
+            if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+            {
+                return RedirectToAction("AllTickets", "Moderator", new { id = Convert.ToInt32(Session["LogedUserID"]) });
+            }
             return RedirectToAction("index", new { id = Convert.ToInt32(Session["LogedUserID"]) });
         }
 

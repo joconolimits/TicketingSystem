@@ -10,8 +10,9 @@
 <div>
     <h4>Ticket</h4>
 
-    @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }) |
-    @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID })
+    @Html.ActionLink("Close Ticket", "Close", "Tickets",  new { id = Model.Ticket.ID }, null) |
+    @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }) |
+    @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID })
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -86,7 +87,7 @@
     @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
 </p>
 
-
+@* The  post reply  block *@
 @using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -114,12 +115,18 @@
 }
 
 
+
+
 <table class="table " id="replies">
 
 
     @foreach (var item in Model.Replies)
     {
-        <tr>
+        var color = "black";
+        if (item.IsAdminMessage == true) { color = "red"; } // If the reply is from another admin make it red.
+
+
+        <tr style="color:@color;">
             <td>
                 @Html.DisplayFor(modelItem => item.Ticket.Title)
             </td>

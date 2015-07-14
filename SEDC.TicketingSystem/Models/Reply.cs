@@ -20,6 +20,8 @@ namespace SEDC.TicketingSystem.Models
         [Required]
         public string ReplyBody { get; set; }
 
+        public bool IsAdminMessage { get; set; }
+
         [ForeignKey("User")]
         public int UserID { get; set; }
         public User User { get; set; }
