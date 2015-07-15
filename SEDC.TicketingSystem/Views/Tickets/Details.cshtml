@@ -14,19 +14,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Ticket.Moderator.Name)
+            Assigned: 
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ticket.Moderator.Name)
+            @Model.GetUsername(Model.Ticket.ModeratorID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ticket.Owner.Name)
+            Author:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ticket.Owner.Name)
+           @Model.GetUsername(Model.Ticket.OwnerID)
         </dd>
 
         <dt>
@@ -115,25 +115,34 @@
 }
 
 <table class="table " id="replies">
-
-
-    @foreach (var item in Model.Replies)
-    {
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ticket.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReplyBody)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeStamp)
-            </td>
-
+            <th>Replies</th>
+            <th>Details</th>
         </tr>
-    }
+    </thead>
+    <tbody>
 
+        @foreach (var item in Model.Replies)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Ticket.Title)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReplyBody)
+                </td>
+                <td>
+                    <span> Author:  @Model.GetUsername(item.UserID)</span>
+                    <br />
+                    Replied:
+                    @Html.DisplayFor(modelItem => item.TimeStamp)
+                </td>
+
+            </tr>
+        }
+    </tbody>
 </table>

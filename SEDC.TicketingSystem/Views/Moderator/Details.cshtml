@@ -16,19 +16,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Ticket.Moderator.Name)
+           Assigned:  @*@Html.DisplayNameFor(model => model.Ticket.Moderator.Name)*@
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ticket.Moderator.Name)
+                <dd>
+             @Model.GetUsername(Model.Ticket.ModeratorID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ticket.Owner.Name)
+            Author: 
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ticket.Owner.Name)
+           <dd>
+            @Model.GetUsername(Model.Ticket.OwnerID)
         </dd>
 
         <dt>
@@ -118,29 +118,35 @@
 
 
 <table class="table " id="replies">
-
-
-    @foreach (var item in Model.Replies)
-    {
-        var color = "black";
-        if (item.IsAdminMessage == true) { color = "red"; } // If the reply is from another admin make it red.
-
-
-        <tr style="color:@color;">
-            <td>
-                @Html.DisplayFor(modelItem => item.Ticket.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReplyBody)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeStamp)
-            </td>
-
+    <thead>
+        <tr>
+            <th>Replies</th>
+            <th>Details</th>
         </tr>
-    }
+    </thead>
+    <tbody>
 
+        @foreach (var item in Model.Replies)
+        {
+            var color = "black";
+            if (item.IsAdminMessage == true) { color = "red"; } // If the reply is from another admin make it red.
+
+
+            <tr style="color:@color;">
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Ticket.Title)
+                    </td>*@
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReplyBody)
+                </td>
+                <td>
+                    <span> Author:  @Model.GetUsername(item.UserID)</span>
+                    <br />
+                    Replied: @Html.DisplayFor(modelItem => item.TimeStamp)
+                </td>
+
+            </tr>
+        }
+    </tbody>
 </table>
