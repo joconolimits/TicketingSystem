@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SEDC.TicketingSystem.Models.User>
+
+@{
+    ViewBag.Title = "AssignTicket";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<h2>AssignTicket</h2>
+
+@using (Html.BeginForm("AssignTicket", "Moderator", FormMethod.Post))
+    {
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Message to Moderator</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <select name="moderatorId">
+        @foreach (var item in Model)
+        {
+            <option value="@item.ID">@item.Username</option>
+
+        }
+    </select>
+
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+
+            <textarea id="reply" name="message"></textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Assign" class="btn btn-default" id="submitReply" />
+        </div>
+    </div>
+</div>
+    }
+}
+
+
+
+

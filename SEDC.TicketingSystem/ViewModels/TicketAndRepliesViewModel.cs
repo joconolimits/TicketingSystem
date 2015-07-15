@@ -9,7 +9,18 @@ namespace SEDC.TicketingSystem.ViewModels
 {
     public class TicketAndRepliesViewModel
     {
+
         public Ticket Ticket { get; set; }
         public System.Linq.IQueryable<Reply> Replies { get; set; }
+
+        private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
+
+        public string GetUsername(int UserID)
+        {
+
+            return db.Users.Find(UserID).Username;
+        }
     }
+
+            
 }

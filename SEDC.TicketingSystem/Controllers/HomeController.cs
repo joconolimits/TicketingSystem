@@ -43,6 +43,7 @@ namespace SEDC.TicketingSystem.Controllers
                     if (v != null)
                     {
                         FormsAuthentication.SetAuthCookie(v.Username, false);
+                 
                         // Trying something out with Session 
                         Session["CurrentUser"] = v;
                         Session["Username"] = v.Username.ToString();
@@ -51,8 +52,7 @@ namespace SEDC.TicketingSystem.Controllers
                         Session["IsAdmin"] = v.IsAdmin;
                         if (v.IsAdmin)
                         {
-                            string Username = v.Username;
-                            string RoleName = "Admin";
+                           
                            // Roles.AddUserToRole(Username, RoleName);
                         }
 

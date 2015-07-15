@@ -13,7 +13,7 @@ using SEDC.TicketingSystem.Authorization_Filters;
 
 namespace SEDC.TicketingSystem.Controllers
 {
-    [Moderator]
+    //[Moderator]
     public class ModeratorController : Controller
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
@@ -26,7 +26,8 @@ namespace SEDC.TicketingSystem.Controllers
         // Jordan Show a list of All Tickets in the system
         public ActionResult AllTickets()
         {
-            return View(db.Tickets.ToList().OrderBy(x => x.Status));
+            var tickets = db.Tickets.ToList().OrderBy(x => x.Status);
+            return View(tickets.OrderBy(x=> x.OpenDate));
         }
 
         public ActionResult Details(int? id)
@@ -54,5 +55,29 @@ namespace SEDC.TicketingSystem.Controllers
             return RedirectToAction("AllTickets");
         }
 
+
+        public ActionResult AssignTicket(int? id)
+        {
+            List<User> moderators = db.Users.Where(x => x.IsAdmin == true).ToList(); // Get all Moderators
+            
+
+            return View(moderators);
+        }
+
+        [HttpPost]
+        public ActionResult AssignTicket(int moderatorId, string message, int? id)
+        {
+
+            db.Tickets.Find(id).ModeratorID = moderatorId;  // change the moderator id on the ticket
+            Reply AdminMessage = new Reply(); 
+            AdminMessage.TicketID = (int)id;
+            AdminMessage.ReplyBody = message;
+            AdminMessage.UserID = moderatorId;
+            AdminMessage.IsAdminMessage = true;
+            AdminMessage.TimeStamp = DateTime.Now;
+            db.Replies.Add(AdminMessage);
+            db.SaveChanges();
+            return RedirectToAction("AllTickets");
+        }
     }
 }
