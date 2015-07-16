@@ -72,7 +72,7 @@ namespace SEDC.TicketingSystem.Controllers
             Reply AdminMessage = new Reply(); 
             AdminMessage.TicketID = (int)id;
             AdminMessage.ReplyBody = message;
-            AdminMessage.UserID = moderatorId;
+            AdminMessage.UserID = Convert.ToInt32(Session["LogedUserID"]);
             AdminMessage.IsAdminMessage = true;
             AdminMessage.TimeStamp = DateTime.Now;
             db.Replies.Add(AdminMessage);
