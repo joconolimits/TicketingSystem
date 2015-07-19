@@ -10,6 +10,7 @@ using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.ViewModels;
 using SEDC.TicketingSystem.Models.Enums;
 using SEDC.TicketingSystem.Authorization_Filters;
+using System.Net.Mail;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -116,7 +117,39 @@ namespace SEDC.TicketingSystem.Controllers
             AdminMessage.TimeStamp = DateTime.Now;
             db.Replies.Add(AdminMessage);
             db.SaveChanges();
+            SendNotificationEmail((int)id);
             return RedirectToAction("AllTickets");
         }
+
+        //Send Email notification on ticket assign
+        public void SendNotificationEmail(int ticketId)
+        {
+
+            var user = db.Users.Find(db.Tickets.Find(ticketId).ModeratorID);
+            //string ticketUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
+            //                 "/account/verify?ID=" + confirmationGuid;
+
+            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+            {
+                Subject = "A ticket has been Assigned to you.",
+                Body = " Hello " + user.Name +
+                         Environment.NewLine + Environment.NewLine + " The ticket with ID: "+ticketId +" has been assigned to you." + Environment.NewLine +
+                         "to check the ticket please visit this url: http://localhost:50892/Tickets/Details/" + ticketId
+
+            };
+
+            var client = new SmtpClient();
+            var credential = new NetworkCredential
+            {
+                UserName = "blindcarrots1@gmail.com",  // replace with valid value
+                Password = "ticketingSystem"  // replace with valid value
+            };
+            client.Host= "smtp.gmail.com";
+            client.Port= 587;
+            client.Credentials = credential;
+            client.EnableSsl = true;
+            client.Send(message);
+        }
+
     }
 }
