@@ -10,7 +10,116 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+@* order tickets By property and choose ordering  acending/decending *@
+<span>Order By: </span>
+<select id="filterBy" name="filterBy">
+    <option value="1">Status</option>
+    <option value="2">Open Date</option>
+    <option value="3">Title</option>
+    <option value="4">Worked Hours</option>
+</select>
+<span>Ordering: </span>
+<select id="ordering" name="ordering">
+    <option value="1">Acending</option>
+    <option value="2">Decending</option>
+</select>
+
+<div id="tickets">
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Moderator.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpenDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CloseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkHours)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Moderator.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.Raw(item.Body)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpenDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CloseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkHours)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+    <script>
+     $(function () {
+     $('select').on('change', function () {
+         var selectedVal = $('#filterBy option:selected').val();
+         console.log("order by: " + selectedVal);
+         var ordering = $('#ordering option:selected').val();
+         console.log("Ordering: " + ordering);
+         $.ajax({
+             url: '/Moderator/OrderBy?x='+selectedVal+'&ord='+ordering,
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html'
+        })
+        .success(function (result) {
+            $('#tickets').html(result);
+        })
+        .error(function (xhr, status) {
+            alert(status);
+        })
+    });
+     });
+     </script>
+
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Moderator.Name)
@@ -38,7 +147,7 @@
         </th>
         <th></th>
     </tr>
-
+   
     @foreach (var item in Model)
     {
         <tr>
@@ -75,4 +184,4 @@
         </tr>
     }
 
-</table>
+</table>*@

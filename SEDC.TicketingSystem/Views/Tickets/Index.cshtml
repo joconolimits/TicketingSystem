@@ -4,12 +4,25 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-    
+  <span>Order By: </span>
+<select id="filterBy" name="filterBy">
+    <option value="1">Status</option>
+    <option value="2">Open Date</option>
+    <option value="3">Title</option>
+    <option value="4">Worked Hours</option>
+</select>
+<span>Ordering: </span>
+<select id="ordering" name="ordering">
+    <option value="1">Acending</option>
+    <option value="2">Decending</option>
+</select>
+
 <div class="container-fluid wraperHome">
-    <div class="shadow2">
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div id="tickets" class="shadow2">  @* This div is needed for the ordering filters and the ajax to work *@
+       
         <table class="table">
             <tr>
                 <th>
@@ -87,3 +100,31 @@
         </table>
     </div>
     </div>
+
+@* Script for the Ajax order filters *@
+
+
+    <script>
+        $(function () {
+
+            $('select').on('change', function () {
+                var selectedVal = $('#filterBy option:selected').val();
+                console.log("order by: " + selectedVal);
+                var ordering = $('#ordering option:selected').val();
+                console.log("Ordering: " + ordering);
+                $.ajax({
+                    url: '/Tickets/OrderBy?x=' + selectedVal + '&ord=' + ordering,
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html'
+                })
+                .success(function (result) {
+                    $('#tickets').html(result);
+                })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+            });
+        });
+    </script>  
+

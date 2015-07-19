@@ -85,9 +85,9 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }) |
     @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
 </p>
-@if ((int)Model.Ticket.Status != 3) { 
+@if ((int)Model.Ticket.Status != 3) {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
 
-    
+
     using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()

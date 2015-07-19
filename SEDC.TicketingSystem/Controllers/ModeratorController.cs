@@ -13,7 +13,8 @@ using SEDC.TicketingSystem.Authorization_Filters;
 
 namespace SEDC.TicketingSystem.Controllers
 {
-    //[Moderator]
+    
+    [Moderator]
     public class ModeratorController : Controller
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
@@ -26,9 +27,47 @@ namespace SEDC.TicketingSystem.Controllers
         // Jordan Show a list of All Tickets in the system
         public ActionResult AllTickets()
         {
-            var tickets = db.Tickets.ToList().OrderBy(x => x.Status);
-            return View(tickets.OrderBy(x=> x.OpenDate));
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).OrderBy(d => d.Status);
+        
+            return View(tickets);
         }
+
+        // Ordering Filters
+        public PartialViewResult OrderBy(int? x, int? ord) 
+        {
+            
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+            if (x == 1)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.Status);
+                else
+                    tickets = tickets.OrderByDescending(d => d.Status);
+            }
+            if (x == 2)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.OpenDate);
+                else
+                    tickets = tickets.OrderByDescending(d => d.OpenDate);
+            }
+            if (x == 3)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.Title);
+                else
+                    tickets = tickets.OrderByDescending(d => d.Title);
+            }
+            if (x == 4)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.WorkHours);
+                else
+                    tickets = tickets.OrderByDescending(d => d.WorkHours);
+            }
+            return PartialView(tickets);
+        }
+
 
         public ActionResult Details(int? id)
         {

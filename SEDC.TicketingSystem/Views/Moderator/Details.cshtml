@@ -5,18 +5,36 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-<h2>Details</h2>
+@* Display a modal  for entering the  Hours Worked when you close the ticket *@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            @using (Html.BeginForm("Close", "Tickets", new { id = Model.Ticket.ID }, FormMethod.Post))
+            {
+            @Html.AntiForgeryToken()
+                <br />
+                <label for="workHours">Hours Worked</label>
+            <input type="number" name="workHours" id="workHours" />
+                <br />
+            <input type="submit" value="Close Ticket" class="btn btn-default" id="closeTicket" />
+                <br />
+            }
+        </div>
+    </div>
+</div>
 
+<h2>Details</h2>
+@*@Html.ActionLink("Close Ticket", "Close", "Tickets", new { id = Model.Ticket.ID }, null)*@
 <div>
     <h4>Ticket</h4>
 
-    @Html.ActionLink("Close Ticket", "Close", "Tickets",  new { id = Model.Ticket.ID }, null) |
+    <button id="Close" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">close</button> |
     @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }) |
     @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID })
     <hr />
     <dl class="dl-horizontal">
         <dt>
-           Assigned:  @*@Html.DisplayNameFor(model => model.Ticket.Moderator.Name)*@
+           @*Assigned:  @Html.DisplayNameFor(model => model.Ticket.Moderator.Name)*@
         </dt>
 
                 <dd>

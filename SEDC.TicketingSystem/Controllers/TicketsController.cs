@@ -26,6 +26,43 @@ namespace SEDC.TicketingSystem.Controllers
             return View(tickets.ToList());
         }
 
+        // Ordering Filters
+        public PartialViewResult OrderBy(int? x, int? ord)
+        {
+
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+            if (x == 1)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.Status);
+                else
+                    tickets = tickets.OrderByDescending(d => d.Status);
+            }
+            if (x == 2)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.OpenDate);
+                else
+                    tickets = tickets.OrderByDescending(d => d.OpenDate);
+            }
+            if (x == 3)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.Title);
+                else
+                    tickets = tickets.OrderByDescending(d => d.Title);
+            }
+            if (x == 4)
+            {
+                if (ord != 2)
+                    tickets = tickets.OrderBy(d => d.WorkHours);
+                else
+                    tickets = tickets.OrderByDescending(d => d.WorkHours);
+            }
+            return PartialView(tickets.ToList());
+        }
+
+
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,17 +81,20 @@ namespace SEDC.TicketingSystem.Controllers
             return View(ticketAndRepliesViewModel);
         }
 
-        // Jordan Method for the user to close his ticket
-        public ActionResult Close(int? id)
+        // Jordan Method for the user to close his ticket for both admin and user
+        public ActionResult Close(int? id, int? workHours)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+           
             db.Tickets.Find(id).Status = TicketStatus.Closed;
             db.Tickets.Find(id).CloseDate = DateTime.Now;
-            var workHours = (db.Tickets.Find(id).CloseDate - db.Tickets.Find(id).OpenDate).TotalHours;
+             if (workHours == null)  // If the user closed the ticket the work hours will be the  diference between the closed and open time.
+            {
+                workHours = (int)(db.Tickets.Find(id).CloseDate - db.Tickets.Find(id).OpenDate).TotalHours;
+            } 
             db.Tickets.Find(id).WorkHours = (int)workHours;
             db.SaveChanges();
             if (Convert.ToInt32(Session["IsAdmin"]) == 1)
