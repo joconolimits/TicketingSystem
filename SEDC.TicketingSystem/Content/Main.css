@@ -105,6 +105,14 @@ body {
     height:400px;
     margin-top:10%;
 }
+.shadow3 {
+    -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    width:700px;
+    height:400px;
+    margin-top:10%;
+}
 .loginbtn{
     margin-top:10px;
     margin-left:5%;
@@ -339,4 +347,11 @@ html{
     margin-top:5%;
     color:#1E8BC3;
     font-size:115%;
+}
+.colorwhite{
+    color:white;
+}
+.colorwhite:hover{
+    
+    text-decoration:none;
 }

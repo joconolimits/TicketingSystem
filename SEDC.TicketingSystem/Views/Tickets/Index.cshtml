@@ -6,11 +6,12 @@
 }
     
 <div class="container-fluid wraperHome">
-    <div class="shadow2">
-        <p>
-            @Html.ActionLink("Create New", "Create")
+    <div class="shadow3 container-fluid">
+        <p class="btn loginbtn">
+                @Html.ActionLink("Create New", "Create",null, new { @class = "colorwhite" })
+     
         </p>
-        <table class="table">
+        <table class="container-fluid table" >
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Moderator.Name)
