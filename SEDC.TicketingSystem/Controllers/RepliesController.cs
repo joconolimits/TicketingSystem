@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.Models.Enums;
+using System.Net.Mail;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -64,12 +65,14 @@ namespace SEDC.TicketingSystem.Controllers
             if (Convert.ToInt32(Session["IsAdmin"]) == 1)
             {
                 db.Tickets.Find(id).Status = TicketStatus.WaitReply;
+                SendNotificationEmail((int)id);  // send email notification to the user only when Admin replies to him
             }
             else
             {
                 db.Tickets.Find(id).Status = TicketStatus.Pending;
             }
             db.SaveChanges();
+        
             return RedirectToAction("Details", "Tickets", new { id = id });
             //if (ModelState.IsValid)
             //{
@@ -81,6 +84,36 @@ namespace SEDC.TicketingSystem.Controllers
             //ViewBag.TicketID = new SelectList(db.Tickets, "ID", "Title", reply.TicketID);
             //ViewBag.UserID = new SelectList(db.Users, "ID", "Name", reply.UserID);
             //return View(reply);
+        }
+
+        // Send email notification when a reply is 
+        public void SendNotificationEmail(int ticketId)
+        {
+
+            var user = db.Users.Find(db.Tickets.Find(ticketId).OwnerID);
+            //string ticketUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
+            //                 "/account/verify?ID=" + confirmationGuid;
+
+            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+            {
+                Subject = "You have new reply for the ticket: " + ticketId,
+                Body = " Hello " + user.Name+ 
+                         Environment.NewLine + Environment.NewLine + " You have a new reply. " +Environment.NewLine+
+                         "to check the reply of your ticket please visit this url: http://localhost:50892/Tickets/Details/" + ticketId
+
+            };
+
+            var client = new SmtpClient();
+            var credential = new NetworkCredential
+            {
+                UserName = "blindcarrots1@gmail.com",  // replace with valid value
+                Password = "ticketingSystem"  // replace with valid value
+            };
+            client.Host = "smtp.gmail.com";
+            client.Port = 587;
+            client.Credentials = credential;
+            client.EnableSsl = true;
+            client.Send(message);
         }
 
         // GET: Replies/Edit/5
