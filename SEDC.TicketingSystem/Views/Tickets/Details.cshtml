@@ -7,149 +7,155 @@
 
 
 
-<div class="container-fluid wraperHome">
-    <div class="shadow1">
-    
-        <button class="btn loginbtn colorwhite">
-            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID })
-        </button>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Assigned: 
-        </dt>
+<div class="container-fluid wraperHomeDetails">
+    <div class="shadowDetail">
 
-        <dd>
-            @Model.GetUsername(Model.Ticket.ModeratorID)
-        </dd>
+        <p>
+            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
+        </p>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="msgTextNoMrg">
+                Assigned:
+            </dt>
 
-        <dt>
-            Author:
-        </dt>
+            <dd>
+                @Model.GetUsername(Model.Ticket.ModeratorID)
+            </dd>
 
-        <dd>
-           @Model.GetUsername(Model.Ticket.OwnerID)
-        </dd>
+            <dt class="msgTextNoMrg">
+                Author:
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ticket.Title)
-        </dt>
+            <dd>
+                @Model.GetUsername(Model.Ticket.OwnerID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ticket.Title)
-        </dd>
+            <dt class="msgTextNoMrg">
+                @Html.DisplayNameFor(model => model.Ticket.Title)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ticket.Body)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ticket.Title)
+            </dd>
 
-        <dd class="bodyto">
-            @Html.Raw(Model.Ticket.Body)
-        </dd>
+            <dt class="msgTextNoMrg">
+                @Html.DisplayNameFor(model => model.Ticket.Body)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ticket.Status)
-        </dt>
+            <dd class="bodyto">
+                @Html.Raw(Model.Ticket.Body)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ticket.Status)
-        </dd>
+            <dt class="msgTextNoMrg">
+                @Html.DisplayNameFor(model => model.Ticket.Status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ticket.OpenDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ticket.Status)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ticket.OpenDate)
-        </dd>
+            <dt class="msgTextNoMrg">
+                @Html.DisplayNameFor(model => model.Ticket.OpenDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ticket.CloseDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ticket.OpenDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ticket.CloseDate)
-        </dd>
+            <dt class="msgTextNoMrg">
+                @Html.DisplayNameFor(model => model.Ticket.CloseDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ticket.WorkHours)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ticket.CloseDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ticket.WorkHours)
-        </dd>
+            <dt class="msgTextNoMrg">
+                @Html.DisplayNameFor(model => model.Ticket.WorkHours)
+            </dt>
 
-    </dl>
-</div>
-<p>
+            <dd>
+                @Html.DisplayFor(model => model.Ticket.WorkHours)
+            </dd>
 
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }) |
-    @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
-</p>
-@if ((int)Model.Ticket.Status != 3) {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
+        </dl>
+        <p>
 
-
-    using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>Reply</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div class="form-group">
-
-                <div class="col-md-10">
-
-                    <textarea id="reply" name="replyBody"></textarea>
-
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" id="submitReply" />
-                </div>
-            </div>
-        </div>
-    
-    }
-}
-</div>
-<div class="wraperHome">
-    <div class="shadow4">
-        <table class="table " id="replies">
-            <thead>
-                <tr>
-                    <th>Replies</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var item in Model.Replies)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ticket.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.User.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReplyBody)
-                        </td>
-                        <td>
-                            <span> Author:  @Model.GetUsername(item.UserID)</span>
-                            <br />
-                            Replied:
-                            @Html.DisplayFor(modelItem => item.TimeStamp)
-                        </td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn"})
+            @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+        </p>
     </div>
-</div>
+    
+    <div class="shadowDetail">
+        <div class="createCenter">
+            @if ((int)Model.Ticket.Status != 3)
+            {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
+
+
+                using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4 class="msgTextNoMrg">Reply</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+
+                                <textarea id="reply" name="replyBody"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <input type="submit" value="Create" class="btn loginbtn" id="submitReply" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+
+
+
+            <table class="table " id="replies">
+                <thead>
+                    <tr>
+                        <th class="msgTextNoMrg">Replies</th>
+                        <th class="msgTextNoMrg">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.Replies)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ticket.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReplyBody)
+                            </td>
+                            <td>
+                                <span class="msgTextNoMrg"> Author:  @Model.GetUsername(item.UserID)</span>
+                                <br />
+                                
+                                <span class="msgTextNoMrg">Replied:
+                                @Html.DisplayFor(modelItem => item.TimeStamp)</span>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </div>
