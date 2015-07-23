@@ -4,27 +4,37 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-  <span>Order By: </span>
-<select id="filterBy" name="filterBy">
-    <option value="1">Status</option>
-    <option value="2">Open Date</option>
-    <option value="3">Title</option>
-    <option value="4">Worked Hours</option>
-</select>
-<span>Ordering: </span>
-<select id="ordering" name="ordering">
-    <option value="1">Acending</option>
-    <option value="2">Decending</option>
-</select>
+                      <div class="wraperHome shadow4">
+                          <div class="container-fluid wraperHome1">
+                              <div class="position-center">
+                                  <span class="msgText">Order By: </span>
+                                  <select id="filterBy" name="filterBy">
+                                      <option value="1">Status</option>
+                                      <option value="2">Open Date</option>
+                                      <option value="3">Title</option>
+                                      <option value="4">Worked Hours</option>
+                                  </select>
+                                  <span class="msgText">Ordering: </span>
+                                  <select id="ordering" name="ordering">
+                                      <option value="1">Acending</option>
+                                      <option value="2">Decending</option>
+                                  </select>
+                                  <p class="btn loginbtn">
+                                      @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
 
-<div class="container-fluid wraperHome">
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <div id="tickets" class="shadow2">  @* This div is needed for the ordering filters and the ajax to work *@
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+<div class="container-fluid wraperHome shadow3">
+    <div class="container-fluid">
+        
+        <table class="container-fluid table" >
+    <div id="tickets">  @* This div is needed for the ordering filters and the ajax to work *@
        
         <table class="table">
-            <tr>
+
+            <tr class="msgText">
                 <th>
                     @Html.DisplayNameFor(model => model.Moderator.Name)
                 </th>
@@ -33,9 +43,6 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Body)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Status)
@@ -62,9 +69,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.Raw(item.Body)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Status)
@@ -99,8 +103,8 @@
             }
         </table>
     </div>
-    </div>
-
+  </div>
+</div>
 @* Script for the Ajax order filters *@
 
 

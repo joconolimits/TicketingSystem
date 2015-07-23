@@ -10,8 +10,9 @@
 <div class="container-fluid wraperHome">
     <div class="shadow1">
     
-
-    @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }) |
+        <button class="btn loginbtn colorwhite">
+            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID })
+        </button>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -42,7 +43,7 @@
             @Html.DisplayNameFor(model => model.Ticket.Body)
         </dt>
 
-        <dd>
+        <dd class="bodyto">
             @Html.Raw(Model.Ticket.Body)
         </dd>
 
@@ -116,36 +117,39 @@
     }
 }
 </div>
+<div class="wraperHome">
+    <div class="shadow4">
+        <table class="table " id="replies">
+            <thead>
+                <tr>
+                    <th>Replies</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
 
-<table class="table " id="replies">
-    <thead>
-        <tr>
-            <th>Replies</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
+                @foreach (var item in Model.Replies)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Ticket.Title)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.User.Name)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReplyBody)
+                        </td>
+                        <td>
+                            <span> Author:  @Model.GetUsername(item.UserID)</span>
+                            <br />
+                            Replied:
+                            @Html.DisplayFor(modelItem => item.TimeStamp)
+                        </td>
 
-        @foreach (var item in Model.Replies)
-        {
-            <tr>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Ticket.Title)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.User.Name)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReplyBody)
-                </td>
-                <td>
-                    <span> Author:  @Model.GetUsername(item.UserID)</span>
-                    <br />
-                    Replied:
-                    @Html.DisplayFor(modelItem => item.TimeStamp)
-                </td>
-
-            </tr>
-        }
-    </tbody>
-</table>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -105,6 +105,21 @@ body {
     height:400px;
     margin-top:10%;
 }
+.shadow3 {
+    -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    width:700px;
+    height:500px;
+  
+}
+.shadow4 {   
+     -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    height:100px;
+    width:700px;
+}
 .loginbtn{
     margin-top:10px;
     margin-left:5%;
@@ -339,4 +354,90 @@ html{
     margin-top:5%;
     color:#1E8BC3;
     font-size:115%;
+}
+.colorwhite{
+    color:white;
+}
+.colorwhite:hover{
+    
+    text-decoration:none;
+}
+
+.centralDiv{
+    width:100%;
+    height:25%;
+}
+.position-center {
+    margin-left:auto;
+    margin-right:auto;
+    width:75%;
+    height:100%;
+}
+.edit-center {
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.msgTextNoMrg{
+    color:#1E8BC3!important;
+}
+.createCenter {
+    width:93%;
+    height:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.centerCreateWhole{
+    margin-left:-25%;
+}
+.shadowEdit {
+        -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
+    width:850px;
+    height:850px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.mceEditor{
+    width:30%;
+}
+.wraperHomeEdit{
+        margin-left:auto;
+    margin-right:auto;
+    width:500px;
+    height:900px;
+}
+.centerCreateWholeEdit {
+    margin-left:-40%;
+}
+.position-centerEdit{
+    margin-left:auto;
+    margin-right:auto;
+    width:95%;
+    height:100%;
+}
+
+.wraperHomeCreate {
+            margin-left:auto;
+    margin-right:auto;
+    width:500px;
+    height:570px;
+}
+.bodyto{
+    
+
+      width: 190px;
+
+      padding: 6px;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+
+      text-overflow: ellipsis;
+      border:1px #BFBFBF solid;
+    border-radius:5px;
+  
 }
