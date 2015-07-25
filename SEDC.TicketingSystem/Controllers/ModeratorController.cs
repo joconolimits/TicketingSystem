@@ -33,6 +33,22 @@ namespace SEDC.TicketingSystem.Controllers
             return View(tickets);
         }
 
+        // Jordan Show a list of the New Pending Tickets in the system (Ones who does not have a reply)
+        public ActionResult NewPending()
+        {
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Replies);
+            tickets = tickets.Where(t => t.Replies.Count() == 0).OrderBy(d => d.Status);
+            return View(tickets);
+        }
+
+        // Jordan Show a list of the All Pending Tickets in the system (Ones who does not have a reply)
+        public ActionResult AllPending()
+        {
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+            tickets = tickets.Where(t => t.Status == TicketStatus.Pending).OrderBy(d => d.OpenDate);
+            return View(tickets);
+        }
+
         // Ordering Filters
         public PartialViewResult OrderBy(int? x, int? ord) 
         {
