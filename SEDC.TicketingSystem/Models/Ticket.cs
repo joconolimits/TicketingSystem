@@ -31,6 +31,10 @@ namespace SEDC.TicketingSystem.Models
         public int ModeratorID { get; set; }
         public User Moderator { get; set; }
 
+        [ForeignKey("Category")]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
+
         public DateTime OpenDate { get; set; }
 
         public DateTime CloseDate { get; set; }

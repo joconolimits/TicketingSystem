@@ -56,6 +56,14 @@
             </dd>
 
             <dt class="msgTextNoMrg">
+            Category:
+            </dt>
+
+            <dd>
+                @Model.GetCategory(Model.Ticket.CategoryID)
+            </dd>
+
+            <dt class="msgTextNoMrg">
                 @Html.DisplayNameFor(model => model.Ticket.OpenDate)
             </dt>
 
