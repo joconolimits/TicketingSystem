@@ -124,7 +124,7 @@ namespace SEDC.TicketingSystem.Controllers
             if (ModelState.IsValid)
             {
                 ticket.OwnerID = Convert.ToInt32(Session["LogedUserID"]); // Jordan Set The owner Id to the id of the Current user.
-                ticket.ModeratorID = 1; // Jordan All tickets are assigned to one Moderator. He will reasign them to others.
+                ticket.ModeratorID = db.Categories.FirstOrDefault(t => t.ID == ticket.CategoryID).ModeratorID;
                 ticket.OpenDate = DateTime.Now;
                 ticket.CloseDate = DateTime.MaxValue;
                 ticket.Status = TicketStatus.Pending;
