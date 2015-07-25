@@ -151,9 +151,6 @@ namespace SEDC.TicketingSystem.Controllers
         {
 
             var user = db.Users.Find(db.Tickets.Find(ticketId).ModeratorID);
-            //string ticketUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
-            //                 "/account/verify?ID=" + confirmationGuid;
-
             var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
             {
                 Subject = "A ticket has been Assigned to you.",
@@ -163,17 +160,7 @@ namespace SEDC.TicketingSystem.Controllers
 
             };
 
-            var client = new SmtpClient();
-            var credential = new NetworkCredential
-            {
-                UserName = "blindcarrots1@gmail.com",  // replace with valid value
-                Password = "ticketingSystem"  // replace with valid value
-            };
-            client.Host= "smtp.gmail.com";
-            client.Port= 587;
-            client.Credentials = credential;
-            client.EnableSsl = true;
-            client.Send(message);
+            SEDC.TicketingSystem.Email.EmailClient.Client(message);
         }
 
     }

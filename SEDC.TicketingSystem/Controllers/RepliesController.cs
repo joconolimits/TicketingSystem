@@ -56,22 +56,24 @@ namespace SEDC.TicketingSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(int id, string replyBody)
         {
+            int loggedUserId = Convert.ToInt32(Session["LogedUserID"]);
             Reply reply = new Reply();
             reply.TimeStamp = DateTime.Now;
-            reply.UserID = Convert.ToInt32(Session["LogedUserID"]);
+            reply.UserID = loggedUserId;
             reply.TicketID = id;
             reply.ReplyBody = replyBody;
             db.Replies.Add(reply);
             if (Convert.ToInt32(Session["IsAdmin"]) == 1)
             {
                 db.Tickets.Find(id).Status = TicketStatus.WaitReply;
-                SendNotificationEmail((int)id);  // send email notification to the user only when Admin replies to him
+                db.Tickets.Find(id).ModeratorID = loggedUserId;
             }
             else
             {
                 db.Tickets.Find(id).Status = TicketStatus.Pending;
             }
             db.SaveChanges();
+            SendNotificationEmail((int)id);  // send email notification to the user / Admin when a new reply
         
             return RedirectToAction("Details", "Tickets", new { id = id });
             //if (ModelState.IsValid)
@@ -84,36 +86,6 @@ namespace SEDC.TicketingSystem.Controllers
             //ViewBag.TicketID = new SelectList(db.Tickets, "ID", "Title", reply.TicketID);
             //ViewBag.UserID = new SelectList(db.Users, "ID", "Name", reply.UserID);
             //return View(reply);
-        }
-
-        // Send email notification when a reply is 
-        public void SendNotificationEmail(int ticketId)
-        {
-
-            var user = db.Users.Find(db.Tickets.Find(ticketId).OwnerID);
-            //string ticketUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
-            //                 "/account/verify?ID=" + confirmationGuid;
-
-            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
-            {
-                Subject = "You have new reply for the ticket: " + ticketId,
-                Body = " Hello " + user.Name+ 
-                         Environment.NewLine + Environment.NewLine + " You have a new reply. " +Environment.NewLine+
-                         "to check the reply of your ticket please visit this url: http://localhost:50892/Tickets/Details/" + ticketId
-
-            };
-
-            var client = new SmtpClient();
-            var credential = new NetworkCredential
-            {
-                UserName = "blindcarrots1@gmail.com",  // replace with valid value
-                Password = "ticketingSystem"  // replace with valid value
-            };
-            client.Host = "smtp.gmail.com";
-            client.Port = 587;
-            client.Credentials = credential;
-            client.EnableSsl = true;
-            client.Send(message);
         }
 
         // GET: Replies/Edit/5
@@ -184,6 +156,29 @@ namespace SEDC.TicketingSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //Send email notification when a reply is posted 
+        public void SendNotificationEmail(int ticketId)
+        {
+            User user = new User();
+            // check  if you need to send notification to user or moderator
+            if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+                user = db.Users.Find(db.Tickets.Find(ticketId).OwnerID);
+            else
+                user = db.Users.Find(db.Tickets.Find(ticketId).ModeratorID);
+
+            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+            {
+                Subject = "You have new reply for the ticket: " + ticketId,
+                Body = " Hello " + user.Name +
+                         Environment.NewLine + Environment.NewLine + " You have a new reply. " + Environment.NewLine +
+                         "to check the reply of your ticket please visit this url: http://localhost:50892/Tickets/Details/" + ticketId
+            };
+
+            // call the email client to send the message 
+            SEDC.TicketingSystem.Email.EmailClient.Client(message);
+
         }
     }
 }

@@ -390,6 +390,7 @@
     <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="EmailClient\EmailClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.ViewModels;
 using SEDC.TicketingSystem.Models.Enums;
+using System.Net.Mail;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -124,12 +125,14 @@ namespace SEDC.TicketingSystem.Controllers
             if (ModelState.IsValid)
             {
                 ticket.OwnerID = Convert.ToInt32(Session["LogedUserID"]); // Jordan Set The owner Id to the id of the Current user.
-                ticket.ModeratorID = db.Categories.FirstOrDefault(t => t.ID == ticket.CategoryID).ModeratorID;
+                // set moderatorID  to the id of teh moderator who is assigned to that category.
+                ticket.ModeratorID = db.Categories.FirstOrDefault(t => t.ID == ticket.CategoryID).ModeratorID; 
                 ticket.OpenDate = DateTime.Now;
                 ticket.CloseDate = DateTime.MaxValue;
                 ticket.Status = TicketStatus.Pending;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
+                SendNotificationEmail(ticket.ID);
                 return RedirectToAction("Index", new {id = ticket.OwnerID });
             }
 
@@ -211,6 +214,23 @@ namespace SEDC.TicketingSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Send email notification when a new ticket is created
+        public void SendNotificationEmail(int ticketId)
+        {
+             string categoryName = db.Categories.Find(db.Tickets.Find(ticketId).CategoryID).Name;
+            var user = db.Users.Find(db.Tickets.Find(ticketId).ModeratorID);
+            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+            {
+                
+                    Subject = "New Ticket in category: " + categoryName,
+                    Body = "Hello " + user.Name + Environment.NewLine + Environment.NewLine + " New ticket with ID: " + ticketId + " has been posted in the category:  "+ categoryName + Environment.NewLine +
+                         "to check the ticket please visit this url: http://localhost:50892/Moderator/Details/" + ticketId
+            };
+
+            // call the email client to send the message 
+            SEDC.TicketingSystem.Email.EmailClient.Client(message);
         }
     }
 }
