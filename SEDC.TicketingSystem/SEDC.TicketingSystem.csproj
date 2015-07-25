@@ -442,6 +442,7 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Moderator\NewPending.cshtml" />
     <Content Include="Views\Moderator\AllPending.cshtml" />
+    <Content Include="Views\Moderator\MyTickets.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

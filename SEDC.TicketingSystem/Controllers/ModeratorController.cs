@@ -36,17 +36,26 @@ namespace SEDC.TicketingSystem.Controllers
         // Jordan Show a list of the New Pending Tickets in the system (Ones who does not have a reply)
         public ActionResult NewPending()
         {
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Replies);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Replies).Include(t => t.Category);
             tickets = tickets.Where(t => t.Replies.Count() == 0).OrderBy(d => d.Status);
             return View(tickets);
         }
 
-        // Jordan Show a list of the All Pending Tickets in the system (Ones who does not have a reply)
+        // Jordan Show a list of the All Pending Tickets in the system 
         public ActionResult AllPending()
         {
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
             tickets = tickets.Where(t => t.Status == TicketStatus.Pending).OrderBy(d => d.OpenDate);
             return View(tickets);
+        }
+
+        // Jordan Show a list of the My Tickets in the system 
+        public ActionResult MyTickets()
+        {
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
+            int ModeratorID = Convert.ToInt32(Session["LogedUserID"]);
+            tickets = tickets.Where(t => t.ModeratorID == ModeratorID).OrderBy(d => d.Status);
+            return View(tickets.ToList());
         }
 
         // Ordering Filters
