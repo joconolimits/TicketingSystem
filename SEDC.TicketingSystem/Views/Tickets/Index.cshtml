@@ -32,17 +32,21 @@
         <table class="table">
 
             <tr class="msgText">
-                <th>
+                @* We don't need to show the moderator and owner of the ticket in the list *@
+                @*<th>
                     @Html.DisplayNameFor(model => model.Moderator.Name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Owner.Name)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Title)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.OpenDate)
@@ -58,17 +62,23 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Moderator.Name)
+                    @* We don't need to show the moderator and owner of the ticket in the list *@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Moderator.Email)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Owner.Name)
-                    </td>
+                    </td>*@
                     <td>
-                        @Html.DisplayFor(modelItem => item.Title)
+                        @* This line will show the title of the ticket as link to the ticket details *@
+                        @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
+                        
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.OpenDate)
@@ -83,16 +93,18 @@
 
                         @if ((int)item.Status == 3)
                         {
-                            <span>Edit |</span>
-                            @Html.ActionLink("Details", "Details", new { id = item.ID })    <span>|</span>
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            <span>Edit </span>
+                            
+                            //We will not let regular users to delete tickets
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
 
                         }
                         else
                         {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) <span>|</span>
-                            @Html.ActionLink("Details", "Details", new { id = item.ID })    <span>|</span>
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) 
+
+                            //We will not let regular users to delete tickets
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
                         }
 
                     </td>

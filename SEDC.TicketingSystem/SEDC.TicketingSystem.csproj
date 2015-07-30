@@ -384,14 +384,17 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authorizatin Filters\Moderator.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
     <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="EmailClient\EmailClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Enums\TicketStatus.cs" />
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\SEDCTicketingSystemContext.cs" />
@@ -433,6 +436,14 @@
     <Content Include="Views\Moderator\AssignTicket.cshtml" />
     <Content Include="Views\Moderator\OrderBy.cshtml" />
     <Content Include="Views\Tickets\OrderBy.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Moderator\NewPending.cshtml" />
+    <Content Include="Views\Moderator\AllPending.cshtml" />
+    <Content Include="Views\Moderator\MyTickets.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

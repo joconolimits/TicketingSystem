@@ -20,6 +20,11 @@ namespace SEDC.TicketingSystem.ViewModels
 
             return db.Users.Find(UserID).Username;
         }
+        public string GetCategory(int CategoryID)
+        {
+
+            return db.Categories.Find(CategoryID).Name;
+        }
     }
 
             

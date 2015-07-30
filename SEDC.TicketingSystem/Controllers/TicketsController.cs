@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.ViewModels;
 using SEDC.TicketingSystem.Models.Enums;
+using System.Net.Mail;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -21,8 +22,8 @@ namespace SEDC.TicketingSystem.Controllers
         // Show My tickets page.
         public ActionResult Index(int? id)
         {
-            var tickets = db.Tickets.Where(x => x.OwnerID == id);
-           // var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+            //var tickets = db.Tickets.Where(x => x.OwnerID == id);
+             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(x => x.OwnerID == id);
             return View(tickets.ToList());
         }
 
@@ -30,7 +31,7 @@ namespace SEDC.TicketingSystem.Controllers
         public PartialViewResult OrderBy(int? x, int? ord)
         {
 
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
             if (x == 1)
             {
                 if (ord != 2)
@@ -109,6 +110,7 @@ namespace SEDC.TicketingSystem.Controllers
         {
             //ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name");
             //ViewBag.OwnerID = new SelectList(db.Users, "ID", "Name");
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
             return View();
         }
 
@@ -117,23 +119,26 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Body")] Ticket ticket)
+        public ActionResult Create([Bind(Include = "ID,Title,Body, CategoryID")] Ticket ticket)
         {
            
             if (ModelState.IsValid)
             {
                 ticket.OwnerID = Convert.ToInt32(Session["LogedUserID"]); // Jordan Set The owner Id to the id of the Current user.
-                ticket.ModeratorID = 1; // Jordan All tickets are assigned to one Moderator. He will reasign them to others.
+                // set moderatorID  to the id of teh moderator who is assigned to that category.
+                ticket.ModeratorID = db.Categories.FirstOrDefault(t => t.ID == ticket.CategoryID).ModeratorID; 
                 ticket.OpenDate = DateTime.Now;
                 ticket.CloseDate = DateTime.MaxValue;
                 ticket.Status = TicketStatus.Pending;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
+                SendNotificationEmail(ticket.ID);
                 return RedirectToAction("Index", new {id = ticket.OwnerID });
             }
 
             ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name", ticket.ModeratorID);
             ViewBag.OwnerID = new SelectList(db.Users, "ID", "Name", ticket.OwnerID);
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
             return View(ticket);
         }
 
@@ -159,7 +164,9 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Body,Status,OwnerID,ModeratorID,OpenDate,CloseDate,WorkHours")] Ticket ticket)
+
+        // jordan removed  fields from the bind, same  needs to be removed from  the view
+        public ActionResult Edit([Bind(Include = "ID,Title,Body")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
@@ -172,31 +179,33 @@ namespace SEDC.TicketingSystem.Controllers
             return View(ticket);
         }
 
-        // GET: Tickets/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Ticket ticket = db.Tickets.Find(id);
-            if (ticket == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ticket);
-        }
+        // We will not give the ability to delete tickets to regular users 
 
-        // POST: Tickets/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Ticket ticket = db.Tickets.Find(id);
-            db.Tickets.Remove(ticket);
-            db.SaveChanges();
-            return RedirectToAction("Index", new { id = ticket.OwnerID });
-        }
+        // GET: Tickets/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Ticket ticket = db.Tickets.Find(id);
+        //    if (ticket == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(ticket);
+        //}
+
+        //// POST: Tickets/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Ticket ticket = db.Tickets.Find(id);
+        //    db.Tickets.Remove(ticket);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index", new { id = ticket.OwnerID });
+        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -205,6 +214,23 @@ namespace SEDC.TicketingSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Send email notification when a new ticket is created
+        public void SendNotificationEmail(int ticketId)
+        {
+             string categoryName = db.Categories.Find(db.Tickets.Find(ticketId).CategoryID).Name;
+            var user = db.Users.Find(db.Tickets.Find(ticketId).ModeratorID);
+            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+            {
+                
+                    Subject = "New Ticket in category: " + categoryName,
+                    Body = "Hello " + user.Name + Environment.NewLine + Environment.NewLine + " New ticket with ID: " + ticketId + " has been posted in the category:  "+ categoryName + Environment.NewLine +
+                         "to check the ticket please visit this url: http://localhost:50892/Moderator/Details/" + ticketId
+            };
+
+            // call the email client to send the message 
+            SEDC.TicketingSystem.Email.EmailClient.Client(message);
         }
     }
 }
