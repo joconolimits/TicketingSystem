@@ -16,58 +16,26 @@ namespace SEDC.TicketingSystem.Controllers
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
-        // GET: Replies
-        // Jordan I think  we don't need it
-        //public ActionResult Index()
-        //{
-        //    var replies = db.Replies.Include(r => r.Ticket).Include(r => r.User);
-        //    return View(replies.ToList());
-        //}
-
-        // GET: Replies/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Reply reply = db.Replies.Find(id);
-        //    if (reply == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(reply);
-        //}
-
-        // GET: Replies/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.TicketID = new SelectList(db.Tickets, "ID", "Title");
-        //    ViewBag.UserID = new SelectList(db.Users, "ID", "Name");
-        //    return View();
-        //}
-
-        // POST: Replies/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-
+        
         // Jordan Custom Action to Create a new reply in a ticket. 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(int id, string replyBody)
         {
-            int loggedUserId = Convert.ToInt32(Session["LogedUserID"]);
+            int loggedUserId = Convert.ToInt32(Session["LogedUserID"]); //  get The id fo the current user
             Reply reply = new Reply();
-            reply.TimeStamp = DateTime.Now;
+            reply.TimeStamp = DateTime.UtcNow;  
             reply.UserID = loggedUserId;
             reply.TicketID = id;
             reply.ReplyBody = replyBody;
             db.Replies.Add(reply);
+            // If the current user is moderator change  the ticket reply status and set him as moderator of the ticket.
             if (Convert.ToInt32(Session["IsAdmin"]) == 1)
             {
                 db.Tickets.Find(id).Status = TicketStatus.WaitReply;
                 db.Tickets.Find(id).ModeratorID = loggedUserId;
             }
+            // If he is not Moderator set the status as pending
             else
             {
                 db.Tickets.Find(id).Status = TicketStatus.Pending;
@@ -76,18 +44,9 @@ namespace SEDC.TicketingSystem.Controllers
             SendNotificationEmail((int)id);  // send email notification to the user / Admin when a new reply
         
             return RedirectToAction("Details", "Tickets", new { id = id });
-            //if (ModelState.IsValid)
-            //{
-            //    db.Replies.Add(reply);
-            //    db.SaveChanges();
-                
-            //}
-
-            //ViewBag.TicketID = new SelectList(db.Tickets, "ID", "Title", reply.TicketID);
-            //ViewBag.UserID = new SelectList(db.Users, "ID", "Name", reply.UserID);
-            //return View(reply);
+       
         }
-
+         // We may need this for the Moderator to be able to edit his reply if he do some mistake in it.
         // GET: Replies/Edit/5
         public ActionResult Edit(int? id)
         {

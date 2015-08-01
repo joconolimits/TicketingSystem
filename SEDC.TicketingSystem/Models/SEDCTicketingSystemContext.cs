@@ -20,7 +20,7 @@ namespace SEDC.TicketingSystem.Models
         {
         }
 
-        // Jordan Remove the all the cascade deletes to avoid foreign key issues
+        // Jordan Remove all the cascade deletes to avoid foreign key issues
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
