@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace SEDC.TicketingSystem.Models
 {
@@ -18,6 +19,7 @@ namespace SEDC.TicketingSystem.Models
         public Ticket Ticket { get; set; }
 
         [Required]
+        [UIHint("tinymce_jquery_full"), AllowHtml]
         public string ReplyBody { get; set; }
 
         public bool IsAdminMessage { get; set; }

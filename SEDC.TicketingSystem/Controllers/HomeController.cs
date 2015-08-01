@@ -50,22 +50,16 @@ namespace SEDC.TicketingSystem.Controllers
                         Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();
                         Session["IsAdmin"] = v.IsAdmin;
-                        if (v.IsAdmin)
-                        {
-                           
-                           // Roles.AddUserToRole(Username, RoleName);
-                        }
 
-                        return RedirectToAction("WelcomePage", "Home", new{id = v.ID});
-                       
+                        return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
                     }
                     else
                     {
                         ViewBag.Message = "OOPS :(  You most likely forgot your email or Password!!!";
                     }
 
-                }
-            }
+                } // end using
+            } //end if
             return View();
         }
 
@@ -80,20 +74,6 @@ namespace SEDC.TicketingSystem.Controllers
             
         }
 
-        //[Authorize]
-        
-        //public ActionResult MyTickets()
-        //{
-        //    if (Session["Username"] != null)
-        //    {
-
-        //        return View();
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Login");
-        //    }
-        //}
         public ActionResult AboutUs()
         {
             return View();
@@ -106,6 +86,8 @@ namespace SEDC.TicketingSystem.Controllers
         {
             return View();
         }
+
+        // This probably needs to be  deleted. Not sure yet
         public ActionResult Register()
         {
             return View();

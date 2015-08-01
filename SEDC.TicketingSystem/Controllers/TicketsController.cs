@@ -91,7 +91,7 @@ namespace SEDC.TicketingSystem.Controllers
             }
            
             db.Tickets.Find(id).Status = TicketStatus.Closed;
-            db.Tickets.Find(id).CloseDate = DateTime.Now;
+            db.Tickets.Find(id).CloseDate = DateTime.UtcNow;
              if (workHours == null)  // If the user closed the ticket the work hours will be the  diference between the closed and open time.
             {
                 workHours = (int)(db.Tickets.Find(id).CloseDate - db.Tickets.Find(id).OpenDate).TotalHours;
@@ -108,8 +108,6 @@ namespace SEDC.TicketingSystem.Controllers
         // GET: Tickets/Create
         public ActionResult Create()
         {
-            //ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name");
-            //ViewBag.OwnerID = new SelectList(db.Users, "ID", "Name");
             ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
             return View();
         }
@@ -127,7 +125,7 @@ namespace SEDC.TicketingSystem.Controllers
                 ticket.OwnerID = Convert.ToInt32(Session["LogedUserID"]); // Jordan Set The owner Id to the id of the Current user.
                 // set moderatorID  to the id of teh moderator who is assigned to that category.
                 ticket.ModeratorID = db.Categories.FirstOrDefault(t => t.ID == ticket.CategoryID).ModeratorID; 
-                ticket.OpenDate = DateTime.Now;
+                ticket.OpenDate = DateTime.UtcNow;
                 ticket.CloseDate = DateTime.MaxValue;
                 ticket.Status = TicketStatus.Pending;
                 db.Tickets.Add(ticket);
