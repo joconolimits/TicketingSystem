@@ -10,93 +10,89 @@
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">
 
-        <p>
-            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
-        </p>
+
         <hr />
-        <dl class="dl-horizontal">
-            <dt class="msgTextNoMrg">
-                Assigned:
-            </dt>
+        <div class="dl-horizontal">
+            <div class="container-fluid sameline">
+                <h3>
+                    @Html.DisplayFor(model => model.Ticket.Title)
+                </h3>
+                <div class="container-fluid bodyBtn">
+                    <p>
+                        @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
+                        @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+                    </p>
+                </div>
+            </div>
 
-            <dd>
-                @Model.GetUsername(Model.Ticket.ModeratorID)
-            </dd>
+            <div class="container-fluid sameline">
+                <dt class="msgTextNoMrg">
+                    Assigned:
+                </dt>
 
-            <dt class="msgTextNoMrg">
-                Author:
-            </dt>
+                <dd>
+                    @Model.GetUsername(Model.Ticket.ModeratorID)
+                </dd>
 
-            <dd>
-                @Model.GetUsername(Model.Ticket.OwnerID)
-            </dd>
+                <dt class="msgTextNoMrg">
+                    Author:
+                </dt>
 
-            <dt class="msgTextNoMrg">
-                @Html.DisplayNameFor(model => model.Ticket.Title)
-            </dt>
+                <dd>
+                    @Model.GetUsername(Model.Ticket.OwnerID)
+                </dd>
+                <dt class="msgTextNoMrg">
+                    @Html.DisplayNameFor(model => model.Ticket.Status)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Ticket.Title)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Ticket.Status)
+                </dd>
 
-            <dt class="msgTextNoMrg">
-                @Html.DisplayNameFor(model => model.Ticket.Body)
-            </dt>
+                <dt class="msgTextNoMrg">
+                    Category:
+                </dt>
 
-            <dd class="bodyto">
-                @Html.Raw(Model.Ticket.Body)
-            </dd>
+                <dd>
+                    @Model.GetCategory(Model.Ticket.CategoryID)
+                </dd>
 
-            <dt class="msgTextNoMrg">
-                @Html.DisplayNameFor(model => model.Ticket.Status)
-            </dt>
+                <dt class="msgTextNoMrg">
+                    @Html.DisplayNameFor(model => model.Ticket.OpenDate)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Ticket.Status)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Ticket.OpenDate)
+                </dd>
 
-            <dt class="msgTextNoMrg">
-            Category:
-            </dt>
+                <dt class="msgTextNoMrg">
+                    @Html.DisplayNameFor(model => model.Ticket.CloseDate)
+                </dt>
 
-            <dd>
-                @Model.GetCategory(Model.Ticket.CategoryID)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Ticket.CloseDate)
+                </dd>
 
-            <dt class="msgTextNoMrg">
-                @Html.DisplayNameFor(model => model.Ticket.OpenDate)
-            </dt>
+                <dt class="msgTextNoMrg">
+                    @Html.DisplayNameFor(model => model.Ticket.WorkHours)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Ticket.OpenDate)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Ticket.WorkHours)
+                </dd>
+            </div>
 
-            <dt class="msgTextNoMrg">
-                @Html.DisplayNameFor(model => model.Ticket.CloseDate)
-            </dt>
+            <div class="bodyText">
+                <div class="bodyText1">
+                    @Html.Raw(Model.Ticket.Body)
+                </div>
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Ticket.CloseDate)
-            </dd>
-
-            <dt class="msgTextNoMrg">
-                @Html.DisplayNameFor(model => model.Ticket.WorkHours)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Ticket.WorkHours)
-            </dd>
-
-        </dl>
-        <p>
-
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn"})
-            @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
-        </p>
+        </div>
     </div>
     
     <div class="shadowDetail">
-        <div class="createCenter">
+        <div class="createCenter pad">
             @if ((int)Model.Ticket.Status != 3)
             {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
 
@@ -106,7 +102,7 @@
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
-                        <h4 class="msgTextNoMrg">Reply</h4>
+                        <h3 class="msgTextNoMrg">Reply</h3>
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
