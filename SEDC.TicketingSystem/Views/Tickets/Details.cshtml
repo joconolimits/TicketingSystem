@@ -109,10 +109,7 @@
                         <div class="form-group">
 
                             <div class="col-md-10">
-                                @*@Html.TextArea("replyBody")*@
-                                
-                               <textarea id="reply" name="replyBody"></textarea>
-
+                             @Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })
                             </div>
                         </div>
 
@@ -141,13 +138,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Ticket.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.User.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ReplyBody)
+                                @Html.Raw(item.ReplyBody)
                             </td>
                             <td>
                                 <span class="msgTextNoMrg"> Author:  @Model.GetUsername(item.UserID)</span>
