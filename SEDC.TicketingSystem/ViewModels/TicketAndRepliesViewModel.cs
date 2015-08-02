@@ -25,6 +25,7 @@ namespace SEDC.TicketingSystem.ViewModels
 
             return db.Categories.Find(CategoryID).Name;
         }
+ 
     }
 
             
