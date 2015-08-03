@@ -20,6 +20,7 @@ namespace SEDC.TicketingSystem.Controllers
         // Jordan Custom Action to Create a new reply in a ticket. 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]  // We need this to be able to send html through the form.
         public ActionResult Create(int id, string replyBody)
         {
             int loggedUserId = Convert.ToInt32(Session["LogedUserID"]); //  get The id fo the current user
@@ -34,17 +35,20 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 db.Tickets.Find(id).Status = TicketStatus.WaitReply;
                 db.Tickets.Find(id).ModeratorID = loggedUserId;
+                db.SaveChanges();
+                SendNotificationEmail((int)id);  // send email notification to the user / Admin when a new reply
+
+                return RedirectToAction("Details", "Moderator", new { id = id });
             }
             // If he is not Moderator set the status as pending
             else
             {
                 db.Tickets.Find(id).Status = TicketStatus.Pending;
+                db.SaveChanges();
+                SendNotificationEmail((int)id);  // send email notification to the user / Admin when a new reply
+
+                return RedirectToAction("Details", "Tickets", new { id = id });
             }
-            db.SaveChanges();
-            SendNotificationEmail((int)id);  // send email notification to the user / Admin when a new reply
-        
-            return RedirectToAction("Details", "Tickets", new { id = id });
-       
         }
          // We may need this for the Moderator to be able to edit his reply if he do some mistake in it.
         // GET: Replies/Edit/5

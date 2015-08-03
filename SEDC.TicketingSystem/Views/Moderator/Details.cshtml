@@ -31,7 +31,7 @@
             <hr />
             <dl class="dl-horizontal">
                 <dt>
-                    @*Assigned:  @Html.DisplayNameFor(model => model.Ticket.Moderator.Name)*@
+                    Assigned: @* @Html.DisplayNameFor(model => model.Ticket.Moderator.Name)*@
                 </dt>
 
                 <dd>
@@ -117,9 +117,7 @@
                     <div class="form-group">
 
                         <div class="col-md-10">
-
-                            <textarea id="reply" name="replyBody"></textarea>
-
+                            @Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })
                         </div>
                     </div>
 
@@ -130,9 +128,6 @@
                     </div>
                 </div>
             }
-
-
-
 
             <table class="table " id="replies">
                 <thead>
@@ -155,7 +150,7 @@
                             </td>*@
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.ReplyBody)
+                                @Html.Raw(item.ReplyBody)
                             </td>
                             <td>
                                 <span class="msgTextNoMrg"> Author:  @Model.GetUsername(item.UserID)</span>
