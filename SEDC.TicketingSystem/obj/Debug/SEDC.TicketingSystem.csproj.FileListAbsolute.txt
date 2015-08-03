@@ -1,132 +1,23 @@
-<<<<<<< HEAD
-D:\TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
-D:\TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
-D:\TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Razor.dll
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.dll
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.dll
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.dll
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Razor.xml
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.xml
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.xml
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.xml
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
-D:\TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
-D:\TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
-D:\TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
-D:\TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
-<<<<<<< HEAD
-=======
->>>>>>> de5d914f7b234aea3756eb2c2dfea748bacf2d31
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Razor.dll
-<<<<<<< HEAD
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Razor.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
-=======
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.dll
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Razor.dll
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.dll
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Webpages.dll
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.dll
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Razor.xml
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Webpages.xml
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.xml
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.dll
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.WebPages.dll
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.dll
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\WebActivatorEx.dll
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.Razor.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.WebPages.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.xml
+D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.xml
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.dll
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.xml
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
->>>>>>> bc2041a2676c78f6df1cb8f86feb617a40716b79
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\EntityFramework.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Razor.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Webpages.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\EntityFramework.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Razor.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Webpages.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Webpages.Deployment.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Webpages.Razor.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
-C:\Users\bojad_000\Documents\New folder (2)\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\WebActivatorEx.dll
-D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\bin\WebActivatorEx.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Razor.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\WebActivatorEx.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Razor.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.xml
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
-C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
-=======
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\WebActivatorEx.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Razor.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.xml
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
->>>>>>> de5d914f7b234aea3756eb2c2dfea748bacf2d31
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
