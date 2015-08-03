@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/Main.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
+                <div class="container-fluid navigacija">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <img src="~/img/logo1.png" class="img-responsive logo" />
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-menubuilder">
+                            <ul class="nav navbar-nav navbar-right">
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="~/Moderator/Index">Home</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                }
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+                                    {
+                                        <li>
+                                            <a href="~/Moderator/AllTickets/@Session["LogedUserID"]">All Tickets</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="~/Tickets/Index/@Session["LogedUserID"]">My Tickets</a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
+                                    </li>
+
+                                }
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="~/Home/Logout">Logout</a>
+                                    </li>
+                                }
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="centralDiv">
+            @RenderBody()
+        </div>
+    </div>
+    <footer class="footerModerator">
+        <div class="footerDiv">
+            
+        </div>
+    </footer>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+</body>
+</html>
