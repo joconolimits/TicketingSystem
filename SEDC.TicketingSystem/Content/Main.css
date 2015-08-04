@@ -505,6 +505,16 @@ html{
     width:40%;
     margin-bottom:4%;
 }
+.sameline1{
+    clear:both;
+    margin-left:4%;
+    width:40%;
+    margin-bottom:4%;
+}
+.butonCenter{
+    display:inline-block;
+    float:left;
+}
 .bodyText{
     margin-left:-10%;
     margin-right:10%;
