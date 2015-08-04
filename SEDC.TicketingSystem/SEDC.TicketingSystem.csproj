@@ -450,6 +450,7 @@
     <Content Include="Views\Moderator\MyTickets.cshtml" />
     <Content Include="Views\Shared\_ModeratorLayout.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
+    <Content Include="Views\Shared\_SuperAdminLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
