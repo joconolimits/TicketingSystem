@@ -384,6 +384,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authorizatin Filters\Moderator.cs" />
+    <Compile Include="Authorizatin Filters\SuperAdmin.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
@@ -394,7 +395,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508041733151_InitialCreate.cs" />
+    <Compile Include="Migrations\201508041733151_InitialCreate.Designer.cs">
+      <DependentUpon>201508041733151_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Enums\AccessLevel.cs" />
     <Compile Include="Models\Enums\TicketStatus.cs" />
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\SEDCTicketingSystemContext.cs" />
@@ -453,6 +460,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508041733151_InitialCreate.resx">
+      <DependentUpon>201508041733151_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

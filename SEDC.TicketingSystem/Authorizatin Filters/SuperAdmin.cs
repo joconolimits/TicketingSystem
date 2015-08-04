@@ -1,4 +1,5 @@
 ﻿using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
-using SEDC.TicketingSystem.Models.Enums;
 
-namespace SEDC.TicketingSystem.Authorization_Filters
+namespace SEDC.TicketingSystem.Authorizatin_Filters
 {
-    public class Moderator : ActionFilterAttribute, IActionFilter
+    public class SuperAdmin : ActionFilterAttribute, IActionFilter
     {
         void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -18,8 +18,8 @@ namespace SEDC.TicketingSystem.Authorization_Filters
             //get user from session["CurrentUser"]
             var user = (User)System.Web.HttpContext.Current.Session["CurrentUser"];
 
-            //check if user is admin or not 
-            if (user.IsAdmin == AccessLevel.Moderator)
+            //check if user is SuperAdmin or not 
+            if (user.IsAdmin == AccessLevel.SuperAdmin)
             {
                 // if not redirect to home 
                 RouteValueDictionary redirectTargetDictionary = new RouteValueDictionary();
@@ -32,6 +32,5 @@ namespace SEDC.TicketingSystem.Authorization_Filters
             //if yes continue
             this.OnActionExecuting(filterContext);
         }
-
     }
 }

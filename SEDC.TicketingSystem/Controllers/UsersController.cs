@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Models.Enums;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -51,10 +52,11 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,LastName,Username,Email,Password,IsAdmin")] User user)
+        public ActionResult Create([Bind(Include = "ID,Name,LastName,Username,Email,Password")] User user)
         {
             if (ModelState.IsValid)
             {
+                user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -123,7 +123,7 @@ namespace SEDC.TicketingSystem.Controllers
 
         public ActionResult AssignTicket(int? id)
         {
-            List<User> moderators = db.Users.Where(x => x.IsAdmin == true).ToList(); // Get all Moderators
+            List<User> moderators = db.Users.Where(x => x.IsAdmin == AccessLevel.Moderator).ToList(); // Get all Moderators
             
 
             return View(moderators);
