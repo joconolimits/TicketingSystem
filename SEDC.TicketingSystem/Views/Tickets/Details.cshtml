@@ -13,6 +13,66 @@
 
         <hr />
         <div class="dl-horizontal">
+
+
+            <div class="container-fluid sameline">
+                <dl>
+                    <dt class="msgTextNoMrg">
+                        Assigned:
+                    </dt>
+
+                    <dd>
+                        @Model.GetUsername(Model.Ticket.ModeratorID)
+                    </dd>
+
+                    <dt class="msgTextNoMrg">
+                        Author:
+                    </dt>
+
+                    <dd>
+                        @Model.GetUsername(Model.Ticket.OwnerID)
+                    </dd>
+                    <dt class="msgTextNoMrg">
+                        @Html.DisplayNameFor(model => model.Ticket.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.Status)
+                    </dd>
+
+                    <dt class="msgTextNoMrg">
+                        Category:
+                    </dt>
+
+                    <dd>
+                        @Model.GetCategory(Model.Ticket.CategoryID)
+                    </dd>
+
+                    <dt class="msgTextNoMrg">
+                        @Html.DisplayNameFor(model => model.Ticket.OpenDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.OpenDate)
+                    </dd>
+
+                    <dt class="msgTextNoMrg">
+                        @Html.DisplayNameFor(model => model.Ticket.CloseDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.CloseDate)
+                    </dd>
+
+                    <dt class="msgTextNoMrg">
+                        @Html.DisplayNameFor(model => model.Ticket.WorkHours)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.WorkHours)
+                    </dd>
+                </dl>
+            </div>
             <div class="container-fluid sameline">
                 <h3>
                     @Html.DisplayFor(model => model.Ticket.Title)
@@ -24,64 +84,6 @@
                     </p>
                 </div>
             </div>
-
-            <div class="container-fluid sameline">
-                <dt class="msgTextNoMrg">
-                    Assigned:
-                </dt>
-
-                <dd>
-                    @Model.GetUsername(Model.Ticket.ModeratorID)
-                </dd>
-
-                <dt class="msgTextNoMrg">
-                    Author:
-                </dt>
-
-                <dd>
-                    @Model.GetUsername(Model.Ticket.OwnerID)
-                </dd>
-                <dt class="msgTextNoMrg">
-                    @Html.DisplayNameFor(model => model.Ticket.Status)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Ticket.Status)
-                </dd>
-
-                <dt class="msgTextNoMrg">
-                    Category:
-                </dt>
-
-                <dd>
-                    @Model.GetCategory(Model.Ticket.CategoryID)
-                </dd>
-
-                <dt class="msgTextNoMrg">
-                    @Html.DisplayNameFor(model => model.Ticket.OpenDate)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Ticket.OpenDate)
-                </dd>
-
-                <dt class="msgTextNoMrg">
-                    @Html.DisplayNameFor(model => model.Ticket.CloseDate)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Ticket.CloseDate)
-                </dd>
-
-                <dt class="msgTextNoMrg">
-                    @Html.DisplayNameFor(model => model.Ticket.WorkHours)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Ticket.WorkHours)
-                </dd>
-            </div>
-
             <div class="bodyText">
                 <div class="bodyText1">
                     @Html.Raw(Model.Ticket.Body)
