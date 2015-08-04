@@ -41,6 +41,6 @@ C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\bin\Sys
 C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\bin\System.Web.WebPages.xml
 C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.xml
 C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.xml
-C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
 C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
 C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
+C:\Users\bojad_000\Documents\BlindCarrots.Ticketing\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
