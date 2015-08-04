@@ -50,7 +50,7 @@ namespace SEDC.TicketingSystem.Controllers
                         Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();
                         Session["IsAdmin"] = v.IsAdmin;
-
+                    
                         return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
                     }
                     else

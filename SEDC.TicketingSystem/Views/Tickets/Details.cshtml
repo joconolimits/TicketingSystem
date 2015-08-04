@@ -9,10 +9,37 @@
 
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">
-
-
-        <hr />
+       <hr />
         <div class="dl-horizontal">
+            <div class="container-fluid sameline1">
+                <div class="sameline">
+                    <h3>
+                        @Html.DisplayFor(model => model.Ticket.Title)
+                    </h3>
+                </div>
+                <div class="sameline">
+                    <div class="container-fluid">
+                        <div class="butonCenter">
+                            
+                            <p>
+                                @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
+                            </p>
+                        </div>
+                        <div class="butonCenter">
+                            <p>
+                                @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="sameline">
+                <div class="bodyText1">
+                    @Html.Raw(Model.Ticket.Body)
+                </div>
+            </div>
 
 
             <div class="container-fluid sameline">
@@ -73,22 +100,8 @@
                     </dd>
                 </dl>
             </div>
-            <div class="container-fluid sameline">
-                <h3>
-                    @Html.DisplayFor(model => model.Ticket.Title)
-                </h3>
-                <div class="container-fluid bodyBtn">
-                    <p>
-                        @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
-                        @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
-                    </p>
-                </div>
-            </div>
-            <div class="bodyText">
-                <div class="bodyText1">
-                    @Html.Raw(Model.Ticket.Body)
-                </div>
-            </div>
+            
+
 
         </div>
     </div>
