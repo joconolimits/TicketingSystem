@@ -4,7 +4,7 @@
     ViewBag.Title = "AllTickets";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-                      <div class="wraperHome shadow4">
+                      <div class="wrapperHome shadow4">
                           <div class="container-fluid wraperHome1">
                               <div class="position-center">
                                   @* order tickets By property and choose ordering  acending/decending *@
@@ -78,7 +78,6 @@
                                           @Html.DisplayFor(modelItem => item.WorkHours)
                                       </td>
                                       <td>
-                                          @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                           @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                                           @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 

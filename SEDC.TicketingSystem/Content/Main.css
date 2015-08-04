@@ -435,7 +435,7 @@ html{
         -webkit-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
     box-shadow: -2px 8px 39px -29px rgba(0, 0, 0, 0.75);
-    width:50%;;
+    width:50%;
     padding:5%;
     margin-left:auto;
     margin-right:auto;
@@ -504,6 +504,16 @@ html{
     margin-left:4%;
     width:40%;
     margin-bottom:4%;
+}
+.sameline1{
+    clear:both;
+    margin-left:4%;
+    width:40%;
+    margin-bottom:4%;
+}
+.butonCenter{
+    display:inline-block;
+    float:left;
 }
 .bodyText{
     margin-left:-10%;
