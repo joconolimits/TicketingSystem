@@ -14,6 +14,7 @@ namespace SEDC.TicketingSystem.Models
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Category")]
         public string Name { get; set; }
 
         [ForeignKey("Moderator")]

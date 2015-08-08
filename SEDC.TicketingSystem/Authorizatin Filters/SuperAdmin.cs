@@ -19,7 +19,7 @@ namespace SEDC.TicketingSystem.Authorizatin_Filters
             var user = (User)System.Web.HttpContext.Current.Session["CurrentUser"];
 
             //check if user is SuperAdmin or not 
-            if (user.IsAdmin == AccessLevel.SuperAdmin)
+            if (user.IsAdmin != AccessLevel.SuperAdmin)
             {
                 // if not redirect to home 
                 RouteValueDictionary redirectTargetDictionary = new RouteValueDictionary();

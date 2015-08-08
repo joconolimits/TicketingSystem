@@ -2,8 +2,16 @@
 
 @{
     ViewBag.Title = "AllPending";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+    {
+        Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    }
+    else
+    {
+    Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+    }
 }
+
 
 <h2>AllPending</h2>
 
@@ -74,7 +82,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)
         </td>
     </tr>
 }

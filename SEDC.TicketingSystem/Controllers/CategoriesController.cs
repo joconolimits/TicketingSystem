@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Authorizatin_Filters;
 
 namespace SEDC.TicketingSystem.Controllers
 {
+    [SuperAdmin]
     public class CategoriesController : Controller
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();

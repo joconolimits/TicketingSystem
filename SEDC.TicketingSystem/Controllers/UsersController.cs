@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.Models.Enums;
+using SEDC.TicketingSystem.Authorizatin_Filters;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -17,8 +18,8 @@ namespace SEDC.TicketingSystem.Controllers
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
         // GET: Users
-        
-
+        // Only the superAdmin can see the list of users
+        [SuperAdmin]
         public ActionResult Index()
         {
             
@@ -52,11 +53,12 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,LastName,Username,Email,Password")] User user)
+        public ActionResult Create([Bind(Include = "ID,Name,LastName,Username,Email,Password, IsAdmin")] User user)
         {
             if (ModelState.IsValid)
             {
-                user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
+                if(user.IsAdmin == null)
+                    user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -99,6 +101,8 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Users/Delete/5
+        //Onlly the SuperAdmin can delete Users from the system.
+        [SuperAdmin]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +120,7 @@ namespace SEDC.TicketingSystem.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [SuperAdmin]
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);

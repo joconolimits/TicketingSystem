@@ -2,7 +2,14 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+    {
+        Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+    }
 }
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">

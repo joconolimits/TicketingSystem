@@ -2,13 +2,14 @@
 
 @{
     ViewBag.Title = "Details";
-    //check the current user acl and render the layout acordingly
-    if ((int)Session["IsAdmin"] == 2)
+
+    if (Convert.ToInt32(Session["IsAdmin"]) == 2)
     {
         Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
     }
-    else { 
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutPage.cshtml";        
     }
 }
 <div class="container-fluid wraperHome">

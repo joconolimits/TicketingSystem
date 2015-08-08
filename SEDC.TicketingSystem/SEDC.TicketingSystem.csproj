@@ -389,6 +389,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
     <Compile Include="Controllers\RepliesController.cs" />
+    <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="EmailClient\EmailClient.cs" />
@@ -451,6 +452,7 @@
     <Content Include="Views\Shared\_ModeratorLayout.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
     <Content Include="Views\Shared\_SuperAdminLayout.cshtml" />
+    <Content Include="Views\SuperAdmin\Users.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
