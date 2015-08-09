@@ -93,18 +93,15 @@
 
                         @if ((int)item.Status == 3)
                         {
-                            <span>Edit </span>
-                            
-                            //We will not let regular users to delete tickets
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                            <span>Edit |</span>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 
                         }
                         else
                         {
                             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) 
-
-                            //We will not let regular users to delete tickets
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                            <span>|</span>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                         }
 
                     </td>

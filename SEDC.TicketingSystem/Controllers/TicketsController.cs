@@ -98,7 +98,7 @@ namespace SEDC.TicketingSystem.Controllers
             } 
             db.Tickets.Find(id).WorkHours = (int)workHours;
             db.SaveChanges();
-            if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+            if ((AccessLevel)Session["IsAdmin"] != AccessLevel.Registered)
             {
                 return RedirectToAction("AllTickets", "Moderator", new { id = Convert.ToInt32(Session["LogedUserID"]) });
             }
@@ -177,33 +177,39 @@ namespace SEDC.TicketingSystem.Controllers
             return View(ticket);
         }
 
-        // We will not give the ability to delete tickets to regular users 
+        
 
-        // GET: Tickets/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Ticket ticket = db.Tickets.Find(id);
-        //    if (ticket == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(ticket);
-        //}
+         //GET: Tickets/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ticket);
+        }
 
-        //// POST: Tickets/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Ticket ticket = db.Tickets.Find(id);
-        //    db.Tickets.Remove(ticket);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index", new { id = ticket.OwnerID });
-        //}
+        // POST: Tickets/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Ticket ticket = db.Tickets.Find(id);
+            db.Tickets.Remove(ticket);
+            // Delete all replies that are assosiated with the ticket.
+            var replies = db.Replies.Where(t => t.TicketID == id).ToArray();
+            foreach (var item in replies)
+            {
+                db.Replies.Remove(item);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index", new { id = ticket.OwnerID });
+        }
 
         protected override void Dispose(bool disposing)
         {

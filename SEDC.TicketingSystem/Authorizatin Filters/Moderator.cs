@@ -18,8 +18,13 @@ namespace SEDC.TicketingSystem.Authorization_Filters
             //get user from session["CurrentUser"]
             var user = (User)System.Web.HttpContext.Current.Session["CurrentUser"];
 
-            //check if user is admin or not 
-            if (user.IsAdmin == AccessLevel.Moderator)
+            //check if user is Moderator or super user 
+            if (user.IsAdmin == AccessLevel.Moderator || user.IsAdmin == AccessLevel.SuperAdmin)
+            {
+                //if yes continue
+                this.OnActionExecuting(filterContext);
+            }
+            else
             {
                 // if not redirect to home 
                 RouteValueDictionary redirectTargetDictionary = new RouteValueDictionary();
@@ -28,9 +33,7 @@ namespace SEDC.TicketingSystem.Authorization_Filters
                 filterContext.Result = new RedirectToRouteResult(redirectTargetDictionary);
                 this.OnActionExecuting(filterContext);
             }
-
-            //if yes continue
-            this.OnActionExecuting(filterContext);
+            
         }
 
     }

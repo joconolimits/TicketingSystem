@@ -79,9 +79,13 @@
             @Html.DisplayFor(modelItem => item.WorkHours)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Details", "Details", new { id=item.ID })
+            @*Only Super Admin can delete tickets*@
+            @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+            {
+                <span>|</span>
+                @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)
+            }
         </td>
     </tr>
 }

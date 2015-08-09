@@ -389,7 +389,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
     <Compile Include="Controllers\RepliesController.cs" />
-    <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="EmailClient\EmailClient.cs" />
@@ -417,7 +416,6 @@
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -428,13 +426,9 @@
     <Content Include="Views\Tickets\Details.cshtml" />
     <Content Include="Views\Tickets\Edit.cshtml" />
     <Content Include="Views\Tickets\Index.cshtml" />
-    <Content Include="Views\Home\MyTickets.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
-    <Content Include="Views\Replies\Create.cshtml" />
-    <Content Include="Views\Replies\Delete.cshtml" />
-    <Content Include="Views\Replies\Edit.cshtml" />
     <Content Include="Views\Home\WelcomePage.cshtml" />
     <Content Include="Views\Moderator\AllTickets.cshtml" />
     <Content Include="Views\Moderator\Details.cshtml" />
@@ -452,7 +446,6 @@
     <Content Include="Views\Shared\_ModeratorLayout.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
     <Content Include="Views\Shared\_SuperAdminLayout.cshtml" />
-    <Content Include="Views\SuperAdmin\Users.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

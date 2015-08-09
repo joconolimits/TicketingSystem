@@ -1,5 +1,6 @@
 ﻿
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,8 +51,10 @@ namespace SEDC.TicketingSystem.Controllers
                         Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();
                         Session["IsAdmin"] = v.IsAdmin;
-                    
-                        return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
+                        if(v.IsAdmin == AccessLevel.Moderator || v.IsAdmin == AccessLevel.SuperAdmin)
+                            return RedirectToAction("Index", "Moderator", new { id = v.ID }); 
+                        else
+                            return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
                     }
                     else
                     {
@@ -87,10 +90,5 @@ namespace SEDC.TicketingSystem.Controllers
             return View();
         }
 
-        // This probably needs to be  deleted. Not sure yet
-        public ActionResult Register()
-        {
-            return View();
-        }
 	}
 }

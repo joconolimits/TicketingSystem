@@ -38,7 +38,7 @@
             <hr />
             <dl class="dl-horizontal">
                 <dt>
-                    Assigned: @* @Html.DisplayNameFor(model => model.Ticket.Moderator.Name)*@
+                    Assigned: 
                 </dt>
 
                 <dd>
@@ -105,8 +105,8 @@
         </div>
         <p>
 
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" }) 
-            @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+            @*@Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })*@ 
+           @* @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })*@
         </p>
     </div>
     <div class="shadowDetail">

@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "AllTickets";
-    ViewBag.Title = "AllPending";
     if (Convert.ToInt32(Session["IsAdmin"]) == 2)
     {
         Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
@@ -28,9 +27,10 @@
                                       <option value="1">Acending</option>
                                       <option value="2">Decending</option>
                                   </select>
-                                  <p class="btn loginbtn">
+                                  @*For now the moderator and the super admin will not be able to create tickets*@
+                                  @*<p class="btn loginbtn">
                                       @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
-                                  </p>
+                                  </p>*@
                               </div>
                           </div>
                       </div>
@@ -38,7 +38,7 @@
                           <table class="table">
                               <tr class="msgTextNoMrg">
                                   <th>
-                                      @Html.DisplayNameFor(model => model.Moderator.Name)
+                                      Moderator
                                   </th>
                                   <th>
                                       @Html.DisplayNameFor(model => model.Owner.Name)
@@ -86,9 +86,13 @@
                                           @Html.DisplayFor(modelItem => item.WorkHours)
                                       </td>
                                       <td>
-                                          @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                          @Html.ActionLink("Delete", "Delete" , "Tickets" , null, new { id = item.ID })
-
+                                          @Html.ActionLink("Details", "Details", new { id = item.ID }) 
+                                          @*Only Super Admin can delete tickets*@
+                                          @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+                                          {
+                                            <span>|</span>
+                                          @Html.ActionLink("Delete", "Delete" , "Tickets" , new { id = item.ID }, null)
+                                          }
                                       </td>
                                   </tr>
                               }
