@@ -1,5 +1,6 @@
 namespace SEDC.TicketingSystem.Migrations
 {
+    using SEDC.TicketingSystem.HashingAndSalting;
     using SEDC.TicketingSystem.Models;
     using SEDC.TicketingSystem.Models.Enums;
     using System;
@@ -29,6 +30,8 @@ namespace SEDC.TicketingSystem.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //Jordan Adding the Super admin directly in the database on its creation.
+            PasswordManager pwdManager = new PasswordManager();
+            string salt = SaltGenerator.GetSaltString();
             context.Users.AddOrUpdate(
                 p => p.Email,
                 new User {  
@@ -37,7 +40,8 @@ namespace SEDC.TicketingSystem.Migrations
                     LastName = "Doe",
                     Username = "John",
                     IsAdmin = AccessLevel.SuperAdmin,
-                    Password = "JohnDoe"
+                    Salt = salt,
+                    Password = pwdManager.GeneratePasswordHash("johnDoe", salt)
                     }
                );
         }

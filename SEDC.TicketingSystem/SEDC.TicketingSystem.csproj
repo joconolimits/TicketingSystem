@@ -399,6 +399,10 @@
     <Compile Include="Migrations\201508041733151_InitialCreate.Designer.cs">
       <DependentUpon>201508041733151_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508092030095_SaltInUser.cs" />
+    <Compile Include="Migrations\201508092030095_SaltInUser.Designer.cs">
+      <DependentUpon>201508092030095_SaltInUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Enums\AccessLevel.cs" />
@@ -461,6 +465,15 @@
     <EmbeddedResource Include="Migrations\201508041733151_InitialCreate.resx">
       <DependentUpon>201508041733151_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508092030095_SaltInUser.resx">
+      <DependentUpon>201508092030095_SaltInUser.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SEDC.TicketingSystem.HashingAndSalting\SEDC.TicketingSystem.HashingAndSalting.csproj">
+      <Project>{1e452803-e8ea-4588-80af-cd56acfc0279}</Project>
+      <Name>SEDC.TicketingSystem.HashingAndSalting</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

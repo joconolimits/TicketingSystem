@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.TicketingSystem", "SEDC.TicketingSystem\SEDC.TicketingSystem.csproj", "{ADE750FD-9898-4242-8F32-D677567D398A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.TicketingSystem.HashingAndSalting", "SEDC.TicketingSystem.HashingAndSalting\SEDC.TicketingSystem.HashingAndSalting.csproj", "{1E452803-E8EA-4588-80AF-CD56ACFC0279}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{ADE750FD-9898-4242-8F32-D677567D398A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADE750FD-9898-4242-8F32-D677567D398A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADE750FD-9898-4242-8F32-D677567D398A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E452803-E8EA-4588-80AF-CD56ACFC0279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E452803-E8EA-4588-80AF-CD56ACFC0279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E452803-E8EA-4588-80AF-CD56ACFC0279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E452803-E8EA-4588-80AF-CD56ACFC0279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

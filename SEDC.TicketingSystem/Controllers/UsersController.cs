@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.Models.Enums;
 using SEDC.TicketingSystem.Authorizatin_Filters;
+using SEDC.TicketingSystem.HashingAndSalting;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -59,6 +60,11 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 if(user.IsAdmin == null)
                     user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
+
+                PasswordManager pwdManager = new PasswordManager();
+
+                user.Salt = SaltGenerator.GetSaltString();
+                user.Password = pwdManager.GeneratePasswordHash(user.Password, user.Salt);
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -93,6 +99,9 @@ namespace SEDC.TicketingSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                PasswordManager pwdManager = new PasswordManager();
+                user.Salt = SaltGenerator.GetSaltString();
+                user.Password = pwdManager.GeneratePasswordHash(user.Password, user.Salt);
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details", new{id = user.ID });

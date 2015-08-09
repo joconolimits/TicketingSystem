@@ -29,6 +29,8 @@ namespace SEDC.TicketingSystem.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        public string Salt { get; set; }
+
         public AccessLevel IsAdmin { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
