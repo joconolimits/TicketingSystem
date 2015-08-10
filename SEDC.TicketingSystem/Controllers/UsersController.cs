@@ -10,6 +10,7 @@ using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.Models.Enums;
 using SEDC.TicketingSystem.Authorizatin_Filters;
 using SEDC.TicketingSystem.HashingAndSalting;
+using System.Net.Mail;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -137,6 +138,64 @@ namespace SEDC.TicketingSystem.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(string email)
+        {
+            var user = db.Users.Where(t => t.Email == email).FirstOrDefault();
+            var guid = Guid.NewGuid();
+            user.Guid = guid;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+
+            // Send the email
+            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+            {
+
+                Subject = "Reset your Password",
+                Body = "Hello " + user.Name + Environment.NewLine + Environment.NewLine + "Click on the bellow link to reset your password: " + Environment.NewLine +
+                     "http://localhost:50892/Users/ResetPassword?guid=" + user.Guid
+            };
+            // call the email client to send the message 
+            SEDC.TicketingSystem.Email.EmailClient.Client(message);
+            return RedirectToAction("Login", "Home");
+        }
+
+
+
+        public ActionResult ResetPassword(Guid guid)
+        {
+            if (guid != Guid.Empty)
+            {
+                 var user = db.Users.Where(t => t.Guid == guid).FirstOrDefault();
+                 return View(user);
+            }
+            else
+                return RedirectToAction("Login", "Home"); 
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(Guid guid, string Password)
+        {
+
+            var user = db.Users.Where(t => t.Guid == guid).FirstOrDefault();
+            PasswordManager pwdManager = new PasswordManager();
+            user.Salt = SaltGenerator.GetSaltString();
+            user.Password = pwdManager.GeneratePasswordHash(Password, user.Salt);
+            user.Guid = Guid.Empty;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Login", "Home");
+        }
+       
+
 
         protected override void Dispose(bool disposing)
         {

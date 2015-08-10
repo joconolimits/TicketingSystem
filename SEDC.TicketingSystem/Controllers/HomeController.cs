@@ -42,12 +42,9 @@ namespace SEDC.TicketingSystem.Controllers
                 using (SEDCTicketingSystemContext dc = new SEDCTicketingSystemContext())
                 {
                     var v = dc.Users.Where(a => a.Email.Equals(Email)).FirstOrDefault();
-                    if (v != null)
+                    PasswordManager pwdManager = new PasswordManager();
+                    if (v != null && pwdManager.IsPasswordMatch(Password, v.Salt, v.Password))
                     {
-                        PasswordManager pwdManager = new PasswordManager();
-                        
-                        if (pwdManager.IsPasswordMatch(Password, v.Salt, v.Password))
-                        { 
                         FormsAuthentication.SetAuthCookie(v.Username, false);
                  
                         // Trying something out with Session 
@@ -60,7 +57,6 @@ namespace SEDC.TicketingSystem.Controllers
                             return RedirectToAction("Index", "Moderator", new { id = v.ID }); 
                         else
                             return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
-                    }
                     }
                     else
                     {

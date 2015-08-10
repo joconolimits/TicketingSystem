@@ -26,3 +26,4 @@ D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.pdb
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.SaltInUser.resources
+D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.Guid.resources

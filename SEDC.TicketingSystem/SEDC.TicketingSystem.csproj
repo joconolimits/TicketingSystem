@@ -403,6 +403,10 @@
     <Compile Include="Migrations\201508092030095_SaltInUser.Designer.cs">
       <DependentUpon>201508092030095_SaltInUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508100013223_Guid.cs" />
+    <Compile Include="Migrations\201508100013223_Guid.Designer.cs">
+      <DependentUpon>201508100013223_Guid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Enums\AccessLevel.cs" />
@@ -450,6 +454,8 @@
     <Content Include="Views\Shared\_ModeratorLayout.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
     <Content Include="Views\Shared\_SuperAdminLayout.cshtml" />
+    <Content Include="Views\Users\ForgotPassword.cshtml" />
+    <Content Include="Views\Users\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -467,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508092030095_SaltInUser.resx">
       <DependentUpon>201508092030095_SaltInUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508100013223_Guid.resx">
+      <DependentUpon>201508100013223_Guid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

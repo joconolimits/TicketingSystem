@@ -31,6 +31,8 @@ namespace SEDC.TicketingSystem.Models
 
         public string Salt { get; set; }
 
+        public Guid Guid { get; set; }
+
         public AccessLevel IsAdmin { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
