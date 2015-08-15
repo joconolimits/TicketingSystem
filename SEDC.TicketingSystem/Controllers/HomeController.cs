@@ -29,7 +29,7 @@ namespace SEDC.TicketingSystem.Controllers
             return View();
         }
 
-
+      
         
         [HttpPost]
         [ValidateAntiForgeryToken]

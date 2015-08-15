@@ -166,22 +166,28 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult ForgotPassword(string email)
         {
             var user = db.Users.Where(t => t.Email == email).FirstOrDefault();
-            var guid = Guid.NewGuid();
-            user.Guid = guid;
-            db.Entry(user).State = EntityState.Modified;
-            db.SaveChanges();
-
-            // Send the email
-            var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+            if (user !=null)
             {
+                var guid = Guid.NewGuid();
+                user.Guid = guid;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
 
-                Subject = "Reset your Password",
-                Body = "Hello " + user.Name + Environment.NewLine + Environment.NewLine + "Click on the bellow link to reset your password: " + Environment.NewLine +
-                     "http://localhost:50892/Users/ResetPassword?guid=" + user.Guid
-            };
-            // call the email client to send the message 
-            SEDC.TicketingSystem.Email.EmailClient.Client(message);
-            return RedirectToAction("Login", "Home");
+                // Send the email
+                var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+                {
+
+                    Subject = "Reset your Password",
+                    Body = "Hello " + user.Name + Environment.NewLine + Environment.NewLine + "Click on the bellow link to reset your password: " + Environment.NewLine +
+                         "http://localhost:50892/Users/ResetPassword?guid=" + user.Guid
+                };
+                // call the email client to send the message 
+                SEDC.TicketingSystem.Email.EmailClient.Client(message);
+                return RedirectToAction("Login", "Home");
+            }
+            var Message = "The Email: " +email + " is is not regsitered in our system."+ Environment.NewLine + "Please  register to use the system";
+         
+            return RedirectToAction("Login", "Home", new { LogoutMessage = Message });
         }
 
 
