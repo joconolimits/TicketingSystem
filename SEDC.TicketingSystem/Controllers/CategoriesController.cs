@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
 using SEDC.TicketingSystem.Authorizatin_Filters;
+using SEDC.TicketingSystem.Models.Enums;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -41,7 +42,8 @@ namespace SEDC.TicketingSystem.Controllers
         // GET: Categories/Create
         public ActionResult Create()
         {
-            ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name");
+            var users = db.Users.Where(t => t.IsAdmin != AccessLevel.Registered);
+            ViewBag.ModeratorID = new SelectList(users, "ID", "Name");
             return View();
         }
 

@@ -10,14 +10,19 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
+
+@using (Html.BeginForm("Search", "Moderator", FormMethod.Post))
+                                  {
+    @Html.AntiForgeryToken()
+
 <div class="shadowModerator">
     <div class="container-fluid">
         <div class="row">
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                    <input type="text" class="  search-query form-control" placeholder="Search" />
+                    <input type="text" name="query" class="  search-query form-control" placeholder="Search" />
                     <span class="input-group-btn">
-                        <button class="btn srchbtn" type="button">
+                        <button class="btn srchbtn" type="submit">
                             <span class=" glyphicon glyphicon-search"></span>
                         </button>
                     </span>
@@ -31,7 +36,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form-inline" role="form">
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label class="filter-col" style="margin-right:0;" for="pref-perpage">Rows per page:</label>
                             <select id="pref-perpage" class="form-control">
                                 <option value="2">2</option>
@@ -65,15 +70,22 @@
                             <select id="pref-orderby" class="form-control">
                                 <option>Descendent</option>
                             </select>
-                        </div> <!-- form group [order by] -->
+                        </div> <!-- form group [order by] -->*@
                         <div class="form-group">
                             <div class="checkbox" style="margin-left:10px; margin-right:10px;">
-                                <label><input type="checkbox"> Remember parameters</label>
+                                <label><input type="checkbox" name="Title" value="true"> Title</label>
+                                <input type="hidden" value="false" name="Title" />
                             </div>
-                            <button type="submit" class="btn btn-default filter-col">
-                                <span class="glyphicon glyphicon-record"></span> Save Settings
-                            </button>
-                        </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                    <label><input type="checkbox" name="Owner" value="true"> Owner</label>
+                                    <input type="hidden" value="false" name="Owner" />
+                                </div>
+                                @*<button type="submit" class="btn btn-default filter-col">
+                <span class="glyphicon glyphicon-record"></span> Save Settings
+            </button>*@
+                            </div>
                     </form>
                 </div>
             </div>
@@ -83,3 +95,5 @@
         </button>
     </div>
 </div>
+    
+}

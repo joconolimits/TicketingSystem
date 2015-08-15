@@ -134,6 +134,23 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
+            // If the user that we delete is moderator then remove him from the categories table.
+            if (user.IsAdmin != AccessLevel.Registered)
+            {
+                foreach (var item in db.Categories.Where(t => t.ModeratorID == id))
+                {
+                    // set the first super admin to be moderator on those categories
+                    item.ModeratorID = db.Users.Where(t => t.IsAdmin == AccessLevel.SuperAdmin).FirstOrDefault().ID;
+                }
+
+                foreach (var item in db.Tickets.Where(t => t.ModeratorID == id))
+                {
+                    // set the first super admin to be moderator on those categories
+                    item.ModeratorID = db.Users.Where(t => t.IsAdmin == AccessLevel.SuperAdmin).FirstOrDefault().ID;
+                }
+                
+                
+            }
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
