@@ -146,18 +146,12 @@ namespace SEDC.TicketingSystem.Controllers
             return RedirectToAction("AllTickets");
         }
 
-      
-        public ActionResult Search()
-        {
-            
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Search(string query, bool Title, bool Owner)
+        // Moderators can search for the ticket they need from the homepage
+        public PartialViewResult Search(string query, bool title, bool owner, bool moderator, bool body, bool category)
         {
            IEnumerable<Ticket> searchResults = null;
-            if (!Title && !Owner) { 
+            // If none of the checklist elements is selected then it will search everywhere
+            if (!title && !owner && !moderator && !body && !category) { 
             searchResults = db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
                 .Where(t => 
                     t.Title.Contains(query) ||
@@ -167,22 +161,18 @@ namespace SEDC.TicketingSystem.Controllers
                     t.Owner.Name.Contains(query)
                 );
             }
+            // If any checkbox is selected it will search only in the selected fields
             else {
-                if (Title)
-                   searchResults =  db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
-                .Where(t => t.Title.Contains(query));
-                
-              if (Owner)
-                  if(searchResults == null)
-                      searchResults = db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
-                        .Where(t => t.Owner.Name.Contains(query));
-
-                  else
-                   searchResults.Union( db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
-                    .Where(t =>  t.Owner.Name.Contains(query)) );
-                
-                }
-            return View(searchResults);
+                searchResults = db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
+                .Where(t =>
+                   ( t.Title.Contains(query) && title == true)||
+                   ( t.Body.Contains(query) && body == true) ||
+                   ( t.Category.Name.Contains(query) && category == true) ||
+                   (t.Moderator.Name.Contains(query) && moderator == true) ||
+                   ( t.Owner.Name.Contains(query) && owner == true)
+                );
+            }
+            return PartialView(searchResults);
         }
 
         //Send Email notification on ticket assign
