@@ -28,7 +28,8 @@ namespace SEDC.TicketingSystem.Controllers
         // Jordan Show a list of All Tickets in the system
         public ActionResult AllTickets()
         {
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category)
+                .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
         
             return View(tickets);
         }
@@ -61,8 +62,8 @@ namespace SEDC.TicketingSystem.Controllers
         // Ordering Filters
         public PartialViewResult OrderBy(int? x, int? ord) 
         {
-            
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
             if (x == 1)
             {
                 if (ord != 2)

@@ -23,7 +23,8 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult Index(int? id)
         {
             //var tickets = db.Tickets.Where(x => x.OwnerID == id);
-             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(x => x.OwnerID == id);
+             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(x => x.OwnerID == id)
+                 .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
             return View(tickets.ToList());
         }
 
@@ -187,7 +188,7 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ticket ticket = db.Tickets.Find(id);
+            Ticket ticket = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Where(t => t.ID == id).FirstOrDefault();
             if (ticket == null)
             {
                 return HttpNotFound();

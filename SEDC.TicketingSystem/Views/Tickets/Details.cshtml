@@ -1,12 +1,8 @@
 ﻿@model SEDC.TicketingSystem.ViewModels.TicketAndRepliesViewModel
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
-
-
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">
        <hr />
@@ -20,7 +16,6 @@
                 <div class="sameline">
                     <div class="container-fluid">
                         <div class="butonCenter">
-                            
                             <p>
                                 @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
                             </p>
@@ -33,29 +28,22 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="sameline">
                 <div class="bodyText1">
                     @Html.Raw(Model.Ticket.Body)
                 </div>
             </div>
-
-
             <div class="container-fluid sameline">
                 <dl>
                     <dt class="msgTextNoMrg">
                         Assigned:
                     </dt>
-
                     <dd>
                         @Model.GetUsername(Model.Ticket.ModeratorID)
                     </dd>
-
                     <dt class="msgTextNoMrg">
                         Author:
                     </dt>
-
                     <dd>
                         @Model.GetUsername(Model.Ticket.OwnerID)
                     </dd>
@@ -66,43 +54,32 @@
                     <dd>
                         @Html.DisplayFor(model => model.Ticket.Status)
                     </dd>
-
                     <dt class="msgTextNoMrg">
                         Category:
                     </dt>
-
                     <dd>
                         @Model.GetCategory(Model.Ticket.CategoryID)
                     </dd>
-
                     <dt class="msgTextNoMrg">
                         @Html.DisplayNameFor(model => model.Ticket.OpenDate)
                     </dt>
-
                     <dd>
                         @Html.DisplayFor(model => model.Ticket.OpenDate)
                     </dd>
-
                     <dt class="msgTextNoMrg">
                         @Html.DisplayNameFor(model => model.Ticket.CloseDate)
                     </dt>
-
                     <dd>
                         @Html.DisplayFor(model => model.Ticket.CloseDate)
                     </dd>
-
                     <dt class="msgTextNoMrg">
                         @Html.DisplayNameFor(model => model.Ticket.WorkHours)
                     </dt>
-
                     <dd>
                         @Html.DisplayFor(model => model.Ticket.WorkHours)
                     </dd>
                 </dl>
             </div>
-            
-
-
         </div>
     </div>
     
@@ -110,7 +87,6 @@
         <div class="createCenter pad">
             @if ((int)Model.Ticket.Status != 3)
             {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
-
 
                 using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
                 {
@@ -137,9 +113,6 @@
 
                 }
             }
-
-
-
             <table class="table " id="replies">
                 <thead>
                     <tr>

@@ -1,12 +1,7 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "WelcomePage";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
-
-
-
 <div class="container-fluid wraperHome">
     <div class="shadow2">
         <div class="container">
@@ -18,13 +13,12 @@
                     <a href="~/Users/Details/@Session["LogedUserID"]" class="under"><i class="glyphicon glyphicon-list-alt ikonaCovek"></i>My Account</a>
                 </div>
                 <div class="ikona hvr-wobble-to-top-right">
-                    <a href="#" class="under"><i class="glyphicon glyphicon-search ikonaCovek"></i>Search</a>
-                </div>
-                
+                    <a href="~/Tickets/Create" class="under"><i class="glyphicon glyphicon-plus ikonaCovek"></i>New Ticket</a>
+                </div>                
             </div>
             <div class="prvRed">
                 <div class="ikona hvr-wobble-to-top-right">
-                    <a href="~/Tickets/Index" class="under"><i class="glyphicon  glyphicon-envelope ikonaCovek"></i>My Tickets</a>
+                    <a href="~/Tickets/Index/@Session["LogedUserID"]" class="under"><i class="glyphicon  glyphicon-envelope ikonaCovek"></i>My Tickets</a>
                 </div>
                 <div class="ikona hvr-wobble-to-top-right">
                     <a href="#" class="under"><i class="glyphicon glyphicon-bold ikonaCovek"></i>Blog</a>
@@ -37,9 +31,7 @@
                 <div class="ikona biger">
                    <p>Welcome to our site where we provide help to you please enjoy while you are using our services!</p>
                 </div>
-        
             </div>
-
         </div>
     </div>
 </div>

@@ -8,9 +8,14 @@
         Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
     }
     else
-    {
-        Layout = "~/Views/Shared/_LayoutPage.cshtml";
-    }
+        if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+        {
+            Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutPage.cshtml";
+        }
 }
 <div class="container-fluid wraperHome">
     <div class="shadow2">
