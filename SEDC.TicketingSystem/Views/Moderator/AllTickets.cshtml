@@ -91,6 +91,8 @@
                                           @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
                                           {
                                             <span>|</span>
+                                          @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
+                                             <span>|</span>
                                           @Html.ActionLink("Delete", "Delete" , "Tickets" , new { id = item.ID }, null)
                                           }
                                       </td>

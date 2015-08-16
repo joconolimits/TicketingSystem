@@ -29,7 +29,6 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Users/Details/5
-       // [Authorize (Roles = "Admin")]
         public ActionResult Details(int? id)
             {
             if (id == null)
@@ -59,8 +58,8 @@ namespace SEDC.TicketingSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(user.IsAdmin == null)
-                    user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
+                //if(user.IsAdmin == null)
+                //    user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
 
                 PasswordManager pwdManager = new PasswordManager();
 
@@ -68,7 +67,13 @@ namespace SEDC.TicketingSystem.Controllers
                 user.Password = pwdManager.GeneratePasswordHash(user.Password, user.Salt);
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                if (HttpContext.User.Identity.IsAuthenticated && (AccessLevel)Session["IsAdmin"] == AccessLevel.SuperAdmin)
+                    return RedirectToAction("Index");
+                else
+                {
+                    return RedirectToAction("Login", "Home");
+                }
+                   
             }
 
             return View(user);
@@ -76,7 +81,6 @@ namespace SEDC.TicketingSystem.Controllers
 
         // GET: Users/Edit/5
         [Authorize]
-        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -145,7 +149,7 @@ namespace SEDC.TicketingSystem.Controllers
 
                 foreach (var item in db.Tickets.Where(t => t.ModeratorID == id))
                 {
-                    // set the first super admin to be moderator on those categories
+                    // set the first super admin to be moderator on those Tickets
                     item.ModeratorID = db.Users.Where(t => t.IsAdmin == AccessLevel.SuperAdmin).FirstOrDefault().ID;
                 }
                 
@@ -156,13 +160,13 @@ namespace SEDC.TicketingSystem.Controllers
             return RedirectToAction("Index");
         }
 
-        
         public ActionResult ForgotPassword()
         {
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(string email)
         {
             var user = db.Users.Where(t => t.Email == email).FirstOrDefault();
@@ -172,11 +176,9 @@ namespace SEDC.TicketingSystem.Controllers
                 user.Guid = guid;
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-
                 // Send the email
                 var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
                 {
-
                     Subject = "Reset your Password",
                     Body = "Hello " + user.Name + Environment.NewLine + Environment.NewLine + "Click on the bellow link to reset your password: " + Environment.NewLine +
                          "http://localhost:50892/Users/ResetPassword?guid=" + user.Guid
@@ -185,12 +187,12 @@ namespace SEDC.TicketingSystem.Controllers
                 SEDC.TicketingSystem.Email.EmailClient.Client(message);
                 return RedirectToAction("Login", "Home");
             }
-            var Message = "The Email: " +email + " is is not regsitered in our system."+ Environment.NewLine + "Please  register to use the system";
-         
-            return RedirectToAction("Login", "Home", new { LogoutMessage = Message });
+            else
+            {
+                var Message = "The Email: " + email + " is is not regsitered in our system." + Environment.NewLine + "Please  register to use the system";
+                return RedirectToAction("Login", "Home", new { LogoutMessage = Message });
+            }
         }
-
-
 
         public ActionResult ResetPassword(Guid guid)
         {
@@ -204,9 +206,9 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(Guid guid, string Password)
         {
-
             var user = db.Users.Where(t => t.Guid == guid).FirstOrDefault();
             PasswordManager pwdManager = new PasswordManager();
             user.Salt = SaltGenerator.GetSaltString();
@@ -218,8 +220,6 @@ namespace SEDC.TicketingSystem.Controllers
             return RedirectToAction("Login", "Home");
         }
        
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

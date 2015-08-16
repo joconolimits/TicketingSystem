@@ -99,7 +99,7 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Categories/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, string message)
         {
             if (id == null)
             {
@@ -110,6 +110,7 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.message = message;
             return View(category);
         }
 
@@ -119,6 +120,9 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
+            if (db.Tickets.Count(t => t.CategoryID == id) != 0)
+                return RedirectToAction("Delete", new {message = "This category has tickets assigned to it. Make sure there is no tickets in the category before you try to delete it."});
+           
             db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");

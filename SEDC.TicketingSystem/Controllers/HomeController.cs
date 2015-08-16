@@ -35,7 +35,6 @@ namespace SEDC.TicketingSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string Email, string Password)
         {
-
             // this action is for handle post (login)
             if (ModelState.IsValid) // this is check validity
             {
@@ -47,13 +46,12 @@ namespace SEDC.TicketingSystem.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(v.Username, false);
                  
-                        // Trying something out with Session 
                         Session["CurrentUser"] = v;
                         Session["Username"] = v.Username.ToString();
                         Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();
                         Session["IsAdmin"] = v.IsAdmin;
-                        if(v.IsAdmin == AccessLevel.Moderator || v.IsAdmin == AccessLevel.SuperAdmin)
+                        if(v.IsAdmin != AccessLevel.Registered)
                             return RedirectToAction("Index", "Moderator", new { id = v.ID }); 
                         else
                             return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
@@ -72,7 +70,7 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult logout()
         {
             FormsAuthentication.SignOut();
-            var Message = Session["Username"]+ " you are succesfully logged out.";
+            var Message = Session["LogedUserFullname"] + " you are succesfully logged out.";
             Session.Clear();
             return RedirectToAction("Login", new {LogoutMessage = Message});
             

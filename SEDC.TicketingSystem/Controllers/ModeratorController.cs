@@ -28,7 +28,7 @@ namespace SEDC.TicketingSystem.Controllers
         // Jordan Show a list of All Tickets in the system
         public ActionResult AllTickets()
         {
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).OrderBy(d => d.Status);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
         
             return View(tickets);
         }
@@ -54,7 +54,7 @@ namespace SEDC.TicketingSystem.Controllers
         {
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
             int ModeratorID = Convert.ToInt32(Session["LogedUserID"]);
-            tickets = tickets.Where(t => t.ModeratorID == ModeratorID).OrderBy(d => d.Status);
+            tickets = tickets.Where(t => t.ModeratorID == ModeratorID).OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
             return View(tickets.ToList());
         }
 
@@ -114,7 +114,10 @@ namespace SEDC.TicketingSystem.Controllers
 
         public ActionResult ReOpen(int? id)
         {
-            db.Tickets.Find(id).Status = TicketStatus.WaitReply;
+            var ticket = db.Tickets.Find(id);
+            ticket.Status = TicketStatus.WaitReply;
+            ticket.CloseDate = DateTime.MaxValue;
+            db.Entry(ticket).State = EntityState.Modified;
             db.SaveChanges();
 
             return RedirectToAction("AllTickets");
@@ -139,7 +142,7 @@ namespace SEDC.TicketingSystem.Controllers
             AdminMessage.ReplyBody = message;
             AdminMessage.UserID = Convert.ToInt32(Session["LogedUserID"]);
             AdminMessage.IsAdminMessage = true;
-            AdminMessage.TimeStamp = DateTime.Now;
+            AdminMessage.TimeStamp = DateTime.UtcNow;
             db.Replies.Add(AdminMessage);
             db.SaveChanges();
             SendNotificationEmail((int)id);
