@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEDC.TicketingSystem.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,7 +29,11 @@ namespace SEDC.TicketingSystem.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public bool IsAdmin { get; set; }
+        public string Salt { get; set; }
+
+        public Guid Guid { get; set; }
+
+        public AccessLevel IsAdmin { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual ICollection<Reply> Replies { get; set; } 

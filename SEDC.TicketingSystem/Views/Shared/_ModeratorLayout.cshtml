@@ -40,23 +40,24 @@
                                 }
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                                 {
-                                    if (Convert.ToInt32(Session["IsAdmin"]) == 1)
-                                    {
-                                        <li>
-                                            <a href="~/Moderator/AllTickets/@Session["LogedUserID"]">All Tickets</a>
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li>
-                                            <a href="~/Tickets/Index/@Session["LogedUserID"]">My Tickets</a>
-                                        </li>
-                                    }
+                                    <li>
+                                        <a href="~/Moderator/AllTickets/@Session["LogedUserID"]">All Tickets</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Moderator/AllPending/@Session["LogedUserID"]">All Pending</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Moderator/NewPending/@Session["LogedUserID"]">New Pending</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Moderator/MyTickets/@Session["LogedUserID"]">MyTickets</a>
+                                    </li>
+                                }
                                     <li>
                                         <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
                                     </li>
 
-                                }
+                                
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                                 {
                                     <li>

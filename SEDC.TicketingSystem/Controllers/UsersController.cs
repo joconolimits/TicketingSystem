@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Models.Enums;
+using SEDC.TicketingSystem.Authorizatin_Filters;
+using SEDC.TicketingSystem.HashingAndSalting;
+using System.Net.Mail;
 
 namespace SEDC.TicketingSystem.Controllers
 {
@@ -16,8 +20,8 @@ namespace SEDC.TicketingSystem.Controllers
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
         // GET: Users
-        
-
+        // Only the superAdmin can see the list of users
+        [SuperAdmin]
         public ActionResult Index()
         {
             
@@ -25,7 +29,6 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Users/Details/5
-       // [Authorize (Roles = "Admin")]
         public ActionResult Details(int? id)
             {
             if (id == null)
@@ -51,13 +54,26 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,LastName,Username,Email,Password,IsAdmin")] User user)
+        public ActionResult Create([Bind(Include = "ID,Name,LastName,Username,Email,Password, IsAdmin")] User user)
         {
             if (ModelState.IsValid)
             {
+                //if(user.IsAdmin == null)
+                //    user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
+
+                PasswordManager pwdManager = new PasswordManager();
+
+                user.Salt = SaltGenerator.GetSaltString();
+                user.Password = pwdManager.GeneratePasswordHash(user.Password, user.Salt);
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                if (HttpContext.User.Identity.IsAuthenticated && (AccessLevel)Session["IsAdmin"] == AccessLevel.SuperAdmin)
+                    return RedirectToAction("Index");
+                else
+                {
+                    return RedirectToAction("Login", "Home");
+                }
+                   
             }
 
             return View(user);
@@ -65,7 +81,6 @@ namespace SEDC.TicketingSystem.Controllers
 
         // GET: Users/Edit/5
         [Authorize]
-        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,6 +104,9 @@ namespace SEDC.TicketingSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                PasswordManager pwdManager = new PasswordManager();
+                user.Salt = SaltGenerator.GetSaltString();
+                user.Password = pwdManager.GeneratePasswordHash(user.Password, user.Salt);
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details", new{id = user.ID });
@@ -97,6 +115,8 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Users/Delete/5
+        //Onlly the SuperAdmin can delete Users from the system.
+        [SuperAdmin]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,14 +134,92 @@ namespace SEDC.TicketingSystem.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [SuperAdmin]
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
+            // If the user that we delete is moderator then remove him from the categories table.
+            if (user.IsAdmin != AccessLevel.Registered)
+            {
+                foreach (var item in db.Categories.Where(t => t.ModeratorID == id))
+                {
+                    // set the first super admin to be moderator on those categories
+                    item.ModeratorID = db.Users.Where(t => t.IsAdmin == AccessLevel.SuperAdmin).FirstOrDefault().ID;
+                }
+
+                foreach (var item in db.Tickets.Where(t => t.ModeratorID == id))
+                {
+                    // set the first super admin to be moderator on those Tickets
+                    item.ModeratorID = db.Users.Where(t => t.IsAdmin == AccessLevel.SuperAdmin).FirstOrDefault().ID;
+                }
+                
+                
+            }
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(string email)
+        {
+            var user = db.Users.Where(t => t.Email == email).FirstOrDefault();
+            if (user !=null)
+            {
+                var guid = Guid.NewGuid();
+                user.Guid = guid;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                // Send the email
+                var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
+                {
+                    Subject = "Reset your Password",
+                    Body = "Hello " + user.Name + Environment.NewLine + Environment.NewLine + "Click on the bellow link to reset your password: " + Environment.NewLine +
+                         "http://localhost:50892/Users/ResetPassword?guid=" + user.Guid
+                };
+                // call the email client to send the message 
+                SEDC.TicketingSystem.Email.EmailClient.Client(message);
+                return RedirectToAction("Login", "Home");
+            }
+            else
+            {
+                var Message = "The Email: " + email + " is is not regsitered in our system." + Environment.NewLine + "Please  register to use the system";
+                return RedirectToAction("Login", "Home", new { LogoutMessage = Message });
+            }
+        }
+
+        public ActionResult ResetPassword(Guid guid)
+        {
+            if (guid != Guid.Empty)
+            {
+                 var user = db.Users.Where(t => t.Guid == guid).FirstOrDefault();
+                 return View(user);
+            }
+            else
+                return RedirectToAction("Login", "Home"); 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(Guid guid, string Password)
+        {
+            var user = db.Users.Where(t => t.Guid == guid).FirstOrDefault();
+            PasswordManager pwdManager = new PasswordManager();
+            user.Salt = SaltGenerator.GetSaltString();
+            user.Password = pwdManager.GeneratePasswordHash(Password, user.Salt);
+            user.Guid = Guid.Empty;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Login", "Home");
+        }
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

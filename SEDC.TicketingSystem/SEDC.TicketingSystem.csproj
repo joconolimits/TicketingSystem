@@ -384,6 +384,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authorizatin Filters\Moderator.cs" />
+    <Compile Include="Authorizatin Filters\SuperAdmin.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
@@ -394,7 +395,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508041733151_InitialCreate.cs" />
+    <Compile Include="Migrations\201508041733151_InitialCreate.Designer.cs">
+      <DependentUpon>201508041733151_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508092030095_SaltInUser.cs" />
+    <Compile Include="Migrations\201508092030095_SaltInUser.Designer.cs">
+      <DependentUpon>201508092030095_SaltInUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508100013223_Guid.cs" />
+    <Compile Include="Migrations\201508100013223_Guid.Designer.cs">
+      <DependentUpon>201508100013223_Guid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Enums\AccessLevel.cs" />
     <Compile Include="Models\Enums\TicketStatus.cs" />
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\SEDCTicketingSystemContext.cs" />
@@ -409,7 +424,6 @@
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -420,13 +434,9 @@
     <Content Include="Views\Tickets\Details.cshtml" />
     <Content Include="Views\Tickets\Edit.cshtml" />
     <Content Include="Views\Tickets\Index.cshtml" />
-    <Content Include="Views\Home\MyTickets.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
-    <Content Include="Views\Replies\Create.cshtml" />
-    <Content Include="Views\Replies\Delete.cshtml" />
-    <Content Include="Views\Replies\Edit.cshtml" />
     <Content Include="Views\Home\WelcomePage.cshtml" />
     <Content Include="Views\Moderator\AllTickets.cshtml" />
     <Content Include="Views\Moderator\Details.cshtml" />
@@ -443,6 +453,10 @@
     <Content Include="Views\Moderator\MyTickets.cshtml" />
     <Content Include="Views\Shared\_ModeratorLayout.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
+    <Content Include="Views\Shared\_SuperAdminLayout.cshtml" />
+    <Content Include="Views\Users\ForgotPassword.cshtml" />
+    <Content Include="Views\Users\ResetPassword.cshtml" />
+    <Content Include="Views\Moderator\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -453,6 +467,23 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508041733151_InitialCreate.resx">
+      <DependentUpon>201508041733151_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508092030095_SaltInUser.resx">
+      <DependentUpon>201508092030095_SaltInUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508100013223_Guid.resx">
+      <DependentUpon>201508100013223_Guid.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SEDC.TicketingSystem.HashingAndSalting\SEDC.TicketingSystem.HashingAndSalting.csproj">
+      <Project>{1e452803-e8ea-4588-80af-cd56acfc0279}</Project>
+      <Name>SEDC.TicketingSystem.HashingAndSalting</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

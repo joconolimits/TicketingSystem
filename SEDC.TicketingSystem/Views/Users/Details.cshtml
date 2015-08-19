@@ -2,7 +2,20 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+    if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+    {
+        Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    }
+    else
+        if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+        {
+            Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutPage.cshtml";        
+        }
 }
 <div class="container-fluid wraperHome">
     <div class="shadow2">
@@ -21,7 +34,7 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.LastName)
+                   Last Name
                 </dt>
 
                 <dd>
@@ -45,15 +58,7 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Password)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Password)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.IsAdmin)
+                   Access Level
                 </dt>
 
                 <dd>

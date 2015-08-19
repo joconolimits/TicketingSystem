@@ -1,10 +1,8 @@
 ﻿@model SEDC.TicketingSystem.Models.Ticket
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
 <div class="container-fluid wraperHomeCreate">
     <div class="centerCreateWhole">
         <div class="shadow3">
@@ -33,53 +31,13 @@
                             </div>
                         </div>
 
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
-
                         <div class="form-group">
-                                @Html.LabelFor(model => model.CategoryID, "CategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.ModeratorID, "ModeratorID", htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownList("ModeratorID", null, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.ModeratorID, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
-
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.OpenDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.OpenDate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.OpenDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
-
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.CloseDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.CloseDate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.CloseDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
-
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.WorkHours, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.WorkHours, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.WorkHours, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
 
                         <div class="form-group">
                             <div class="col-md-10">

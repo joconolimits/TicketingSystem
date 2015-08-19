@@ -1,5 +1,7 @@
 ﻿
+using SEDC.TicketingSystem.HashingAndSalting;
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,31 +29,32 @@ namespace SEDC.TicketingSystem.Controllers
             return View();
         }
 
-
+      
         
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string Email, string Password)
         {
-
             // this action is for handle post (login)
             if (ModelState.IsValid) // this is check validity
             {
                 using (SEDCTicketingSystemContext dc = new SEDCTicketingSystemContext())
                 {
-                    var v = dc.Users.Where(a => a.Email.Equals(Email) && a.Password.Equals(Password)).FirstOrDefault();
-                    if (v != null)
+                    var v = dc.Users.Where(a => a.Email.Equals(Email)).FirstOrDefault();
+                    PasswordManager pwdManager = new PasswordManager();
+                    if (v != null && pwdManager.IsPasswordMatch(Password, v.Salt, v.Password))
                     {
                         FormsAuthentication.SetAuthCookie(v.Username, false);
                  
-                        // Trying something out with Session 
                         Session["CurrentUser"] = v;
                         Session["Username"] = v.Username.ToString();
                         Session["LogedUserID"] = v.ID.ToString();
                         Session["LogedUserFullname"] = v.Name.ToString();
                         Session["IsAdmin"] = v.IsAdmin;
-                    
-                        return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
+                        if(v.IsAdmin != AccessLevel.Registered)
+                            return RedirectToAction("Index", "Moderator", new { id = v.ID }); 
+                        else
+                            return RedirectToAction("WelcomePage", "Home", new{id = v.ID});   
                     }
                     else
                     {
@@ -67,7 +70,7 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult logout()
         {
             FormsAuthentication.SignOut();
-            var Message = Session["Username"]+ " you are succesfully logged out.";
+            var Message = Session["LogedUserFullname"] + " you are succesfully logged out.";
             Session.Clear();
             return RedirectToAction("Login", new {LogoutMessage = Message});
             
@@ -87,10 +90,5 @@ namespace SEDC.TicketingSystem.Controllers
             return View();
         }
 
-        // This probably needs to be  deleted. Not sure yet
-        public ActionResult Register()
-        {
-            return View();
-        }
 	}
 }

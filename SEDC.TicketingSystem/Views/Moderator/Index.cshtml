@@ -1,16 +1,24 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+    if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+    {
+        Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+    }
 }
+
 <div class="shadowModerator">
     <div class="container-fluid">
         <div class="row">
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                    <input type="text" class="  search-query form-control" placeholder="Search" />
+                    <input type="text" name="query" class="  search-query form-control" placeholder="Search" />
                     <span class="input-group-btn">
-                        <button class="btn srchbtn" type="button">
+                        <button id="search" class="btn srchbtn" type="submit">
                             <span class=" glyphicon glyphicon-search"></span>
                         </button>
                     </span>
@@ -24,48 +32,40 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form-inline" role="form">
-                        <div class="form-group">
-                            <label class="filter-col" style="margin-right:0;" for="pref-perpage">Rows per page:</label>
-                            <select id="pref-perpage" class="form-control">
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option selected="selected" value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
-                                <option value="300">300</option>
-                                <option value="400">400</option>
-                                <option value="500">500</option>
-                                <option value="1000">1000</option>
-                            </select>
-                        </div> <!-- form group [rows] -->
-                        <div class="form-group">
-                            <label class="filter-col" style="margin-right:0;" for="pref-search">Search:</label>
-                            <input type="text" class="form-control input-sm" id="pref-search">
-                        </div><!-- form group [search] -->
-                        <div class="form-group">
-                            <label class="filter-col" style="margin-right:0;" for="pref-orderby">Order by:</label>
-                            <select id="pref-orderby" class="form-control">
-                                <option>Descendent</option>
-                            </select>
-                        </div> <!-- form group [order by] -->
+
                         <div class="form-group">
                             <div class="checkbox" style="margin-left:10px; margin-right:10px;">
-                                <label><input type="checkbox"> Remember parameters</label>
+                                <label><input type="checkbox" name="title" value="true"> Title</label>
+                                <input type="hidden" value="false" name="title" />
                             </div>
-                            <button type="submit" class="btn btn-default filter-col">
-                                <span class="glyphicon glyphicon-record"></span> Save Settings
-                            </button>
+                         </div>
+
+                        <div class="form-group">
+                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                <label><input type="checkbox" name="owner" value="true"> Owner</label>
+                                <input type="hidden" value="false" name="owner" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                <label><input type="checkbox" name="moderator" value="true"> Moderator</label>
+                                <input type="hidden" value="false" name="moderator" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                <label><input type="checkbox" name="body" value="true"> Body</label>
+                                <input type="hidden" value="false" name="body" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                <label><input type="checkbox" name="category" value="true"> Category</label>
+                                <input type="hidden" value="false" name="category" />
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -76,3 +76,33 @@
         </button>
     </div>
 </div>
+    
+<div id="tickets"></div>
+
+<script>
+     $(function () {
+         $('#search').on('click', function () {
+             var checkboxArray = [];
+             var i = 0;
+             $('input[type=checkbox]').each(function () {
+                 if (this.checked) 
+                     checkboxArray[i] = 'true';
+                 else
+                     checkboxArray[i] = 'false';
+                 i++;
+             });
+         $.ajax({
+             url: '/Moderator/Search?query=' + $('input[name=query]').val() + '&title=' + checkboxArray[0] + '&owner=' + checkboxArray[1] + '&moderator=' + checkboxArray[2] + '&body=' + checkboxArray[3] + '&category=' + checkboxArray[4],
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html'
+        })
+        .success(function (result) {
+            $('#tickets').html(result);
+        })
+        .error(function (xhr, status) {
+            alert(status);
+        })
+    });
+     });
+</script>

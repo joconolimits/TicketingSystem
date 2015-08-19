@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SEDC.TicketingSystem.Models;
+using SEDC.TicketingSystem.Authorizatin_Filters;
+using SEDC.TicketingSystem.Models.Enums;
 
 namespace SEDC.TicketingSystem.Controllers
 {
+    [SuperAdmin]
     public class CategoriesController : Controller
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
@@ -39,7 +42,8 @@ namespace SEDC.TicketingSystem.Controllers
         // GET: Categories/Create
         public ActionResult Create()
         {
-            ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name");
+            var users = db.Users.Where(t => t.IsAdmin != AccessLevel.Registered);
+            ViewBag.ModeratorID = new SelectList(users, "ID", "Name");
             return View();
         }
 
@@ -95,7 +99,7 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // GET: Categories/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, string message)
         {
             if (id == null)
             {
@@ -106,6 +110,7 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.message = message;
             return View(category);
         }
 
@@ -115,6 +120,9 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
+            if (db.Tickets.Count(t => t.CategoryID == id) != 0)
+                return RedirectToAction("Delete", new {message = "This category has tickets assigned to it. Make sure there is no tickets in the category before you try to delete it."});
+           
             db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");

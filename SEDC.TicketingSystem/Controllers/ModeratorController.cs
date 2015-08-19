@@ -28,7 +28,8 @@ namespace SEDC.TicketingSystem.Controllers
         // Jordan Show a list of All Tickets in the system
         public ActionResult AllTickets()
         {
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).OrderBy(d => d.Status);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category)
+                .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
         
             return View(tickets);
         }
@@ -37,7 +38,7 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult NewPending()
         {
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Replies).Include(t => t.Category);
-            tickets = tickets.Where(t => t.Replies.Count() == 0).OrderBy(d => d.Status);
+            tickets = tickets.Where(t =>t.Status == TicketStatus.Pending && t.Replies.Count() == 0).OrderBy(t => t.OpenDate);
             return View(tickets);
         }
 
@@ -54,15 +55,15 @@ namespace SEDC.TicketingSystem.Controllers
         {
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
             int ModeratorID = Convert.ToInt32(Session["LogedUserID"]);
-            tickets = tickets.Where(t => t.ModeratorID == ModeratorID).OrderBy(d => d.Status);
+            tickets = tickets.Where(t => t.ModeratorID == ModeratorID).OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
             return View(tickets.ToList());
         }
 
         // Ordering Filters
         public PartialViewResult OrderBy(int? x, int? ord) 
         {
-            
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner);
+
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
             if (x == 1)
             {
                 if (ord != 2)
@@ -114,7 +115,10 @@ namespace SEDC.TicketingSystem.Controllers
 
         public ActionResult ReOpen(int? id)
         {
-            db.Tickets.Find(id).Status = TicketStatus.WaitReply;
+            var ticket = db.Tickets.Find(id);
+            ticket.Status = TicketStatus.WaitReply;
+            ticket.CloseDate = DateTime.MaxValue;
+            db.Entry(ticket).State = EntityState.Modified;
             db.SaveChanges();
 
             return RedirectToAction("AllTickets");
@@ -123,7 +127,7 @@ namespace SEDC.TicketingSystem.Controllers
 
         public ActionResult AssignTicket(int? id)
         {
-            List<User> moderators = db.Users.Where(x => x.IsAdmin == true).ToList(); // Get all Moderators
+            List<User> moderators = db.Users.Where(x => x.IsAdmin == AccessLevel.Moderator).ToList(); // Get all Moderators
             
 
             return View(moderators);
@@ -139,11 +143,40 @@ namespace SEDC.TicketingSystem.Controllers
             AdminMessage.ReplyBody = message;
             AdminMessage.UserID = Convert.ToInt32(Session["LogedUserID"]);
             AdminMessage.IsAdminMessage = true;
-            AdminMessage.TimeStamp = DateTime.Now;
+            AdminMessage.TimeStamp = DateTime.UtcNow;
             db.Replies.Add(AdminMessage);
             db.SaveChanges();
             SendNotificationEmail((int)id);
             return RedirectToAction("AllTickets");
+        }
+
+        // Moderators can search for the ticket they need from the homepage
+        public PartialViewResult Search(string query, bool title, bool owner, bool moderator, bool body, bool category)
+        {
+           IEnumerable<Ticket> searchResults = null;
+            // If none of the checklist elements is selected then it will search everywhere
+            if (!title && !owner && !moderator && !body && !category) { 
+            searchResults = db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
+                .Where(t => 
+                    t.Title.Contains(query) ||
+                    t.Body.Contains(query) ||
+                    t.Category.Name.Contains(query) ||
+                    t.Moderator.Name.Contains(query) ||
+                    t.Owner.Name.Contains(query)
+                );
+            }
+            // If any checkbox is selected it will search only in the selected fields
+            else {
+                searchResults = db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
+                .Where(t =>
+                   ( t.Title.Contains(query) && title == true)||
+                   ( t.Body.Contains(query) && body == true) ||
+                   ( t.Category.Name.Contains(query) && category == true) ||
+                   (t.Moderator.Name.Contains(query) && moderator == true) ||
+                   ( t.Owner.Name.Contains(query) && owner == true)
+                );
+            }
+            return PartialView(searchResults);
         }
 
         //Send Email notification on ticket assign

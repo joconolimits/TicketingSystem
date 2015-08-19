@@ -34,6 +34,11 @@ namespace SEDC.TicketingSystem.Models
         public System.Data.Entity.DbSet<SEDC.TicketingSystem.Models.Reply> Replies { get; set; }
 
         public System.Data.Entity.DbSet<SEDC.TicketingSystem.Models.Category> Categories { get; set; }
+        
+
+        
+        
+        
     
     }
 }

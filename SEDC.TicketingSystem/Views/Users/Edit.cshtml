@@ -2,7 +2,20 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    // Check which layot to use for the view according tho the User ACL  that request it
+    if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+    {
+        Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    }
+    else
+        if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+        {
+            Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutPage.cshtml";
+        }
 }
 <div class="container-fluid wraperHome">
     <div class="shadow2">
@@ -57,15 +70,19 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-9">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.IsAdmin)
-                                @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
+                    @*If the Super admin is  asking for this view show him the IsAdmin filed*@
+                    @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label colorletter col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EnumDropDownListFor(model => model.IsAdmin, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-9">

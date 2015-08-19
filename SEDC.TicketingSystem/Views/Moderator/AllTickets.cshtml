@@ -2,92 +2,111 @@
 
 @{
     ViewBag.Title = "AllTickets";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+    {
+        Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+    }
 }
-                      <div class="wraperHome shadow4">
-                          <div class="container-fluid wraperHome1">
-                              <div class="position-center">
-                                  @* order tickets By property and choose ordering  acending/decending *@
-                                  <span class="msgTextNoMrg">Order By: </span>
-                                  <select id="filterBy" name="filterBy">
-                                      <option value="1">Status</option>
-                                      <option value="2">Open Date</option>
-                                      <option value="3">Title</option>
-                                      <option value="4">Worked Hours</option>
-                                  </select>
-                                  <span class="msgTextNoMrg">Ordering: </span>
-                                  <select id="ordering" name="ordering">
-                                      <option value="1">Acending</option>
-                                      <option value="2">Decending</option>
-                                  </select>
-                                  <p class="btn loginbtn">
-                                      @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                      <div id="tickets" class="container-fluid wraperHome shadow3">
-                          <table class="table">
-                              <tr class="msgTextNoMrg">
-                                  <th>
-                                      @Html.DisplayNameFor(model => model.Moderator.Name)
-                                  </th>
-                                  <th>
-                                      @Html.DisplayNameFor(model => model.Owner.Name)
-                                  </th>
-                                  <th>
-                                      @Html.DisplayNameFor(model => model.Title)
-                                  </th>
-                                  <th>
-                                      @Html.DisplayNameFor(model => model.Status)
-                                  </th>
-                                  <th>
-                                      @Html.DisplayNameFor(model => model.OpenDate)
-                                  </th>
-                                  <th>
-                                      @Html.DisplayNameFor(model => model.CloseDate)
-                                  </th>
-                                  <th>
-                                      @Html.DisplayNameFor(model => model.WorkHours)
-                                  </th>
-                                  <th></th>
-                              </tr>
+<div class="wrapperHome shadow4">
+    <div class="container-fluid wraperHome1">
+        <div class="position-center">
+            @* order tickets By property and choose ordering  acending/decending *@
+            <span class="msgTextNoMrg">Order By: </span>
+            <select id="filterBy" name="filterBy">
+                <option value="1">Status</option>
+                <option value="2">Open Date</option>
+                <option value="3">Title</option>
+                <option value="4">Worked Hours</option>
+            </select>
+            <span class="msgTextNoMrg">Ordering: </span>
+            <select id="ordering" name="ordering">
+                <option value="1">Acending</option>
+                <option value="2">Decending</option>
+            </select>
+            @*For now the moderator and the super admin will not be able to create tickets*@
+            @*<p class="btn loginbtn">
+                @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
+            </p>*@
+        </div>
+    </div>
+</div>
+<div id="tickets" class="container-fluid wraperHome shadow3">
+    <table class="table">
+        <tr class="msgTextNoMrg">
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Moderator
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpenDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CloseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkHours)
+            </th>
+            <th></th>
+        </tr>
 
-                              @foreach (var item in Model)
-                              {
-                                  <tr>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.Moderator.Name)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.Owner.Name)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.Title)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.Status)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.OpenDate)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.CloseDate)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.WorkHours)
-                                      </td>
-                                      <td>
-                                          @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                          @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                          @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Moderator.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpenDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CloseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkHours)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) 
+                    @*Only Super Admin can delete tickets*@
+                    @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+                    {
+                    <span>|</span>
+                    @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
+                        <span>|</span>
+                    @Html.ActionLink("Delete", "Delete" , "Tickets" , new { id = item.ID }, null)
+                    }
+                </td>
+            </tr>
+        }
 
-                                      </td>
-                                  </tr>
-                              }
-
-                          </table>
-                      </div>
+    </table>
+</div>
 
     <script>
      $(function () {
@@ -111,71 +130,3 @@
     });
      });
      </script>
-
-
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Moderator.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Owner.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpenDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CloseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkHours)
-        </th>
-        <th></th>
-    </tr>
-   
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Moderator.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.Raw(item.Body)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpenDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CloseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkHours)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-
-            </td>
-        </tr>
-    }
-
-</table>*@
