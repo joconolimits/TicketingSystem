@@ -3,6 +3,7 @@ D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
+D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Razor.dll
@@ -10,6 +11,7 @@ D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\WebActivatorEx.dll
+D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.pdb
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.xml
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
@@ -18,12 +20,10 @@ D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.xml
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.xml
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.xml
+D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.InitialCreate.resources
+D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.SaltInUser.resources
+D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.Guid.resources
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csproj.GenerateResource.Cache
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
 D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.dll
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.pdb
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.SaltInUser.resources
-D:\SEDC code academy v3.0\TeamProject1\SEDC.TicketingSystem\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.Guid.resources

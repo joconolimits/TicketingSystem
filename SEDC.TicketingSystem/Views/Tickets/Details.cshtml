@@ -7,15 +7,17 @@
 
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">
-        <hr />
+                <hr />
         <div class="dl-horizontal">
+        <div class="createCenter">
             <div class="container-fluid sameline1">
-                <div class="sameline">
+                <div class="pull-left">
                     <h3>
                         @Html.DisplayFor(model => model.Ticket.Title)
                     </h3>
                 </div>
-                <div class="sameline">
+
+                <div class="pull-right">
                     <div class="container-fluid">
                         <div class="butonCenter">
                             @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
@@ -26,12 +28,14 @@
                     </div>
                 </div>
             </div>
-            <div class="sameline">
+        </div>
+        <div class="clearfix padding4">
+            <div class="pull-left body-width">
                 <div class="bodyText1">
                     @Html.Raw(Model.Ticket.Body)
                 </div>
             </div>
-            <div class="container-fluid sameline">
+            <div class="container-fluid pull-right">
                 <dl>
                     <dt class="msgTextNoMrg">
                         Assigned:
@@ -142,4 +146,7 @@
             </table>
         </div>
     </div>
+
 </div>
+</div>  
+

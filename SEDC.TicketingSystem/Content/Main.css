@@ -501,16 +501,22 @@ html{
 
 .sameline {
     float:left;
-    margin-left:4%;
-    width:40%;
+    width:50%;
     margin-bottom:4%;
 }
 .sameline1{
-    clear:both;
     margin-left:4%;
-    width:40%;
-    margin-bottom:4%;
+    width:100%;
+    
 }
+.same{
+    display:inline;
+    float:left;
+    height:280px;
+    padding:2%;
+    margin-right:31%;    
+}
+
 .butonCenter{
     display:inline-block;
     float:left;
@@ -529,13 +535,12 @@ html{
 .pad{
     padding-top:1%;
 }
-.bodyText1 p{
-      border:1px #BFBFBF solid;
-      border-radius:5px;
-      background-color:white;
-      margin-top:15%;
-      margin-left:15%;
-      padding:1%;
+.bodyText1 .same p {
+    border: 1px #BFBFBF solid;
+    border-radius: 3px;
+    background-color: white;
+    display: inline; 
+    padding: 5%;
 }
 .bodyText2 p{
       border:1px #BFBFBF solid;
@@ -549,4 +554,10 @@ html{
     margin-right:auto;
     margin-top:1%;
     margin-bottom:1%;
+}
+.padding4 {
+    padding: 4%;
+}
+.body-width {
+    max-width:60%;
 }
