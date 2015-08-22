@@ -3,9 +3,11 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+
+
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">
-       <hr />
+        <hr />
         <div class="dl-horizontal">
             <div class="container-fluid sameline1">
                 <div class="sameline">
@@ -16,15 +18,11 @@
                 <div class="sameline">
                     <div class="container-fluid">
                         <div class="butonCenter">
-                            <p>
-                                @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
-                            </p>
+                            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
                         </div>
                         <div class="butonCenter">
-                            <p>
-                                @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
-                            </p>
-                        </div>
+                            @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+                      </div>
                     </div>
                 </div>
             </div>
@@ -82,13 +80,13 @@
             </div>
         </div>
     </div>
-    
+
     <div class="shadowDetail">
         <div class="createCenter pad">
             @if ((int)Model.Ticket.Status != 3)
             {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
 
-                using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
+               using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
 
@@ -100,7 +98,7 @@
                         <div class="form-group">
 
                             <div class="col-md-10">
-                             @Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })
+                                @Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })
                             </div>
                         </div>
 
@@ -131,9 +129,11 @@
                             <td>
                                 <span class="msgTextNoMrg"> Author:  @Model.GetUsername(item.UserID)</span>
                                 <br />
-                                
-                                <span class="msgTextNoMrg">Replied:
-                                @Html.DisplayFor(modelItem => item.TimeStamp)</span>
+
+                                <span class="msgTextNoMrg">
+                                    Replied:
+                                    @Html.DisplayFor(modelItem => item.TimeStamp)
+                                </span>
                             </td>
 
                         </tr>
@@ -142,4 +142,4 @@
             </table>
         </div>
     </div>
- </div>
+</div>
