@@ -31,8 +31,8 @@ namespace SEDC.TicketingSystem.Controllers
         // Ordering Filters
         public PartialViewResult OrderBy(int? x, int? ord)
         {
-
-            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
+            var id = Convert.ToInt32(Session["LogedUserID"]);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(t => t.OwnerID == id);
             if (x == 1)
             {
                 if (ord != 2)
