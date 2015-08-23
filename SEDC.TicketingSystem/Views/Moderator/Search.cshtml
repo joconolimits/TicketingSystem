@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<SEDC.TicketingSystem.Models.Ticket>
 
-<h2>Your search results</h2>
+<h3 class="colorletter">Your search results</h3>
 
 <table class="table">
     <tr class="msgTextNoMrg">
@@ -33,7 +33,20 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        string status = "";
+        if ((int)item.Status == 1)
+        {
+            status = "danger";
+        }
+        if ((int)item.Status == 2)
+        {
+            status = "info";
+        }
+        if ((int)item.Status == 3)
+        {
+            status = "success";
+        }
+        <tr class="@status">
             <td>
                 @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
             </td>

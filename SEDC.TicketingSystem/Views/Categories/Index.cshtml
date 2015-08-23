@@ -4,13 +4,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<h3 class="colorletter text-center">Categories</h3>
+<table class="table container-fluid">
     <tr>
         <th>
             Moderator
@@ -38,3 +33,7 @@
 }
 
 </table>
+                      <a>
+                          @Html.ActionLink("Create New", "Create", null, new { @class = "btn loginbtnNoMrg" })
+                      </a>
+<div class="make-room"></div>

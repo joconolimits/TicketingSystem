@@ -10,7 +10,7 @@
                 <hr />
         <div class="dl-horizontal">
         <div class="createCenter">
-            <div class="container-fluid sameline1">
+            <div class="container-fluid">
                 <div class="pull-left">
                     <h3>
                         @Html.DisplayFor(model => model.Ticket.Title)
@@ -85,12 +85,14 @@
         </div>
     </div>
 
+    
+</div>
     <div class="shadowDetail">
         <div class="createCenter pad">
             @if ((int)Model.Ticket.Status != 3)
             {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
 
-               using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
+                using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
 
@@ -147,6 +149,5 @@
         </div>
     </div>
 
-</div>
 </div>  
 

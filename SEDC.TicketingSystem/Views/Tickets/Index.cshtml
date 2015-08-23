@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+ <h3 class="colorletter text-center">My Tickets</h3>
 <div class="wraperHome shadow4">
     <div class="container-fluid wraperHome1">
         <div class="position-center">
@@ -25,7 +26,7 @@
     </div>
 </div>
 @* This div is needed for the ordering filters and the ajax to work *@
-<div id="tickets" class="container-fluid wraperHome shadow3">
+<div id="tickets" class="container-fluid">
     <table class="table">
         <tr class="msgText">
             @* We don't need to show the moderator and owner of the ticket in the list *@
@@ -116,7 +117,7 @@
         }
     </table>
 </div>
-
+<div class="make-room"></div>
 @* Script for the Ajax order filters *@
 
     <script>

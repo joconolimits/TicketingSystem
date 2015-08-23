@@ -4,14 +4,9 @@
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
 }
-
-<h2>Users</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h3 class="colorletter text-center">Users</h3>
 <table class="table">
-    <tr>
+    <tr class="colorletter">
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -63,3 +58,7 @@
     }
 
 </table>
+                      <a>
+                          @Html.ActionLink("Create New", "Create", null, new { @class = "btn loginbtnNoMrg" })
+                      </a>
+    <div class="make-room"></div>

@@ -11,10 +11,8 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
-
-<h2>NewPending</h2>
-
-<div id="tickets" class="container-fluid wraperHome shadow3">
+<h3 class="colorletter text-center">New Pending</h3>
+<div id="tickets" class="container-fluid">
     <table class="table">
         <tr class="msgTextNoMrg">
             <th>
@@ -46,7 +44,21 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            string status = "";
+            if ((int)item.Status == 1)
+            {
+                status = "danger";
+            }
+            if ((int)item.Status == 2)
+            {
+                status = "info";
+            }
+            if ((int)item.Status == 3)
+            {
+                status = "success";
+            }
+            
+            <tr class="@status">
                 <td>
                     @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
                 </td>
@@ -86,4 +98,6 @@
         }
 
     </table>
+
+    <div class="make-room"></div>
 </div>
