@@ -56,8 +56,19 @@
             <th></th>
         </tr>
         @foreach (var item in Model)
-        {
-            <tr>
+        { 
+            string status ="";
+            if((int)item.Status == 1) { 
+                status ="danger";
+            }
+             if((int)item.Status == 2) {
+                status ="info";
+                }
+             if ((int)item.Status == 3)
+             {
+                 status = "success";
+             }
+            <tr class="@status">
                 @* We don't need to show the moderator and owner of the ticket in the list *@
                 @*<td>
                     @Html.DisplayFor(modelItem => item.Moderator.Email)
