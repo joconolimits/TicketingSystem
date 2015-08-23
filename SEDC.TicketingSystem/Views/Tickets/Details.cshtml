@@ -3,8 +3,12 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+
+
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">
+                <hr />
+        <div class="dl-horizontal">
         <div class="createCenter">
             <div class="container-fluid sameline1">
                 <div class="pull-left">
@@ -16,15 +20,11 @@
                 <div class="pull-right">
                     <div class="container-fluid">
                         <div class="butonCenter">
-                           
-                                @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
-                           
+                            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
                         </div>
                         <div class="butonCenter">
-               
-                                @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
-                           
-                        </div>
+                            @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+                      </div>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
             @if ((int)Model.Ticket.Status != 3)
             {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
 
-                using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
+               using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
 
@@ -146,4 +146,7 @@
             </table>
         </div>
     </div>
+
+</div>
 </div>  
+
