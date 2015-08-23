@@ -11,7 +11,8 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+
+<div id="modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             @using (Html.BeginForm("Close", "Tickets", new { id = Model.Ticket.ID }, FormMethod.Post))
@@ -113,11 +114,9 @@
 
 
 
-        <p>
 
-            @*@Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })*@ 
-           @* @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })*@
-        </p>
+            @*@Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })*@
+            @* @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })*@
     </div>
     <div class="shadowDetail">
         <div class="createCenter">
@@ -130,14 +129,13 @@
                     <h4 class="msgTextNoMrg">Reply</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                     <div class="form-group">
-
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })
+                           
+                            @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
+                           
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-2">
                             <input type="submit" value="Create" class="btn loginbtn" id="submitReply" />
@@ -162,9 +160,9 @@
 
 
                         <tr style="color:@color;">
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.Ticket.Title)
-                            </td>*@
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.Ticket.Title)
+                                </td>
 
                             <td>
                                 @Html.Raw(item.ReplyBody)

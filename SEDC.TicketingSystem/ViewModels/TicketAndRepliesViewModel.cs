@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SEDC.TicketingSystem.Models;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace SEDC.TicketingSystem.ViewModels
 {
@@ -12,6 +14,9 @@ namespace SEDC.TicketingSystem.ViewModels
 
         public Ticket Ticket { get; set; }
         public System.Linq.IQueryable<Reply> Replies { get; set; }
+
+        [UIHint("tinymce_jquery_full"), AllowHtml]
+        public string replyBody { get; set; }
 
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
