@@ -4,11 +4,18 @@
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
 }
-<h3 class="colorletter text-center">Users</h3>
-                      <a>
-                          @Html.ActionLink("Create New", "Create", null, new { @class = "btn loginbtnNoMrg" })
-                      </a>
-<table class="table">
+                      <div class="box1 text-center">
+                          <br />
+                          <h3 class="colorletter text-center">Users</h3>
+                          <br />
+                      </div>
+                      <div>
+                          <a>
+                              @Html.ActionLink("Create New", "Create", null, new { @class = "btn loginbtnNoMrg" })
+                          </a>
+                      </div>
+    <br />
+<table class="table table-moderator">
     <tr class="colorletter">
         <th>
             @Html.DisplayNameFor(model => model.Name)

@@ -572,3 +572,45 @@ html{
 .body-width {
     max-width:60%;
 }
+.footer-admin
+{
+    height:200px;
+    position:relative;
+  z-index: -1;
+  content: "";
+  width: 100%;
+  max-width:100%;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-1deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+}
+.table-moderator{
+    background-color:white;
+    -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+
+ 
+}
+
+.box1 {
+    background-color:white;
+  z-index: -1;
+  content: "";
+  width: 20%;
+  margin-left:40%;
+  max-width:100%;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-1deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+}
