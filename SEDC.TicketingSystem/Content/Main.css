@@ -611,9 +611,9 @@ html{
 }
 .table-moderator{
     background-color:white;
-    -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
+    -webkit-box-shadow: 0 15px 30px #777;
+  -moz-box-shadow: 0 15px 30px #777;
+  box-shadow: 0 15px 30px #777;
 
  
 }
@@ -625,9 +625,9 @@ html{
   width: 20%;
   margin-left:40%;
   max-width:100%;
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
+  -webkit-box-shadow: 0 15px 40px 0px #777;
+  -moz-box-shadow: 0 15px 40px 0px #777;
+  box-shadow: 0 15px 40px 0px #777;
   -webkit-transform: rotate(-1deg);
   -moz-transform: rotate(-3deg);
   -o-transform: rotate(-1deg);
@@ -639,9 +639,9 @@ html{
   z-index: -1;
   content: "";
   max-width:100%;
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
+  -webkit-box-shadow: 0 15px 40px #777;
+  -moz-box-shadow: 0 15px 40px #777;
+  box-shadow: 0 15px 40px #777;
   -webkit-transform: rotate(-1deg);
   -moz-transform: rotate(-3deg);
   -o-transform: rotate(-1deg);
