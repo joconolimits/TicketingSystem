@@ -61,6 +61,12 @@
                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
+                        <div class="form-group">                         
+                            @Html.LabelFor(model => model.Password, "Confirm Password", htmlAttributes: new { @class = "control-label colorletter col-md-2" })
+                            <div class="col-md-10">
+                                <input class="form-control" type="password"/>
+                            </div>
+                        </div>
 
                         @*If the Super admin is  asking for this view show him the IsAdmin filed*@
                         @if (Convert.ToInt32(Session["IsAdmin"]) == 2)

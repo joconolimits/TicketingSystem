@@ -20,14 +20,11 @@
 <h3 class="colorletter text-center">User Details</h3>
 <div class="container-fluid wraperHome">
     <div class="shadow2">
-            <div class="clearfix">
-                <h4>@Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn loginbtn pull-right" })</h4>
-                <div class="ikona pull-left">
-                    <i class="glyphicon glyphicon-user ikonaCovek"></i>
-                </div>
+        <div class="clearfix">
+            <div class="ikona pull-left">
+                <i class="glyphicon glyphicon-user ikonaCovek"></i>
             </div>
-            <hr />
-            <dl class="dl-horizontal text-center">
+            <dl class="dl-horizontal text-center pull-right">
                 <dt class="colorletter">
                     @Html.DisplayNameFor(model => model.Name)
                 </dt>
@@ -67,8 +64,10 @@
                 <dd>
                     @Html.DisplayFor(model => model.IsAdmin)
                 </dd>
-            </dl>    
-        </div>     
+            </dl>
+        </div>
+        <h4>@Html.ActionLink("Edit Profile", "Edit", new { id = Model.ID }, new { @class = "btn loginbtnNoMrg" })</h4> 
+      </div>      
       <div class="make-room"></div>
     </div>
 
