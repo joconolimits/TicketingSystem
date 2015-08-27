@@ -7,7 +7,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/Main.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="wrapper">
@@ -113,9 +113,13 @@
                 </div>
             </div>
         </footer>
-        
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
         <script src="~/Scripts/bootstrap.js"></script>
-        
- 
+    <script src="~/Scripts/select2.min.js"></script>
+ <script>
+     $(function () {
+         $("select").select2();
+     });
+ </script>
 </body>
 </html>

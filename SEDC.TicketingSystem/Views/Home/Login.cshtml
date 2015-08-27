@@ -4,7 +4,12 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }    
 <div class="container-fluid wraperLogin">
-    <h4 class="msgText">@ViewBag.Message</h4>
+    <div class="boxlogin text-center">
+        <br />
+        <h3 class="colorletter text-center">@ViewBag.Message</h3>
+        <br />
+    </div>
+    <br />
     <div class="shadow">
         @using (Html.BeginForm("Login", "Home", FormMethod.Post))
         {
