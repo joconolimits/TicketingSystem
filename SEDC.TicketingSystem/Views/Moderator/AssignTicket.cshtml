@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<SEDC.TicketingSystem.Models.User>
-
 @{
     ViewBag.Title = "AssignTicket";
     if (Convert.ToInt32(Session["IsAdmin"]) == 2)
@@ -11,52 +10,42 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
+<div class="container-fluid wraperHome">
+    <div class="shadow1">
+        <div class="container-fluid edit-assign" >
+            <br/>
+            <br/>
+            <h4 class="msgText">AssignTicket</h4>
 
-                      <div class="container-fluid wraperHome">
-                          <div class="shadow1">
-                              <div class="container-fluid edit-assign" >
-                                  <br/>
-                                  <br/>
-                                  <h4 class="msgText">AssignTicket</h4>
+            @using (Html.BeginForm("AssignTicket", "Moderator", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <h4 class="msgTextNoMrg">Message to Moderator</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                                  @using (Html.BeginForm("AssignTicket", "Moderator", FormMethod.Post))
-                                  {
-                                      @Html.AntiForgeryToken()
-
-                                      <div class="form-horizontal">
-                                          <h4 class="msgTextNoMrg">Message to Moderator</h4>
-                                          <hr />
-                                          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                                          <select name="moderatorId">
-                                              @foreach (var item in Model)
-                                              {
-                                                  <option value="@item.ID">@item.Username</option>
-
-                                              }
-                                          </select>
-
-
-                                          <div class="form-group">
-
-                                              <div class="col-md-10">
-
-                                                  <textarea id="reply" name="message"></textarea>
-
-                                              </div>
-                                          </div>
-
-                                          <div class="form-group">
-                                              <div class="col-md-offset-2 col-md-10">
-                                                  <input type="submit" value="Assign" class="btn loginbtn" id="submitReply" />
-                                              </div>
-                                          </div>
-                                      </div>
-                                  }
-                                  }
-                              </div>
-                          </div>
-                      </div>
+                    <select name="moderatorId">
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.ID">@item.Name</option>
+                        }
+                    </select>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <textarea id="reply" name="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Assign" class="btn loginbtn" id="submitReply" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 
 
