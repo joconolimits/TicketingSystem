@@ -124,29 +124,4 @@
     </table>
 </div>
 <div class="make-room"></div>
-@* Script for the Ajax order filters *@
-
-    <script>
-        $(function () {
-
-            $('select').on('change', function () {
-                var selectedVal = $('#filterBy option:selected').val();
-                console.log("order by: " + selectedVal);
-                var ordering = $('#ordering option:selected').val();
-                console.log("Ordering: " + ordering);
-                $.ajax({
-                    url: '/Tickets/OrderBy?x=' + selectedVal + '&ord=' + ordering,
-                    contentType: 'application/html; charset=utf-8',
-                    type: 'GET',
-                    dataType: 'html'
-                })
-                .success(function (result) {
-                    $('#tickets').html(result);
-                })
-            .error(function (xhr, status) {
-                alert(status);
-            })
-            });
-        });
-    </script>  
-
+@section OrderByScript{<script src="~/Scripts/userOrderBy.js"></script>}
