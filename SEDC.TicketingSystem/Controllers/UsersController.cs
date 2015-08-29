@@ -185,7 +185,8 @@ namespace SEDC.TicketingSystem.Controllers
                 };
                 // call the email client to send the message 
                 SEDC.TicketingSystem.Email.EmailClient.Client(message);
-                return RedirectToAction("Login", "Home");
+                var Message = "An email has been sent to you with further instructions" + Environment.NewLine + "Please check your mail box.";
+                return RedirectToAction("Login", "Home", new { LogoutMessage = Message });
             }
             else
             {
@@ -210,14 +211,22 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult ResetPassword(Guid guid, string Password)
         {
             var user = db.Users.Where(t => t.Guid == guid).FirstOrDefault();
-            PasswordManager pwdManager = new PasswordManager();
-            user.Salt = SaltGenerator.GetSaltString();
-            user.Password = pwdManager.GeneratePasswordHash(Password, user.Salt);
-            user.Guid = Guid.Empty;
-            db.Entry(user).State = EntityState.Modified;
-            db.SaveChanges();
+            if (user != null)
+            { 
+                PasswordManager pwdManager = new PasswordManager();
+                user.Salt = SaltGenerator.GetSaltString();
+                user.Password = pwdManager.GeneratePasswordHash(Password, user.Salt);
+                user.Guid = Guid.Empty;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
 
-            return RedirectToAction("Login", "Home");
+                return RedirectToAction("Login", "Home");
+            }
+            else
+            {
+                var Message = "The URL you've used is not valid URL for password reset"+ Environment.NewLine + "Please use a valid URL.";
+                return RedirectToAction("Login", "Home", new { LogoutMessage = Message });
+            }
         }
        
         protected override void Dispose(bool disposing)
