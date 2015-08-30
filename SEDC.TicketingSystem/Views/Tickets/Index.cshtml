@@ -43,6 +43,9 @@
                 @Html.DisplayNameFor(model => model.Owner.Name)
             </th>*@
             <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
@@ -83,6 +86,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Owner.Name)
                 </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
                 <td>
                     @* This line will show the title of the ticket as link to the ticket details *@
                     @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })

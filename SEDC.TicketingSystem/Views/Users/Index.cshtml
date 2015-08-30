@@ -11,12 +11,15 @@
                       </div>
                       <div>
                           <a>
-                              @Html.ActionLink("Create New", "Create", null, new { @class = "btn loginbtnNoMrg" })
+                              @Html.ActionLink("Create New", "Create", null, new { @class = "btn loginbtnNoMrg pull-right" })
                           </a>
                       </div>
     <br />
-<table class="table table-moderator">
+<table class="table table-moderator clearfix">
     <tr class="colorletter">
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -30,9 +33,6 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.IsAdmin)
         </th>
         <th></th>
@@ -41,6 +41,9 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -52,9 +55,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsAdmin)

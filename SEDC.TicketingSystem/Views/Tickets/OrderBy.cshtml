@@ -9,6 +9,9 @@
                 @Html.DisplayNameFor(model => model.Owner.Name)
             </th>*@
         <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
@@ -30,7 +33,20 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
+        string status = "";
+        if ((int)item.Status == 1)
+        {
+            status = "danger";
+        }
+        if ((int)item.Status == 2)
+        {
+            status = "info";
+        }
+        if ((int)item.Status == 3)
+        {
+            status = "success";
+        }
+        <tr class="@status">
             @* We don't need to show the moderator and owner of the ticket in the list *@
             @*<td>
                     @Html.DisplayFor(modelItem => item.Moderator.Email)
@@ -38,6 +54,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Owner.Name)
                 </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
             <td>
                 @* This line will show the title of the ticket as link to the ticket details *@
                 @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
