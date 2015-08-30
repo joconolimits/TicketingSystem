@@ -58,9 +58,6 @@ namespace SEDC.TicketingSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if(user.IsAdmin == null)
-                //    user.IsAdmin = AccessLevel.Registered;  // Anybody who registers to the site is registered user 
-
                 PasswordManager pwdManager = new PasswordManager();
 
                 user.Salt = SaltGenerator.GetSaltString();
