@@ -76,6 +76,13 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, "Confirm Password", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-9">
+                            <input class="form-control" id="confirmPassword" name="confirmPassword" type="password"/>
+                        </div>
+                    </div>
+
                     @*If the Super admin is  asking for this view show him the IsAdmin filed*@
                     @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
                     {
@@ -100,3 +107,8 @@
         </div>
     </div>
 </div>
+@section passwordValidation{
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <script src="~/Scripts/passwordValidation.js"></script>
+}
