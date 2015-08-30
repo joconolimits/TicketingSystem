@@ -56,3 +56,32 @@ D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\obj\Debug\SEDC.Tick
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csproj.GenerateResource.Cache
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
 D:\TicketingSystem\SEDC.BlindCarrots.TS\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Razor.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\WebActivatorEx.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.pdb
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.Razor.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.xml
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.InitialCreate.resources
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.SaltInUser.resources
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.Guid.resources
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csproj.GenerateResource.Cache
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
+C:\Users\bojad_000\Documents\Team.Project 1\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
