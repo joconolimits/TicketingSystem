@@ -603,11 +603,7 @@ html{
   -webkit-box-shadow: 0 15px 10px #777;
   -moz-box-shadow: 0 15px 10px #777;
   box-shadow: 0 15px 10px #777;
-  -webkit-transform: rotate(-1deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  transform: rotate(-1deg);
+
 }
 .table-moderator{
     background-color:white;
@@ -619,7 +615,7 @@ html{
 }
 
 .box1 {
-    background-color:white;
+    background-color:#ECF0F1;
   z-index: -1;
   content: "";
   width: 20%;
@@ -628,24 +624,16 @@ html{
   -webkit-box-shadow: 0 15px 40px 0px #777;
   -moz-box-shadow: 0 15px 40px 0px #777;
   box-shadow: 0 15px 40px 0px #777;
-  -webkit-transform: rotate(-1deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  transform: rotate(-1deg);
+
 }
 .boxlogin {
     background-color:white;
   z-index: -1;
   content: "";
-  max-width:100%;
+  max-width:80%;
   -webkit-box-shadow: 0 15px 40px #777;
   -moz-box-shadow: 0 15px 40px #777;
-  box-shadow: 0 15px 40px #777;
-  -webkit-transform: rotate(-1deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  transform: rotate(-1deg);
-  margin-left:-7%;
+  box-shadow: 0 15px 7px #777;
+
+  margin-left :18%;
 }
