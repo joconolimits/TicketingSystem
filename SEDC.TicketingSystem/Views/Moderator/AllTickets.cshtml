@@ -45,6 +45,9 @@
     <table class="table table-moderator">
         <tr class="msgTextNoMrg">
             <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
@@ -89,6 +92,9 @@
             
             <tr class="@status">
                 <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
                     @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
                 </td>
                 <td>
@@ -129,26 +135,4 @@
     </table>
 
 </div>
-
-    <script>
-     $(function () {
-     $('select').on('change', function () {
-         var selectedVal = $('#filterBy option:selected').val();
-         console.log("order by: " + selectedVal);
-         var ordering = $('#ordering option:selected').val();
-         console.log("Ordering: " + ordering);
-         $.ajax({
-             url: '/Moderator/OrderBy?x='+selectedVal+'&ord='+ordering,
-            contentType: 'application/html; charset=utf-8',
-            type: 'GET',
-            dataType: 'html'
-        })
-        .success(function (result) {
-            $('#tickets').html(result);
-        })
-        .error(function (xhr, status) {
-            alert(status);
-        })
-    });
-     });
-     </script>
+@section OrderByScript{<script src="~/Scripts/AdminOrderBy.js"></script>} @*Ajax ordering of tickets*@

@@ -113,6 +113,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Icon.png" />
+    <Content Include="Scripts\AdminOrderBy.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -124,6 +125,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\passwordValidation.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\tinymce\css\content.css" />
     <Content Include="Scripts\tinymce\jquery.tinymce.js" />
@@ -380,6 +382,7 @@
     <Content Include="Scripts\tinymce\utils\form_utils.js" />
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
+    <Content Include="Scripts\userOrderBy.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

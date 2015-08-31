@@ -1,6 +1,7 @@
 ﻿using SEDC.TicketingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace SEDC.TicketingSystem.Models
     public class User
     {
         [Key]
+        [DisplayName("User Id")]
         public int ID { get; set; }
 
         [Required]
@@ -33,6 +35,7 @@ namespace SEDC.TicketingSystem.Models
 
         public Guid Guid { get; set; }
 
+        [DisplayName("Access Level")]
         public AccessLevel IsAdmin { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }

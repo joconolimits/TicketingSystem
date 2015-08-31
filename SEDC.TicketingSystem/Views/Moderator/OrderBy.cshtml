@@ -3,6 +3,9 @@
 <table class="table">
     <tr class="msgTextNoMrg">
         <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
@@ -31,7 +34,23 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        string status = "";
+        if ((int)item.Status == 1)
+        {
+            status = "danger";
+        }
+        if ((int)item.Status == 2)
+        {
+            status = "info";
+        }
+        if ((int)item.Status == 3)
+        {
+            status = "success";
+        }
+        <tr class="@status">
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
             <td>
                 @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
             </td>

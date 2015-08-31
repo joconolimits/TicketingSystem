@@ -1,6 +1,7 @@
 ﻿using SEDC.TicketingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace SEDC.TicketingSystem.Models
     public class Ticket
     {
         [Key]
+        [DisplayName("TicketId")]
         public int ID { get; set; }
 
         [Required]

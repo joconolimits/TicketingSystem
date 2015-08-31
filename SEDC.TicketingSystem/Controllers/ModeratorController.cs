@@ -127,7 +127,7 @@ namespace SEDC.TicketingSystem.Controllers
 
         public ActionResult AssignTicket(int? id)
         {
-            List<User> moderators = db.Users.Where(x => x.IsAdmin == AccessLevel.Moderator).ToList(); // Get all Moderators
+            List<User> moderators = db.Users.Where(x => x.IsAdmin != AccessLevel.Registered).ToList(); // Get all Moderators
             
 
             return View(moderators);
@@ -157,7 +157,8 @@ namespace SEDC.TicketingSystem.Controllers
             // If none of the checklist elements is selected then it will search everywhere
             if (!title && !owner && !moderator && !body && !category) { 
             searchResults = db.Tickets.Include(t => t.Category).Include(t => t.Moderator).Include(t => t.Owner)
-                .Where(t => 
+                .Where(t =>
+                    t.ID.Equals(query) ||
                     t.Title.Contains(query) ||
                     t.Body.Contains(query) ||
                     t.Category.Name.Contains(query) ||

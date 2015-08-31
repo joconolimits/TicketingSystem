@@ -21,6 +21,9 @@
     <table class="table table-moderator">
         <tr class="msgTextNoMrg">
             <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
@@ -63,6 +66,9 @@
                 status = "success";
             }
             <tr class="@status">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
                 <td>
                     @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
                 </td>

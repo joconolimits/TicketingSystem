@@ -1,5 +1,4 @@
-﻿
-#custom-bootstrap-menu.navbar-default .navbar-brand {
+﻿#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: white;
 }
 #custom-bootstrap-menu.navbar-default {
@@ -273,7 +272,7 @@ html{
    font-size:60px;
    margin-top:8%;
    opacity:0.6;
-	filter: alpha(opacity=50);
+    filter: alpha(opacity=50);
  	-webkit-transition: opacity 1s linear;
      display:block;
      text-decoration:none;
@@ -284,7 +283,7 @@ html{
     border:1px #BFBFBF solid;
     border-radius:5px;
     text-align:center;
-	filter: alpha(opacity=50);
+    filter: alpha(opacity=50);
  	-webkit-transition: opacity 1s linear;
      text-decoration:none;
      margin-right:5%;
@@ -300,7 +299,7 @@ html{
 }
 .ikonaCovek:hover{
     opacity: 1;
-	filter: alpha(opacity=100);
+    filter: alpha(opacity=100);
  	-webkit-transition: opacity 1s linear;
      text-decoration:none;
 
@@ -308,10 +307,10 @@ html{
 }
 .ikona:hover{
     opacity: 1;
-	filter: alpha(opacity=100);
+    filter: alpha(opacity=100);
  	-webkit-transition: opacity 1s linear;
      -moz-box-shadow: 1px 1px 5px #999;
-	-webkit-box-shadow: 1px 1px 5px #999;
+    -webkit-box-shadow: 1px 1px 5px #999;
         box-shadow: 1px 1px 5px #999;
 
 }
@@ -603,11 +602,7 @@ html{
   -webkit-box-shadow: 0 15px 10px #777;
   -moz-box-shadow: 0 15px 10px #777;
   box-shadow: 0 15px 10px #777;
-  -webkit-transform: rotate(-1deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  transform: rotate(-1deg);
+
 }
 .table-moderator{
     background-color:white;
@@ -619,7 +614,7 @@ html{
 }
 
 .box1 {
-    background-color:white;
+    background-color:#ECF0F1;
   z-index: -1;
   content: "";
   width: 20%;
@@ -628,24 +623,16 @@ html{
   -webkit-box-shadow: 0 15px 40px 0px #777;
   -moz-box-shadow: 0 15px 40px 0px #777;
   box-shadow: 0 15px 40px 0px #777;
-  -webkit-transform: rotate(-1deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  transform: rotate(-1deg);
+
 }
 .boxlogin {
     background-color:white;
   z-index: -1;
   content: "";
-  max-width:100%;
+  max-width:80%;
   -webkit-box-shadow: 0 15px 40px #777;
   -moz-box-shadow: 0 15px 40px #777;
-  box-shadow: 0 15px 40px #777;
-  -webkit-transform: rotate(-1deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  transform: rotate(-1deg);
-  margin-left:-7%;
+  box-shadow: 0 15px 7px #777;
+
+  margin-left :18%;
 }

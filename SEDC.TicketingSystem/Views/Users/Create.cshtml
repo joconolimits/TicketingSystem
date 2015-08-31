@@ -53,20 +53,21 @@
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label colorletter col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label colorletter col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">                         
-                            @Html.LabelFor(model => model.Password, "Confirm Password", htmlAttributes: new { @class = "control-label colorletter col-md-2" })
-                            <div class="col-md-10">
-                                <input class="form-control" type="password"/>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password, "Confirm Password", htmlAttributes: new { @class = "control-label colorletter col-md-2" })
+                                <div class="col-md-10">
+                                    <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" />
+                                </div>
                             </div>
-                        </div>
+                        
 
                         @*If the Super admin is  asking for this view show him the IsAdmin filed*@
                         @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
@@ -93,4 +94,8 @@
         </div>
     </div>
 </div>
-
+@section passwordValidation{
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <script src="~/Scripts/passwordValidation.js"></script>
+}
