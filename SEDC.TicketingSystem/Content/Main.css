@@ -617,9 +617,9 @@ html{
   width: 20%;
   margin-left:40%;
   max-width:100%;
-  -webkit-box-shadow: 0 15px 40px 0px #777;
-  -moz-box-shadow: 0 15px 40px 0px #777;
-  box-shadow: 0 15px 40px 0px #777;
+  -webkit-box-shadow: 10px 10px 5px #bebebe;
+    -moz-box-shadow: 10px 10px 5px #bebebe;
+    box-shadow: 5px 5px 5px #bebebe;
 
 }
 .boxlogin {
@@ -627,9 +627,9 @@ html{
   z-index: -1;
   content: "";
   max-width:80%;
-  -webkit-box-shadow: 0 15px 40px #777;
-  -moz-box-shadow: 0 15px 40px #777;
-  box-shadow: 0 15px 7px #777;
+  -wwebkit-box-shadow: 10px 10px 5px #bebebe;
+    -moz-box-shadow: 10px 10px 5px #bebebe;
+    box-shadow: 5px 5px 5px #bebebe;
   margin-left :3%;
 }
 
