@@ -185,12 +185,12 @@ table.dataTable td {
                    //});
 
                    $.fn.dataTable.ext.type.detect.unshift(
-    function (d) {
-        return d === 'Pending' || d === 'WaitReply' || d === 'Closed' ?
-            'salary-grade' :
-            null;
-    }
-);
+                        function (d) {
+                            return d === 'Pending' || d === 'WaitReply' || d === 'Closed' ?
+                                'salary-grade' :
+                                null;
+                        }
+                    );
 
                    $.fn.dataTable.ext.type.order['salary-grade-pre'] = function (d) {
                        switch (d) {
@@ -201,8 +201,13 @@ table.dataTable td {
                        return 0;
                    };
 
-                   $('table').DataTable(
+                   $(function () {
+
+                       $('table').DataTable({
+                           "order": [[2, "asc"]]
+                       }
                     );
+                   })
                   
                 </script>
-                <script src="~/Scripts/userOrderBy.js"></script>}
+                @*<script src="~/Scripts/userOrderBy.js"></script>*@}
