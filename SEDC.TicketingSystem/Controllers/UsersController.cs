@@ -47,10 +47,10 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult Create()
         {
             // If Logged in user try to access the Register page redirect him.
-            if (HttpContext.User.Identity.IsAuthenticated && (AccessLevel)Session["IsAdmin"] != AccessLevel.Registered)
+            if (HttpContext.User.Identity.IsAuthenticated && (AccessLevel)Session["IsAdmin"] == AccessLevel.Moderator)
                 return RedirectToAction("Index", "Moderator");
             else
-                if (HttpContext.User.Identity.IsAuthenticated)
+                if (HttpContext.User.Identity.IsAuthenticated && (AccessLevel)Session["IsAdmin"] == AccessLevel.Registered)
                     return RedirectToAction("WelcomePage", "Home");
             return View();
         }
