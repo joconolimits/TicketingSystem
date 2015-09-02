@@ -3,12 +3,42 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-                      <div class="box1 text-center">
-                          <br />
-                          <h4 class="colorletter text-center">My Tickets</h4>
-                          <br />
-                      </div>
+<link href="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="http://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css" rel="stylesheet" />
+
+<style>
+    body { 
+  font-size: 140%; 
+}
+
+h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+table caption {
+	padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+  white-space: nowrap;
+}
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
+}
+</style>
+
+
+<div class="box1 text-center">
     <br />
+    <h4 class="colorletter text-center">My Tickets</h4>
+    <br />
+</div>
+<br />
 <div class="wraperHome shadow4">
     <div class="container-fluid wraperHome1">
         <div class="position-center">
@@ -23,111 +53,156 @@
             <select id="ordering" name="ordering">
                 <option value="1">Acending</option>
                 <option value="2">Decending</option>
-            </select>
+            </select>*
             <p class="btn loginbtn">
                 @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
             </p>
         </div>
     </div>
 </div>
-    <br />
-@* This div is needed for the ordering filters and the ajax to work *@
-<div id="tickets" class="container-fluid">
-    <table class="table table-moderator">
-        <tr class="msgText">
-            @* We don't need to show the moderator and owner of the ticket in the list *@
-            @*<th>
-                @Html.DisplayNameFor(model => model.Moderator.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Owner.Name)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpenDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CloseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkHours)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        { 
-            string status ="";
-            if((int)item.Status == 1) { 
-                status ="danger";
-            }
-             if((int)item.Status == 2) {
-                status ="info";
-                }
-             if ((int)item.Status == 3)
-             {
-                 status = "success";
-             }
-            <tr class="@status">
-                @* We don't need to show the moderator and owner of the ticket in the list *@
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Moderator.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Owner.Name)
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @* This line will show the title of the ticket as link to the ticket details *@
-                    @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
-                        
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenDate)
-                </td>
-                <td>
-                        @Html.DisplayFor(modelItem => item.CloseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkHours)
-                </td>
-                <td>
+<br />
 
-                    @if ((int)item.Status == 3)
-                    {
-                        <span>Edit |</span>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            @* This div is needed for the ordering filters and the ajax to work *@
+            <div id="tickets" class="container-fluid">
+                <table class="table table-bordered table-hover dt-responsive">
+                    <thead>
+                        <tr>
+                            @* We don't need to show the moderator and owner of the ticket in the list *@
+                            @*<th>
+                    @Html.DisplayNameFor(model => model.Moderator.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Owner.Name)
+                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.ID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Category)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OpenDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CloseDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WorkHours)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            string status = "";
+                            if ((int)item.Status == 1)
+                            {
+                                status = "danger";
+                            }
+                            if ((int)item.Status == 2)
+                            {
+                                status = "info";
+                            }
+                            if ((int)item.Status == 3)
+                            {
+                                status = "success";
+                            }
+                            <tr class="@status">
+                                @* We don't need to show the moderator and owner of the ticket in the list *@
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.Moderator.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner.Name)
+                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @* This line will show the title of the ticket as link to the ticket details *@
+                                    @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
 
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) 
-                        <span>|</span>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OpenDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CloseDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WorkHours)
+                                </td>
+                                <td>
 
-                </td>
-            </tr>
-        }
-    </table>
-</div>
-<div class="make-room"></div>
-@section OrderByScript{<script src="~/Scripts/userOrderBy.js"></script>}
+                                    @if ((int)item.Status == 3)
+                                    {
+                                        <span>Edit |</span>
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                                        <span>|</span>
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+</table>
+                </div>
+            </div>
+        </div>
+            </div>
+            <div class="make-room"></div>
+            @section OrderByScript{
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+<script src="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script src="http://cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js"></script>
+               <script>
+                   //$.extend(true, $.fn.dataTable.defaults, {
+                   //    "searching": true,
+                   //    "ordering": false
+                   //});
+
+                   $.fn.dataTable.ext.type.detect.unshift(
+    function (d) {
+        return d === 'Pending' || d === 'WaitReply' || d === 'Closed' ?
+            'salary-grade' :
+            null;
+    }
+);
+
+                   $.fn.dataTable.ext.type.order['salary-grade-pre'] = function (d) {
+                       switch (d) {
+                           case 'Pending': return 1;
+                           case 'WaitReply': return 2;
+                           case 'Closed': return 3;
+                       }
+                       return 0;
+                   };
+
+                   $('table').DataTable(
+                    );
+                  
+                </script>
+                <script src="~/Scripts/userOrderBy.js"></script>}
