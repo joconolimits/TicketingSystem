@@ -111,6 +111,11 @@ footer {
 .columnPostH {
     color:white;
 }
+.copyrightadmin {
+    color:white;
+    position: absolute;
+    right: 5px;
+}
 body {
     background-color: #ECF0F1;
     height:100%;
