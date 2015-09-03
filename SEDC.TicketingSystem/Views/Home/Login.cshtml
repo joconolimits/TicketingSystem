@@ -5,7 +5,7 @@
 }
 <div class="container-fluid wraperLogin">
     <br />
-    <div class="module form-module">
+    <div class="module form-module shadow">
         <div class="toggle">
             <i class="glyphicon glyphicon-pencil"></i>
             <div class="tooltip">Click Me</div>
@@ -22,31 +22,96 @@
 
                 <h2>@ViewBag.Message</h2>
                 <form>
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input" } })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input" , placeholder="E-mail" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
 
 
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" , placeholder="Password" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
                 </form>
                 <input type="submit" value="Login" class="button-login" />
             </div>
+        }
+
+           
+
+
 
             <div class="form">
                 <h2>Create an account</h2>
                 <form>
-                    <input class="input" type="text" placeholder="Username" />
-                    <input class="input" type="password" placeholder="Password" />
-                    <input class="input" type="email" placeholder="Email Address" />
-                    <input class="input" type="tel" placeholder="Phone Number" />
-                    <input type="submit" value="Register" class="button-login" />
-                </form>
+
+
+                    @using (Html.BeginForm("Create", "Users", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input", placeholder = "First Name" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "input", placeholder = "Last Name" } })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "input", placeholder = "User Name" } })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", placeholder = "E-Mail" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input", placeholder = "Password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="">
+
+                            <div class="">
+                                <input class="input" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password" />
+                            </div>
+                        </div>
+
+
+                        <div class="">
+                            <div class="">
+                                <input type="submit" value="Confirm" class="button-login" />
+                            </div>
+                        </div>
+
+                    }
+
+
+
+                </form>     
+                 
             </div>
 
             <div class="cta"><a href="~/Users/ForgotPassword">Forgot your password?</a></div>
-        }
+        
     </div>
 
 </div>
@@ -64,4 +129,12 @@
             opacity: "toggle"
         }, "slow");
     });
+
+
 </script>
+
+@section passwordValidation{
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <script src="~/Scripts/passwordValidation.js"></script>
+}

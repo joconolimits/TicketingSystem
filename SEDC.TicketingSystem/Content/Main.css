@@ -128,9 +128,6 @@ body {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
-    width:500px;
-    height:50%;
-    padding:2%;
     background-color:white;
 }
 .shadow1 {
@@ -647,7 +644,7 @@ html{
   max-width: 320px;
   width: 100%;
   border-top: 5px solid #3498DB;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  
   margin: 0 auto;
 }
 .form-module .toggle {
