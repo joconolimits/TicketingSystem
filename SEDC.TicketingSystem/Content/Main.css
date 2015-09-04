@@ -197,6 +197,16 @@ body {
     margin-top:0%;
     background-color:white;
 }
+.shadow2-contact {
+    -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    width:40%;
+     margin-left: auto;
+    margin-right: auto;
+    margin-top:0%;
+    background-color:white;
+}
 .shadow3 {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
@@ -813,7 +823,17 @@ input:focus {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-
+.button-login-contact {
+  cursor: pointer;
+  background: #3498DB;
+  width: 112%;
+  border: 0;
+  padding: 10px 15px;
+  color: #ffffff;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  margin-left:-3%;
+}
 .button-login:hover {
   background: #178ab4;
 }

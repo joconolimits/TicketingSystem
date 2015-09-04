@@ -2,49 +2,47 @@
     ViewBag.Title = "ContactUs";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-<div class="box1 text-center">
-    <br />
-    <h3 class="colorletter text-center">Contact Us</h3>
-    <br />
-</div>
-<br />
-<div class="container-fluid wraperHome">
-    <div class="shadow2">
-        <div class="container">
+
+
+<div class="container-fluid">
+    <div class="shadow2-contact">
+        <div class="container-fluid">
             <div class="">
-                <div class="col-xs-6">
+                <div class="">
+                    <h3 class="colorletter">Contact Us</h3>
+                    <hr />
                     <form class="form-horizontal" method="post">
                         <h3 class="colorletter text-center">@ViewBag.Message</h3>
                         <div class="form-group">
                             <span class="text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-xs-8">
-                                <input id="fname" name="firstName" type="text" placeholder="First Name" class="form-control">
+                            <div class="col-xs-12">
+                                <input id="fname" name="firstName" type="text" placeholder="First Name" class="input">
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-xs-8">
-                                <input id="lname" name="lastName" type="text" placeholder="Last Name" class="form-control">
+                            <div class="col-xs-12">
+                                <input id="lname" name="lastName" type="text" placeholder="Last Name" class="input">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <span class="text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                            <div class="col-xs-8">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                            <div class="col-xs-12">
+                                <input id="email" name="email" type="text" placeholder="Email Address" class="input">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <span class="text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-xs-8">
-                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="3"></textarea>
+                            <div class="col-xs-12">
+                                <textarea class="form-control input" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="3"></textarea>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-xs-12">
                             <div class="container-fluid text-center">
-                                <button type="submit" class="button-login">Submit</button>
+                                <button type="submit" class="button-login-contact ">Submit</button>
                             </div>
                         </div>
                     </form>
