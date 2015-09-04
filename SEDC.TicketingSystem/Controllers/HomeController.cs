@@ -5,6 +5,7 @@ using SEDC.TicketingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -93,6 +94,22 @@ namespace SEDC.TicketingSystem.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ContactUs(string firstName, string lastName, string email, string message)
+        {
+            var mailMessage = new MailMessage(email, "blindcarrots1@gmail.com")
+            {
+                Subject = "Contact Form",
+                Body = message + string.Format(" <br/><br/><br/>By: {0} {1}", firstName, lastName)
+            };
+
+            SEDC.TicketingSystem.Email.EmailClient.Client(mailMessage);
+            ViewBag.Message = "The email was sent successfully!";
+            return View();
+        }
+
+
         public ActionResult WelcomePage()
         {
             return View();

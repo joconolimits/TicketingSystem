@@ -13,7 +13,7 @@ namespace SEDC.TicketingSystem.Email
     {
         public static void Client(MailMessage message)
         {
-
+            message.IsBodyHtml = true;
             var client = new SmtpClient();
             var credential = new NetworkCredential
             {
@@ -22,6 +22,7 @@ namespace SEDC.TicketingSystem.Email
             };
             client.Host = "smtp.gmail.com";
             client.Port = 587;
+            client.UseDefaultCredentials = false;
             client.Credentials = credential;
             client.EnableSsl = true;
             client.Send(message);
