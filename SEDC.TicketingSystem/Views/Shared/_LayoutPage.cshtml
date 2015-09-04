@@ -49,6 +49,10 @@
                                 <li>
                                     <a href="~/Home/ContactUs">Contact Us</a>
                                 </li>
+                                <li>
+                                    <a href="~/Home/HowItWorks">How It Works</a>
+                                </li>
+
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                                 {
                                     if (Convert.ToInt32(Session["IsAdmin"]) == 1)
