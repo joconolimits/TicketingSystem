@@ -42,6 +42,10 @@
     width:20%;
     height:5%;
 }
+.examplepicture{
+    width:10%;
+    height:10%;
+}
 .wraperHome {
     margin-left:auto;
     margin-right:auto;
@@ -66,6 +70,9 @@ footer {
     right:0px;
     bottom:0px; 
     box-shadow: 0px 500px 0px 500px #3498DB;
+    top:78%;
+    height:200px;
+    position:absolute;
 }
 .footer-effect{
       -webkit-box-shadow: 0 15px 10px #777;
@@ -97,6 +104,9 @@ footer {
     right:0px;
     bottom:0px; 
     box-shadow: 0px 500px 0px 500px #ECF0F1;
+    height:200px;
+    top:90%;
+    position:absolute;
 }
 .footerDiv{
     border:2px solid #3498DB;
@@ -600,7 +610,9 @@ html{
   content: "";
   width: 100%;
   max-width:100%;
- box-shadow: 0px 500px 0px 500px #3498DB;
+  box-shadow: 0px 500px 0px 500px #3498DB;
+  position:absolute;
+  top:90%;
 
 }
 .table-moderator{

@@ -97,6 +97,10 @@ namespace SEDC.TicketingSystem.Controllers
         {
             return View();
         }
+        public ActionResult HowItWorks()
+        {
+            return View();
+        }
 
 	}
 }
