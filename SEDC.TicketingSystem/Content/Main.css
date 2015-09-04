@@ -66,12 +66,9 @@ footer {
     background-color:#3498DB;
     border-width: 2px;
     width:100%;
-    left:0px;
-    right:0px;
-    bottom:0px; 
-    box-shadow: 0px 500px 0px 500px #3498DB;
-    top:78%;
-    height:200px;
+    /*box-shadow: 0px 500px 0px 500px #3498DB;*/
+    /*top:78%;*/
+    height:300px;
     position:absolute;
 }
 .footer-effect{
@@ -130,6 +127,8 @@ body {
     background-color: #ECF0F1;
     height:100%;
     width:100%;
+    padding-bottom:300px;
+    position:relative;
 }
 
 .login {
@@ -241,6 +240,8 @@ header {
 }
 .wrapper{
     position:relative;
+  
+    min-height:100%;
 }
 .centering{
     height:10%;
