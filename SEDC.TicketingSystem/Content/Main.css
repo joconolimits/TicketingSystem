@@ -595,7 +595,7 @@ html{
     margin-bottom:4%;
 }
 .sameline1{
-    margin-left:4%;
+    margin-left:0%;
     width:100%;
     
 }
@@ -650,6 +650,12 @@ html{
 }
 .body-width {
     max-width:60%;
+}
+.body-width70 {
+   width:70%;
+}
+.body-width50 {
+    width:100%;
 }
 .footer-admin
 {
