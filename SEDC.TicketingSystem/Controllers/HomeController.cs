@@ -98,15 +98,22 @@ namespace SEDC.TicketingSystem.Controllers
         [HttpPost]
         public ActionResult ContactUs(string firstName, string lastName, string email, string message)
         {
-            var mailMessage = new MailMessage(email, "blindcarrots1@gmail.com")
+            if(string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(message))
             {
-                Subject = "Contact Form",
-                Body = message + string.Format(" <br/><br/><br/>By: {0} {1}", firstName, lastName)
-            };
-
-            SEDC.TicketingSystem.Email.EmailClient.Client(mailMessage);
-            ViewBag.Message = "The email was sent successfully!";
-            return View();
+                return View();
+            }
+            else
+            {
+                var mailMessage = new MailMessage(email, "blindcarrots1@gmail.com")
+                {
+                    Subject = "Contact Form",
+                    Body = message + string.Format(" <br/><br/><br/>By: {0} {1}", firstName, lastName)
+                };
+                SEDC.TicketingSystem.Email.EmailClient.Client(mailMessage);
+                ViewBag.Message = "The email was sent successfully!";
+                return View("ContactUs");
+            }
+            
         }
 
 
