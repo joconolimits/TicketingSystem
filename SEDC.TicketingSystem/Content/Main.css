@@ -125,6 +125,9 @@ footer {
 .make-room{
     height:180px;
 }
+.make-room-login{
+    height:160px;
+}
 .footerModerator{
     border-width: 2px;
     width:100%;
