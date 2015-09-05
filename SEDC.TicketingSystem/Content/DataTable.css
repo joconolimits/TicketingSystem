@@ -6,3 +6,8 @@ table.dataTable th,
 table.dataTable td {
   white-space: nowrap;
 }
+
+/*Overwride on the default table width*/
+table.dataTable{
+    width:100% !important;
+}
