@@ -99,7 +99,7 @@ footer {
     width:100%;
     /*box-shadow: 0px 500px 0px 500px #3498DB;*/
     /*top:78%;*/
-    height:300px;
+    height:30%;
     position:absolute;
 }
 .footer-effect{
@@ -709,7 +709,9 @@ html{
 }
 
 
-
+.blue-line {
+  border-top: 5px solid #3498DB;
+}
 
 /* Form Module */
 .form-module {
@@ -1021,3 +1023,9 @@ input:focus {
 .margin0{
     margin:0;
 }
+/*position: absolute;
+    top: 0%;
+    left: 100%;
+    /margin-top: -2%;
+    margin-left: 85%;
+    background-color: #3498DB;*/
