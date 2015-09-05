@@ -19,10 +19,10 @@
             {
                 @Html.AntiForgeryToken()
                 <br />
-                <label for="workHours">Hours Worked</label>
+                <label for="workHours" class="colorletter">Hours Worked</label>
                 <input type="number" name="workHours" id="workHours" />
                 <br />
-                <input type="submit" value="Close Ticket" class="btn btn-default" id="closeTicket" />
+                <input type="submit" value="Close Ticket" class="button-login" id="closeTicket" />
                 <br />
             }
         </div>
@@ -31,24 +31,29 @@
 
 <div class="container-fluid wraperHomeDetails">
     <div class="shadowDetail">
+        <h3 class="container-fluid colorletter" >Details</h3>
+        <hr />
         <div class="createCenter">
             <div class="container-fluid sameline1">
-                <div class="pull-left">
-                    <h3>
-                        @Html.DisplayFor(model => model.Ticket.Title)
-                    </h3>
+                <div class="body-width50">
+                    <div class="pull-left">
+                        <h3>
+                            @Html.DisplayFor(model => model.Ticket.Title)
+                        </h3>
+                    </div>
                 </div>
-
-                <div class="pull-right">
-                    <div class="container-fluid">
-                        <div class="butonCenter">
-                            <button id="Close" type="button" class="btn loginbtn" data-toggle="modal" data-target=".bs-example-modal-sm">close</button>
-                        </div>
-                        <div class="butonCenter">
-                            @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
-                        </div>
-                        <div class="butonCenter">
-                            @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
+                <div class="body-width50">
+                    <div class="pull-right">
+                        <div class="container-fluid">
+                            <div class="butonCenter button-login">
+                                <button id="Close" type="button" class="btn button-login" data-toggle="modal" data-target=".bs-example-modal-sm">Close Ticket</button>
+                            </div>
+                            <div class="butonCenter button-login">
+                                @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }, new { @class = "btn button-login" })
+                            </div>
+                            <div class="butonCenter button-login">
+                                @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID }, new { @class = "btn button-login" })
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -57,58 +62,60 @@
         @* Display a modal  for entering the  Hours Worked when you close the ticket *@
 
         <div class="clearfix padding4">
-            <div class="pull-left body-width">
-                <div class="bodyText1">
+            <div class="">
+                <div class="bodyText1 pull-left">
                     @Html.Raw(Model.Ticket.Body)
                 </div>
             </div>
-            <div class="container-fluid pull-right">
-                <dl>
-                    <dt class="msgTextNoMrg">
-                        Assigned:
-                    </dt>
-                    <dd>
-                        @Model.GetUsername(Model.Ticket.ModeratorID)
-                    </dd>
-                    <dt class="msgTextNoMrg">
-                        Author:
-                    </dt>
-                    <dd>
-                        @Model.GetUsername(Model.Ticket.OwnerID)
-                    </dd>
-                    <dt class="msgTextNoMrg">
-                        @Html.DisplayNameFor(model => model.Ticket.Status)
-                    </dt>
+            <div class="">
+                <div class="pull-right">
+                    <dl>
+                        <dt class="msgTextNoMrg">
+                            Assigned:
+                        </dt>
+                        <dd>
+                            @Model.GetUsername(Model.Ticket.ModeratorID)
+                        </dd>
+                        <dt class="msgTextNoMrg">
+                            Author:
+                        </dt>
+                        <dd>
+                            @Model.GetUsername(Model.Ticket.OwnerID)
+                        </dd>
+                        <dt class="msgTextNoMrg">
+                            @Html.DisplayNameFor(model => model.Ticket.Status)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.Status)
-                    </dd>
-                    <dt class="msgTextNoMrg">
-                        Category:
-                    </dt>
-                    <dd>
-                        @Model.GetCategory(Model.Ticket.CategoryID)
-                    </dd>
-                    <dt class="msgTextNoMrg">
-                        @Html.DisplayNameFor(model => model.Ticket.OpenDate)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.OpenDate)
-                    </dd>
-                    <dt class="msgTextNoMrg">
-                        @Html.DisplayNameFor(model => model.Ticket.CloseDate)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.CloseDate)
-                    </dd>
-                    <dt class="msgTextNoMrg">
-                        @Html.DisplayNameFor(model => model.Ticket.WorkHours)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.WorkHours)
-                    </dd>
-                </dl>
-            </div>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.Status)
+                        </dd>
+                        <dt class="msgTextNoMrg">
+                            Category:
+                        </dt>
+                        <dd>
+                            @Model.GetCategory(Model.Ticket.CategoryID)
+                        </dd>
+                        <dt class="msgTextNoMrg">
+                            @Html.DisplayNameFor(model => model.Ticket.OpenDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.OpenDate)
+                        </dd>
+                        <dt class="msgTextNoMrg">
+                            @Html.DisplayNameFor(model => model.Ticket.CloseDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.CloseDate)
+                        </dd>
+                        <dt class="msgTextNoMrg">
+                            @Html.DisplayNameFor(model => model.Ticket.WorkHours)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.WorkHours)
+                        </dd>
+                    </dl>
+                </div>              
+                </div>
         </div>
 
 
@@ -138,7 +145,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <input type="submit" value="Create" class="btn loginbtn" id="submitReply" />
+                            <input type="submit" value="Create" class="button-login" id="submitReply" />
                         </div>
                     </div>
                 </div>

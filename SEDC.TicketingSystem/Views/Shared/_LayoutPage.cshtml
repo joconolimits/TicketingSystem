@@ -8,6 +8,7 @@
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/Main.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     @*<link href="~/Content/select2.min.css" rel="stylesheet" />*@
     @*The jQuery Script needs to be called here because Tiny MCE needs it loaded in order to work*@
     <script src="~/Scripts/jquery-2.1.4.js"></script>
@@ -21,14 +22,14 @@
                         <div class="navbar-header">
                             <a href="~/Home">
                                 <img src="~/img/logo1.png" class="img-responsive logo" />
-                                </a>
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-</div>
+                            </a>
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
                         <div class="collapse navbar-collapse navbar-menubuilder">
                             <ul class="nav navbar-nav navbar-right">
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
@@ -61,7 +62,8 @@
                                             <a href="~/Moderator/AllTickets/@Session["LogedUserID"]">All Tickets</a>
                                         </li>
                                     }
-                                    else { 
+                                    else
+                                    {
                                         <li>
                                             <a href="~/Tickets/Index/@Session["LogedUserID"]">My Tickets</a>
                                         </li>
@@ -69,7 +71,7 @@
                                     <li>
                                         <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
                                     </li>
-                                    
+
                                 }
                                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                                 {
@@ -77,7 +79,7 @@
                                         <a href="~/Home/Logout">Logout</a>
                                     </li>
                                 }
-                                
+
                             </ul>
 
                         </div>
@@ -88,7 +90,7 @@
         <div class="centralDiv">
             @RenderBody()
         </div>
-    </div>
+
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -122,6 +124,7 @@
                 </div>
             </div>
         </footer>
+    </div>
     @RenderSection("OrderByScript", required: false)
     @RenderSection("passwordValidation", required: false)
         <script src="~/Scripts/bootstrap.js"></script>
