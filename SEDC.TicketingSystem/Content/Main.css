@@ -839,9 +839,12 @@ input:focus {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   margin-left:-3%;
+  
 }
 .button-login:hover {
   background: #178ab4;
+  text-decoration:none;
+  color:white;
 }
 
 
@@ -1005,4 +1008,13 @@ input:focus {
 .padding{
     padding:2%;
 
+}
+
+.width20{
+    width:20%;
+    height:4%;
+
+}
+.margin0{
+    margin:0;
 }
