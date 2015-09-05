@@ -42,18 +42,15 @@ table.dataTable td {
 <div class="wraperHome shadow4">
     <div class="container-fluid wraperHome1">
         <div class="position-center">
-            <span class="msgText">Order By: </span>
-            <select id="filterBy" name="filterBy">
-                <option value="1">Status</option>
-                <option value="2">Open Date</option>
-                <option value="3">Title</option>
-                <option value="4">Worked Hours</option>
-            </select>
-            <span class="msgText">Ordering: </span>
+            <span class="msgText">Filter by: </span>
+            @Html.DropDownList("CategoryID",  null, "Category", htmlAttributes: new { @class = ""})
+ 
             <select id="ordering" name="ordering">
-                <option value="1">Acending</option>
-                <option value="2">Decending</option>
-            </select>*
+                <option value="">Status</option>
+                <option value="1">Pending</option>
+                <option value="2">Wait reply</option>
+                <option value="3">Closed</option>
+            </select>
             <p class="btn loginbtn">
                 @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
             </p>
@@ -210,4 +207,4 @@ table.dataTable td {
                    })
                   
                 </script>
-                @*<script src="~/Scripts/userOrderBy.js"></script>*@}
+                <script src="~/Scripts/userOrderBy.js"></script>}

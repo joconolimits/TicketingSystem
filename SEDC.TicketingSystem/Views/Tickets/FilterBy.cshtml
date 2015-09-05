@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SEDC.TicketingSystem.Models.Ticket>
+<table class="table">
+    <tr class="msgText">
+        @* We don't need to show the moderator and owner of the ticket in the list *@
+        @*<th>
+                @Html.DisplayNameFor(model => model.Moderator.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner.Name)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CloseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkHours)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        string status = "";
+        if ((int)item.Status == 1)
+        {
+            status = "danger";
+        }
+        if ((int)item.Status == 2)
+        {
+            status = "info";
+        }
+        if ((int)item.Status == 3)
+        {
+            status = "success";
+        }
+        <tr class="@status">
+            @* We don't need to show the moderator and owner of the ticket in the list *@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Moderator.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner.Name)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @* This line will show the title of the ticket as link to the ticket details *@
+                @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CloseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkHours)
+            </td>
+            <td>
+
+                @if ((int)item.Status == 3)
+                {
+                    <span>Edit |</span>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+                }
+                else
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                    <span>|</span>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                }
+
+            </td>
+        </tr>
+    }
+</table>

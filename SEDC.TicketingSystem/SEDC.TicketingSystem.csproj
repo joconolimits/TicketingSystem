@@ -448,7 +448,7 @@
     <Content Include="Views\Moderator\Details.cshtml" />
     <Content Include="Views\Moderator\AssignTicket.cshtml" />
     <Content Include="Views\Moderator\OrderBy.cshtml" />
-    <Content Include="Views\Tickets\OrderBy.cshtml" />
+    <Content Include="Views\Tickets\FilterBy.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />

@@ -25,44 +25,60 @@ namespace SEDC.TicketingSystem.Controllers
             //var tickets = db.Tickets.Where(x => x.OwnerID == id);
              var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(x => x.OwnerID == id)
                  .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
+
+            // Add the categories picklist into the view it is needed for teh filter
+             ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
             return View(tickets.ToList());
         }
 
-        // Ordering Filters
-        public PartialViewResult OrderBy(int? x, int? ord)
+        // Filter By Method
+        public PartialViewResult FilterBy(int? categoryId, int? statusId)
         {
             var id = Convert.ToInt32(Session["LogedUserID"]);
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(t => t.OwnerID == id);
-            if (x == 1)
-            {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.Status);
-                else
-                    tickets = tickets.OrderByDescending(d => d.Status);
-            }
-            if (x == 2)
-            {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.OpenDate);
-                else
-                    tickets = tickets.OrderByDescending(d => d.OpenDate);
-            }
-            if (x == 3)
-            {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.Title);
-                else
-                    tickets = tickets.OrderByDescending(d => d.Title);
-            }
-            if (x == 4)
-            {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.WorkHours);
-                else
-                    tickets = tickets.OrderByDescending(d => d.WorkHours);
-            }
+
+            if(categoryId != null)
+                tickets = tickets.Where(t => t.CategoryID == categoryId && categoryId != 0 );
+            if(statusId != null)
+                tickets = tickets.Where(t => t.Status == (TicketStatus)statusId && statusId != 0);
             return PartialView(tickets.ToList());
         }
+
+        // Ordering Filters
+        //public PartialViewResult OrderBy(int? x, int? ord)
+        //{
+        //    var id = Convert.ToInt32(Session["LogedUserID"]);
+        //    var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(t => t.OwnerID == id);
+        //    if (x == 1)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.Status);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.Status);
+        //    }
+        //    if (x == 2)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.OpenDate);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.OpenDate);
+        //    }
+        //    if (x == 3)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.Title);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.Title);
+        //    }
+        //    if (x == 4)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.WorkHours);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.WorkHours);
+        //    }
+        //    return PartialView(tickets.ToList());
+        //}
 
 
         // GET: Tickets/Details/5
