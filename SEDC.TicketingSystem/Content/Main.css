@@ -195,7 +195,7 @@ body {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
-    width:500px;
+    width:100%;
     padding:2%;
     margin-top:0%;
     background-color:white;
