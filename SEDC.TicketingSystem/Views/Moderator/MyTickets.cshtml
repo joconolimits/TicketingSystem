@@ -12,103 +12,104 @@
     }
 }
 <div id="tickets" class="container-fluid">
-    <div class="box1 text-center">
-        <br />
-        <h3 class="colorletter text-center">My Tickets</h3>
-        <br />
-    </div>
-    <br />
-    <table class="table table-moderator">
-        <tr class="msgTextNoMrg">
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                Category
-            </th>
-            <th>
-                Moderator
-            </th>
-            <th>
-                Author
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpenDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CloseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkHours)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            string status = "";
-            if ((int)item.Status == 1)
-            {
-                status = "danger";
-            }
-            if ((int)item.Status == 2)
-            {
-                status = "info";
-            }
-            if ((int)item.Status == 3)
-            {
-                status = "success";
-            }
+    <div class="table-moderator">
+        <h3 class="padding colorletter" >My Tickets</h3>
+      
+        <table class="table">
             
-            <tr class="@status">
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Moderator.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Owner.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CloseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkHours)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.ID })
-                    @*Only Super Admin can delete tickets*@
-                    @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
-                    {
-                        <span>|</span>
-                        @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
-                        <span>|</span>
-                        @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)
-                    }
-                </td>
+            <tr class="msgTextNoMrg">
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Moderator
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OpenDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CloseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WorkHours)
+                </th>
+                <th></th>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model)
+            {
+                string status = "";
+                if ((int)item.Status == 1)
+                {
+                    status = "danger";
+                }
+                if ((int)item.Status == 2)
+                {
+                    status = "info";
+                }
+                if ((int)item.Status == 3)
+                {
+                    status = "success";
+                }
+
+                <tr class="@status">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Moderator.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpenDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CloseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkHours)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "button modern-button-purple" })
+                        @*Only Super Admin can delete tickets*@
+                        @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+                        {
+                            <span>|</span>
+
+                            @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, new { @class = "button modern-button" })
+
+                            <span>|</span>
+                            @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, new { @class = "button modern-button-red" })
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
     <div class="make-room"></div>
 </div>
 

@@ -4,68 +4,68 @@
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
 }
-                      <div class="box1 text-center">
-                          <br />
-                          <h3 class="colorletter text-center">Users</h3>
-                          <br />
-                      </div>
-                      <div>
-                          <a>
-                              @Html.ActionLink("Create New", "Create", null, new { @class = "btn loginbtnNoMrg pull-right margin-bottom1" })
-                          </a>
-                      </div>
-<table class="table table-moderator clearfix">
-    <tr class="colorletter">
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAdmin)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAdmin)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-
-</table>
+                      <div class="table-moderator">
+                       
+                          <h3 class="colorletter padding">Users</h3>
+                        <hr class="margin0" />
                       
+                          <div class="padding">
+                              <a>
+                                  @Html.ActionLink("Create New", "Create", null, new { @class = "button-login margin-bottom1" })
+                              </a>
+                          </div>
+                          <table class="table clearfix">
+                              <tr class="colorletter">
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.ID)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Name)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.LastName)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Username)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Email)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.IsAdmin)
+                                  </th>
+                                  <th></th>
+                              </tr>
+
+                              @foreach (var item in Model)
+                              {
+                                  <tr>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.ID)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Name)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.LastName)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Username)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Email)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.IsAdmin)
+                                      </td>
+                                      <td>
+                                          @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "modern-button" }) |
+                                          @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "modern-button-purple" }) |
+                                          @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "modern-button-red" })
+                                      </td>
+                                  </tr>
+                              }
+
+                          </table>
+                      </div>                  
     <div class="make-room"></div>
