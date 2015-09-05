@@ -3,35 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-<link href="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
-<link href="http://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css" rel="stylesheet" />
-
-<style>
-    body { 
-  font-size: 140%; 
-}
-
-h2 {
-  text-align: center;
-  padding: 20px 0;
-}
-
-table caption {
-	padding: .5em 0;
-}
-
-table.dataTable th,
-table.dataTable td {
-  white-space: nowrap;
-}
-
-.p {
-  text-align: center;
-  padding-top: 140px;
-  font-size: 14px;
-}
-</style>
-
 
 <div class="box1 text-center">
     <br />
@@ -44,8 +15,7 @@ table.dataTable td {
         <div class="position-center">
             <span class="msgText">Filter by: </span>
             @Html.DropDownList("CategoryID",  null, "Category", htmlAttributes: new { @class = ""})
- 
-            <select id="ordering" name="ordering">
+            <select id="status" name="status">
                 <option value="">Status</option>
                 <option value="1">Pending</option>
                 <option value="2">Wait reply</option>
@@ -63,17 +33,10 @@ table.dataTable td {
     <div class="row">
         <div class="col-xs-12">
             @* This div is needed for the ordering filters and the ajax to work *@
-            <div id="tickets" class="container-fluid">
+            <div class="container-fluid">
                 <table class="table table-bordered table-hover dt-responsive">
                     <thead>
                         <tr>
-                            @* We don't need to show the moderator and owner of the ticket in the list *@
-                            @*<th>
-                    @Html.DisplayNameFor(model => model.Moderator.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Owner.Name)
-                </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.ID)
                             </th>
@@ -98,7 +61,7 @@ table.dataTable td {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tickets">
                         @foreach (var item in Model)
                         {
                             string status = "";
@@ -115,13 +78,6 @@ table.dataTable td {
                                 status = "success";
                             }
                             <tr class="@status">
-                                @* We don't need to show the moderator and owner of the ticket in the list *@
-                                @*<td>
-                        @Html.DisplayFor(modelItem => item.Moderator.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Owner.Name)
-                    </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ID)
                                 </td>
@@ -163,48 +119,24 @@ table.dataTable td {
                                 </td>
                             </tr>
                         }
-                    <tbody>
-</table>
+<tbody>
+                   </table>
                 </div>
             </div>
         </div>
             </div>
             <div class="make-room"></div>
-            @section OrderByScript{
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="http://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
-<script src="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-<script src="http://cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js"></script>
-               <script>
-                   //$.extend(true, $.fn.dataTable.defaults, {
-                   //    "searching": true,
-                   //    "ordering": false
-                   //});
-
-                   $.fn.dataTable.ext.type.detect.unshift(
-                        function (d) {
-                            return d === 'Pending' || d === 'WaitReply' || d === 'Closed' ?
-                                'salary-grade' :
-                                null;
-                        }
-                    );
-
-                   $.fn.dataTable.ext.type.order['salary-grade-pre'] = function (d) {
-                       switch (d) {
-                           case 'Pending': return 1;
-                           case 'WaitReply': return 2;
-                           case 'Closed': return 3;
-                       }
-                       return 0;
-                   };
-
-                   $(function () {
-
-                       $('table').DataTable({
-                           "order": [[2, "asc"]]
-                       }
-                    );
-                   })
-                  
-                </script>
-                <script src="~/Scripts/userOrderBy.js"></script>}
+@section dataTableCss{
+    <link href="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="http://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css" rel="stylesheet" />
+    <link href="~/Content/DataTable.css" rel="stylesheet" />
+}
+@section OrderByScript{
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+    <script src="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    <script src="http://cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js"></script>
+    <script src="~/Scripts/dataTableScript.js"></script>
+    <script src="~/Scripts/userFilterBy.js"></script>
+   
+}

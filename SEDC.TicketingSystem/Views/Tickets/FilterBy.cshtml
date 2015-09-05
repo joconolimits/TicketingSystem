@@ -1,36 +1,5 @@
 ﻿@model IEnumerable<SEDC.TicketingSystem.Models.Ticket>
-<table class="table">
-    <tr class="msgText">
-        @* We don't need to show the moderator and owner of the ticket in the list *@
-        @*<th>
-                @Html.DisplayNameFor(model => model.Moderator.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Owner.Name)
-            </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpenDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CloseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkHours)
-        </th>
-        <th></th>
-    </tr>
+
     @foreach (var item in Model)
     {
         string status = "";
@@ -47,13 +16,6 @@
             status = "success";
         }
         <tr class="@status">
-            @* We don't need to show the moderator and owner of the ticket in the list *@
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Moderator.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Owner.Name)
-                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.ID)
             </td>
@@ -95,4 +57,4 @@
             </td>
         </tr>
     }
-</table>
+
