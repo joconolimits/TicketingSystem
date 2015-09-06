@@ -2,11 +2,11 @@
     ViewBag.Title = "WelcomePage";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-<div class="container-fluid wraperHome">
-    <div class="shadow2 blue-line">
+
+    <div class="shadow2-contact blue-line">
         <h3 class="colorletter">Welcome!</h3>
         <hr />
-        <div class="container">
+        <div class="container-fluid">
             <div class="prvRed">
                 <div class="ikona hvr-wobble-to-top-right">
                     <a href="~/Users/Edit/@Session["LogedUserID"]" class="under"><i class="glyphicon glyphicon-user ikonaCovek"></i>Edit Profile</a>
@@ -14,9 +14,9 @@
                 <div class="ikona hvr-wobble-to-top-right">
                     <a href="~/Users/Details/@Session["LogedUserID"]" class="under"><i class="glyphicon glyphicon-list-alt ikonaCovek"></i>My Account</a>
                 </div>
-                <div class="ikona hvr-wobble-to-top-right">
+                <div class="ikona hvr-wobble-to-top-right no-margin">
                     <a href="~/Tickets/Create" class="under"><i class="glyphicon glyphicon-plus ikonaCovek"></i>New Ticket</a>
-                </div>                
+                </div>
             </div>
             <div class="prvRed">
                 <div class="ikona hvr-wobble-to-top-right">
@@ -25,15 +25,14 @@
                 <div class="ikona hvr-wobble-to-top-right">
                     <a href="#" class="under"><i class="glyphicon glyphicon-bold ikonaCovek"></i>Blog</a>
                 </div>
-                <div class="ikona hvr-wobble-to-top-right">
+                <div class="ikona hvr-wobble-to-top-right no-margin">
                     <a href="~/Home/Logout" class="under"><i class="glyphicon glyphicon-off ikonaCovek"></i>Log Out</a>
                 </div>
             </div>
             <div class="prvRed">
                 <div class="ikona biger">
-                   <p>Welcome to our site where we provide help to you please enjoy while you are using our services!</p>
+                    <p>Welcome to our site where we provide help to you please enjoy while you are using our services!</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
