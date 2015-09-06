@@ -11,23 +11,23 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
-
-<div>
-    <span class="msgText">Filter by: </span>
-    @Html.DropDownList("CategoryID", null, "Category", htmlAttributes: new { @class = "" })
-    <select id="status" name="status">
-        <option value="">Status</option>
-        <option value="1">Pending</option>
-        <option value="2">Wait reply</option>
-        <option value="3">Closed</option>
-    </select>
-</div>
-<input type="hidden" value="1" id="key"/> @*This key just tells us to filter per user as well*@
-
-<div class="container-fluid">
-    <div class="table-moderator">
-        <h3 class="padding colorletter" >My Tickets</h3>
-      
+<div class="container-fluid blue-line shadow2">
+    <h3 class="colorletter">My Tickets</h3>
+    <hr />
+    <div class="">
+        <div>
+            <br />
+            <span class="msgText">Filter by: </span>
+            @Html.DropDownList("CategoryID", null, "Category", htmlAttributes: new { @class = "" })
+            <select id="status" name="status">
+                <option value="">Status</option>
+                <option value="1">Pending</option>
+                <option value="2">Wait reply</option>
+                <option value="3">Closed</option>
+            </select>
+        </div>
+        <br />
+        <input type="hidden" value="1" id="key" /> @*This key just tells us to filter per user as well*@
         <table class="table">
             <thead>
                 <tr class="msgTextNoMrg">
@@ -111,11 +111,11 @@
                             @*Only Super Admin can delete tickets*@
                             @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
                             {
-                                <span>|</span>
+                                <span></span>
 
                                 @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, new { @class = "button modern-button" })
 
-                                <span>|</span>
+                                <span></span>
                                 @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, new { @class = "button modern-button-red" })
                             }
                         </td>
@@ -124,7 +124,6 @@
             </tbody>
         </table>
     </div>
-    <div class="make-room"></div>
 </div>
 
 @section OrderByScript{
