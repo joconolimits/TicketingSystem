@@ -21,7 +21,6 @@
             <div class="form">
 
                 <h2>@ViewBag.Message</h2>
-                <form>
                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input" , placeholder="E-mail" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
@@ -38,7 +37,7 @@
                 <h2>Create an account</h2>
                
 
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Create", "Users", FormMethod.Post, new { id = "passForm" }))
                     {
                         @Html.AntiForgeryToken()
 

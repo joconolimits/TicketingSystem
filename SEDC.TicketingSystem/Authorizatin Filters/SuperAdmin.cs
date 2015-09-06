@@ -26,9 +26,9 @@ namespace SEDC.TicketingSystem.Authorizatin_Filters
                 filterContext.Result = new RedirectToRouteResult(redirectTargetDictionary);
                 this.OnActionExecuting(filterContext);
             }
-            //check if user is SuperAdmin  Allow the action
             else
             {
+                //check if user is SuperAdmin  Allow the action
                 if (user.IsAdmin == AccessLevel.SuperAdmin)
                 {
                     this.OnActionExecuting(filterContext);

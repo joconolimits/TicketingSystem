@@ -54,7 +54,7 @@ namespace SEDC.TicketingSystem.Controllers
                     if (v != null && pwdManager.IsPasswordMatch(Password, v.Salt, v.Password))
                     {
                         FormsAuthentication.SetAuthCookie(v.Username, false);
-                 
+                       
                         Session["CurrentUser"] = v;
                         Session["Username"] = v.Username.ToString();
                         Session["LogedUserID"] = v.ID.ToString();

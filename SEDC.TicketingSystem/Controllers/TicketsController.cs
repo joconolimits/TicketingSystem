@@ -20,9 +20,10 @@ namespace SEDC.TicketingSystem.Controllers
 
         // GET: Tickets
         // Show My tickets page.
-        public ActionResult Index(int? id)
+        public ActionResult Index() //int? id
         {
             //var tickets = db.Tickets.Where(x => x.OwnerID == id);
+           int id = Convert.ToInt32(Session["LogedUserID"]);
              var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(x => x.OwnerID == id)
                  .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
 
@@ -89,6 +90,11 @@ namespace SEDC.TicketingSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ticket ticket = db.Tickets.Find(id);
+            //Checkif the requested ticket is owned by the current user.
+            if (ticket.OwnerID != Convert.ToInt32(Session["LogedUserID"]))
+            {
+                return RedirectToAction("Index");
+            }
             TicketAndRepliesViewModel ticketAndRepliesViewModel = new TicketAndRepliesViewModel();
             ticketAndRepliesViewModel.Ticket = ticket;
             ticketAndRepliesViewModel.Replies = db.Replies.Where(x => x.TicketID == id && x.IsAdminMessage == false).OrderByDescending(x => x.TimeStamp);
