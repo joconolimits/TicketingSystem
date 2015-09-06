@@ -15,7 +15,7 @@
 <div class="container-fluid wraperHome">
     <div class="shadow2">
         <div class="panel-body">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "passForm" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 
                                 <div class="">
-                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" , placeholder="Password"} })
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @id = "passwordReg", @class = "input", placeholder = "Password" } })
                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 </div>
                             </div>
