@@ -10,99 +10,105 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
-
-<div class="shadowModerator blue-line">
-    <div class="container-fluid">
-        <div class="row">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" name="query" class="input  search-query" placeholder="Search" />
-                    <span class="input-group-btn">
-                        <button id="search" class="btn srchbtn" type="submit">
-                            <span class=" glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
+<div class="shadow2 blue-line">
+    <div class="shadowModerator">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" name="query" class="input  search-query" placeholder="Search" />
+                        <span class="input-group-btn">
+                            <button id="search" class="btn srchbtn" type="submit">
+                                <span class=" glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row moderatorCentering">
-        <div id="filter-panel" class="collapse filter-panel">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <form class="form-inline" role="form">
+        <div class="row moderatorCentering">
+            <div id="filter-panel" class="collapse filter-panel">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-inline" role="form">
 
-                        <div class="form-group">
-                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
-                                <label><input type="checkbox" name="title" value="true"> Title</label>
-                                <input type="hidden" value="false" name="title" />
+                            <div class="form-group">
+                                <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                    <label><input type="checkbox" name="title" value="true"> Title</label>
+                                    <input type="hidden" value="false" name="title" />
+                                </div>
                             </div>
-                         </div>
 
-                        <div class="form-group">
-                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
-                                <label><input type="checkbox" name="owner" value="true"> Owner</label>
-                                <input type="hidden" value="false" name="owner" />
+                            <div class="form-group">
+                                <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                    <label><input type="checkbox" name="owner" value="true"> Owner</label>
+                                    <input type="hidden" value="false" name="owner" />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
-                                <label><input type="checkbox" name="moderator" value="true"> Moderator</label>
-                                <input type="hidden" value="false" name="moderator" />
+                            <div class="form-group">
+                                <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                    <label><input type="checkbox" name="moderator" value="true"> Moderator</label>
+                                    <input type="hidden" value="false" name="moderator" />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
-                                <label><input type="checkbox" name="body" value="true"> Body</label>
-                                <input type="hidden" value="false" name="body" />
+                            <div class="form-group">
+                                <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                    <label><input type="checkbox" name="body" value="true"> Body</label>
+                                    <input type="hidden" value="false" name="body" />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="checkbox" style="margin-left:10px; margin-right:10px;">
-                                <label><input type="checkbox" name="category" value="true"> Category</label>
-                                <input type="hidden" value="false" name="category" />
+                            <div class="form-group">
+                                <div class="checkbox" style="margin-left:10px; margin-right:10px;">
+                                    <label><input type="checkbox" name="category" value="true"> Category</label>
+                                    <input type="hidden" value="false" name="category" />
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <button type="button" class="button-login" data-toggle="collapse" data-target="#filter-panel">
+                <span class="glyphicon glyphicon-cog"></span> Advanced Search
+            </button>
         </div>
-        <button type="button" class="button-login" data-toggle="collapse" data-target="#filter-panel">
-            <span class="glyphicon glyphicon-cog"></span> Advanced Search
-        </button>
+
     </div>
+    <div id="tickets"></div>
 </div>
-    
-<div id="tickets"></div>
+@section SearchAjax{
+    <script>
+        $(function () {
+            //Set the selected fields for advanced search to true, uselected to faulse
+            $('#search').on('click', function () {
+                var checkboxArray = [];
+                var i = 0;
+                $('input[type=checkbox]').each(function () {
+                    if (this.checked)
+                        checkboxArray[i] = 'true';
+                    else
+                        checkboxArray[i] = 'false';
+                    i++;
+                });
+                // Call the search method with Ajax
+                $.ajax({
+                    url: '/Moderator/Search?query=' + $('input[name=query]').val() + '&title=' + checkboxArray[0] + '&owner=' + checkboxArray[1] + '&moderator=' + checkboxArray[2] + '&body=' + checkboxArray[3] + '&category=' + checkboxArray[4],
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html'
+                })
+               .success(function (result) {
+                   $('#tickets').html(result);
+               })
+               .error(function (xhr, status) {
+                   alert(status);
+               })
+            });
+        });
+    </script>
+}
 
-<script>
-     $(function () {
-         $('#search').on('click', function () {
-             var checkboxArray = [];
-             var i = 0;
-             $('input[type=checkbox]').each(function () {
-                 if (this.checked) 
-                     checkboxArray[i] = 'true';
-                 else
-                     checkboxArray[i] = 'false';
-                 i++;
-             });
-         $.ajax({
-             url: '/Moderator/Search?query=' + $('input[name=query]').val() + '&title=' + checkboxArray[0] + '&owner=' + checkboxArray[1] + '&moderator=' + checkboxArray[2] + '&body=' + checkboxArray[3] + '&category=' + checkboxArray[4],
-            contentType: 'application/html; charset=utf-8',
-            type: 'GET',
-            dataType: 'html'
-        })
-        .success(function (result) {
-            $('#tickets').html(result);
-        })
-        .error(function (xhr, status) {
-            alert(status);
-        })
-    });
-     });
-</script>
+
