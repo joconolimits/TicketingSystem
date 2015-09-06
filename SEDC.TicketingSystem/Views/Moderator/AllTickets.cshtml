@@ -17,122 +17,111 @@
                           <br />
                       </div>
     <br />
-<div class="container-fluid shadow4">
-    <div class="container-fluid wraperHome1">
-        <div class="position-center text-center">
-            @* order tickets By property and choose ordering  acending/decending *@
-            <span class="msgTextNoMrg">Order By: </span>
-            <select id="filterBy" name="filterBy">
-                <option value="1">Status</option>
-                <option value="2">Open Date</option>
-                <option value="3">Title</option>
-                <option value="4">Worked Hours</option>
-            </select>
-            <span class="msgTextNoMrg">Ordering: </span>
-            <select id="ordering" name="ordering">
-                <option value="1">Acending</option>
-                <option value="2">Decending</option>
-            </select>
-            @*For now the moderator and the super admin will not be able to create tickets*@
-            @*<p class="btn loginbtn">
-                @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
-            </p>*@
-        </div>
-    </div>
+<div>
+    <span class="msgText">Filter by: </span>
+    @Html.DropDownList("CategoryID", null, "Category", htmlAttributes: new { @class = "" })
+    <select id="status" name="status">
+        <option value="">Status</option>
+        <option value="1">Pending</option>
+        <option value="2">Wait reply</option>
+        <option value="3">Closed</option>
+    </select>
 </div>
     <br />
-<div id="tickets" class="container-fluid">
+<div  class="container-fluid">
     <table class="table table-moderator">
-        <tr class="msgTextNoMrg">
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                Category
-            </th>
-            <th>
-                Moderator
-            </th>
-            <th>
-                Author
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpenDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CloseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkHours)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            string status = "";
-            if ((int)item.Status == 1)
-            {
-                status = "danger";
-            }
-            if ((int)item.Status == 2)
-            {
-                status = "info";
-            }
-            if ((int)item.Status == 3)
-            {
-                status = "success";
-            }
-            
-            <tr class="@status">
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Moderator.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Owner.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CloseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkHours)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) 
-                    @*Only Super Admin can delete tickets*@
-                    @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
-                    {
-                    <span>|</span>
-                    @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
-                        <span>|</span>
-                    @Html.ActionLink("Delete", "Delete" , "Tickets" , new { id = item.ID }, null)
-                    }
-                </td>
+        <thead>
+            <tr class="msgTextNoMrg">
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Moderator
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OpenDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CloseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WorkHours)
+                </th>
+                <th></th>
             </tr>
-        }
+        </thead>
+        <tbody id="tickets">
+            @foreach (var item in Model)
+            {
+                string status = "";
+                if ((int)item.Status == 1)
+                {
+                    status = "danger";
+                }
+                if ((int)item.Status == 2)
+                {
+                    status = "info";
+                }
+                if ((int)item.Status == 3)
+                {
+                    status = "success";
+                }
 
+                <tr class="@status">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Moderator.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpenDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CloseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkHours)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ID })
+                        @*Only Super Admin can delete tickets*@
+                        @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+                        {
+                            <span>|</span>
+                            @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
+                            <span>|</span>
+                            @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 
 </div>
-@section OrderByScript{<script src="~/Scripts/AdminOrderBy.js"></script>} @*Ajax ordering of tickets*@
+@section OrderByScript{<script src="~/Scripts/AdminFilterBy.js"></script>} @*Ajax ordering of tickets*@

@@ -30,7 +30,9 @@ namespace SEDC.TicketingSystem.Controllers
         {
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category)
                 .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
-        
+
+            // Add the categories picklist into the view it is needed for teh filter
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
             return View(tickets);
         }
 
@@ -56,44 +58,65 @@ namespace SEDC.TicketingSystem.Controllers
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
             int ModeratorID = Convert.ToInt32(Session["LogedUserID"]);
             tickets = tickets.Where(t => t.ModeratorID == ModeratorID).OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
+
+            // Add the categories picklist into the view it is needed for teh filter
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
             return View(tickets.ToList());
         }
 
-        // Ordering Filters
-        public PartialViewResult OrderBy(int? x, int? ord) 
+        // Filter By Method
+        public PartialViewResult FilterBy(int? categoryId, int? statusId, int? key)
         {
-
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
-            if (x == 1)
+            // If true then you need to filter only the tickets of the current moderator
+            if (key == 1)
             {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.Status);
-                else
-                    tickets = tickets.OrderByDescending(d => d.Status);
+                var id = Convert.ToInt32(Session["LogedUserID"]);
+                tickets = tickets.Where(t => t.ModeratorID == id);
+
             }
-            if (x == 2)
-            {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.OpenDate);
-                else
-                    tickets = tickets.OrderByDescending(d => d.OpenDate);
-            }
-            if (x == 3)
-            {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.Title);
-                else
-                    tickets = tickets.OrderByDescending(d => d.Title);
-            }
-            if (x == 4)
-            {
-                if (ord != 2)
-                    tickets = tickets.OrderBy(d => d.WorkHours);
-                else
-                    tickets = tickets.OrderByDescending(d => d.WorkHours);
-            }
-            return PartialView(tickets);
+            if (categoryId != null)
+                tickets = tickets.Where(t => t.CategoryID == categoryId);
+            if (statusId != null)
+                tickets = tickets.Where(t => t.Status == (TicketStatus)statusId);
+            return PartialView(tickets.OrderBy(t => t.Status).ToList());
         }
+
+        // Ordering Filters
+        //public PartialViewResult OrderBy(int? x, int? ord) 
+        //{
+
+        //    var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
+        //    if (x == 1)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.Status);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.Status);
+        //    }
+        //    if (x == 2)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.OpenDate);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.OpenDate);
+        //    }
+        //    if (x == 3)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.Title);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.Title);
+        //    }
+        //    if (x == 4)
+        //    {
+        //        if (ord != 2)
+        //            tickets = tickets.OrderBy(d => d.WorkHours);
+        //        else
+        //            tickets = tickets.OrderByDescending(d => d.WorkHours);
+        //    }
+        //    return PartialView(tickets);
+        //}
 
 
         public ActionResult Details(int? id)

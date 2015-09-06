@@ -38,10 +38,10 @@ namespace SEDC.TicketingSystem.Controllers
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(t => t.OwnerID == id);
 
             if(categoryId != null)
-                tickets = tickets.Where(t => t.CategoryID == categoryId && categoryId != 0 );
+                tickets = tickets.Where(t => t.CategoryID == categoryId);
             if(statusId != null)
-                tickets = tickets.Where(t => t.Status == (TicketStatus)statusId && statusId != 0);
-            return PartialView(tickets.ToList());
+                tickets = tickets.Where(t => t.Status == (TicketStatus)statusId);
+            return PartialView(tickets.OrderBy(t => t.Status).ToList());
         }
 
         // Ordering Filters

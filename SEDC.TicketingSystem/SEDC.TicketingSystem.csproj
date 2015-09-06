@@ -114,7 +114,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Icon.png" />
-    <Content Include="Scripts\AdminOrderBy.js" />
+    <Content Include="Scripts\AdminFilterBy.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -449,7 +449,7 @@
     <Content Include="Views\Moderator\AllTickets.cshtml" />
     <Content Include="Views\Moderator\Details.cshtml" />
     <Content Include="Views\Moderator\AssignTicket.cshtml" />
-    <Content Include="Views\Moderator\OrderBy.cshtml" />
+    <Content Include="Views\Moderator\FilterBy.cshtml" />
     <Content Include="Views\Tickets\FilterBy.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
