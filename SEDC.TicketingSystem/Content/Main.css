@@ -657,8 +657,9 @@ body {
 
 .butonCenter{
     display:inline-block;
-    float:left;
+   
 }
+
 .bodyText{
     margin-left:-10%;
     margin-right:10%;
