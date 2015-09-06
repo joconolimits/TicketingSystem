@@ -103,18 +103,29 @@ namespace SEDC.TicketingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,LastName,Username,Email,Password,IsAdmin")] User user)
+        public ActionResult Edit([Bind(Include = "ID,Name,LastName,Username,Email,IsAdmin")] User user, string Password)
         {
-            if (ModelState.IsValid)
+            var DbUser = db.Users.Find(user.ID);
+            // If there is a new password change it.
+            if (Password != "")
             {
                 PasswordManager pwdManager = new PasswordManager();
-                user.Salt = SaltGenerator.GetSaltString();
-                user.Password = pwdManager.GeneratePasswordHash(user.Password, user.Salt);
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Details", new{id = user.ID });
+                DbUser.Salt = SaltGenerator.GetSaltString();
+                DbUser.Password = pwdManager.GeneratePasswordHash(Password, DbUser.Salt);
             }
-            return View(user);
+            DbUser.IsAdmin = user.IsAdmin;
+            DbUser.LastName = user.LastName;
+            DbUser.Name = user.Name;
+            DbUser.Username = user.Username;
+            DbUser.Email = user.Email;
+            db.Entry(DbUser).State = EntityState.Modified;
+            db.SaveChanges();
+            // If the superAdmin edits user redirect him to the list of users.
+            if ((AccessLevel)Session["IsAdmin"] == AccessLevel.SuperAdmin)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Details", new{id = user.ID });
         }
 
         // GET: Users/Delete/5

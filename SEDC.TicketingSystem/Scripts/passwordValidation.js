@@ -1,10 +1,13 @@
-﻿$("form").validate({
-    rules: {
-        confirmPassword: {
-            equalTo: "#Password"
+﻿$(function () {
+    $("#passForm").validate({
+        rules: {
+            confirmPassword: {
+                equalTo: "#passwordReg"
+            }
+        },
+        messages: {
+            equalTo: "Please enter the same password as above"
         }
-    },
-    messages:{
-        equalTo: "Please enter the same password as above"
-    } 
-});
+    });
+
+})

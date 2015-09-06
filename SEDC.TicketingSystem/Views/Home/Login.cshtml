@@ -30,20 +30,15 @@
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" , placeholder="Password" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                </form>
                 <input type="submit" value="Login" class="button-login" />
             </div>
         }
-
-           
-
-
 
             <div class="form">
                 <h2>Create an account</h2>
                
 
-                    @using (Html.BeginForm("Create", "Users", FormMethod.Post))
+                    @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
 
@@ -83,7 +78,7 @@
                         <div class="">
 
                             <div class="">
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input", placeholder = "Password" } })
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @id = "passwordReg", @class = "input", placeholder = "Password" } })
                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -97,13 +92,11 @@
 
                         <div class="">
                             <div class="">
-                                <input type="submit" value="Confirm" class="button-login" />
+                                <input type="submit" value="Register" class="button-login" />
                             </div>
                         </div>
 
                     }
-
-
 
             </div>
 
@@ -114,7 +107,17 @@
    
 </div>
 <div class="make-room-login"></div>
+
+
+@section passwordValidation{
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <script src="~/Scripts/passwordValidation.js"></script>
 <script>
+
+    
+
+
     // Toggle Function
     $('.toggle').click(function () {
         // Switches the Icon
@@ -130,9 +133,4 @@
 
 
 </script>
-
-@section passwordValidation{
-    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
-    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
-    <script src="~/Scripts/passwordValidation.js"></script>
 }
