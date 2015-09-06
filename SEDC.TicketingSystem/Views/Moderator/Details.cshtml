@@ -45,14 +45,14 @@
                 <div class="body-width50">
                     <div class="pull-right">
                         <div class="container-fluid">
-                            <div class="butonCenter button-login">
-                                <button id="Close" type="button" class="btn button-login" data-toggle="modal" data-target=".bs-example-modal-sm">Close Ticket</button>
+                            <div class="butonCenter">
+                                <button id="Close" type="button" class="button-login" data-toggle="modal" data-target=".bs-example-modal-sm">Close Ticket</button>
                             </div>
-                            <div class="butonCenter button-login">
-                                @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }, new { @class = "btn button-login" })
+                            <div class="butonCenter ">
+                                @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }, new { @class = "button-login" })
                             </div>
-                            <div class="butonCenter button-login">
-                                @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID }, new { @class = "btn button-login" })
+                            <div class="butonCenter ">
+                                @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID }, new { @class = "button-login" })
                             </div>
                         </div>
                     </div>
@@ -124,8 +124,8 @@
 
             @*@Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })*@
             @* @Html.ActionLink("Back to List", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })*@
-    </div>
-    <div class="shadowDetail">
+   
+        <hr />
         <div class="createCenter">
             @* The  post reply  block *@
             @using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
@@ -133,8 +133,8 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4 class="msgTextNoMrg">Reply</h4>
-                    <hr />
+                    <h3 class="container-fluid colorletter">Replay</h3>
+                    
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         <div class="col-md-10">
@@ -145,7 +145,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <input type="submit" value="Create" class="button-login" id="submitReply" />
+                            <input type="submit" value="Send Replay" class="button-login" id="submitReply" />
                         </div>
                     </div>
                 </div>
