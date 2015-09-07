@@ -1,59 +1,64 @@
 ﻿@model IEnumerable<SEDC.TicketingSystem.Models.Ticket>
 
-    @foreach (var item in Model)
+@foreach (var item in Model)
+{
+    string status = "";
+    if ((int)item.Status == 1)
     {
-        string status = "";
-        if ((int)item.Status == 1)
-        {
-            status = "danger";
-        }
-        if ((int)item.Status == 2)
-        {
-            status = "info";
-        }
-        if ((int)item.Status == 3)
-        {
-            status = "success";
-        }
-        <tr class="@status">
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Moderator.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpenDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CloseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkHours)
-            </td>
-            @*Only Super Admin can delete tickets*@
-            @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
-            {
-            <td>
-                <span>|</span>
-                @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
-                <span>|</span>
-                @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)
-            </td>
-            }
-        </tr>
+        status = "ticket-status-pending";
     }
+    if ((int)item.Status == 2)
+    {
+        status = "ticket-status-waitReply";
+    }
+    if ((int)item.Status == 3)
+    {
+        status = "ticket-status-closed";
+    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
+        </td>
+        <td class="@status">
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moderator.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenDate)
+        </td>
+        <td>
+            @if (item.CloseDate.ToString() == "12/31/9999 11:59:59 PM")
+            {
+                <span>N/A</span>
+            }
+            else
+            { @Html.DisplayFor(modelItem => item.CloseDate) }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkHours)
+        </td>
+        @*Only Super Admin can delete tickets*@
+        @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
+        {
+        <td>
+            <span>|</span>
+            @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
+            <span>|</span>
+            @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)
+        </td>
+        }
+    </tr>
+}
 
 

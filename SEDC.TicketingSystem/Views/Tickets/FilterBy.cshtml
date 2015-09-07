@@ -5,17 +5,17 @@
         string status = "";
         if ((int)item.Status == 1)
         {
-            status = "danger";
+            status = "ticket-status-pending";
         }
         if ((int)item.Status == 2)
         {
-            status = "info";
+            status = "ticket-status-waitReply";
         }
         if ((int)item.Status == 3)
         {
-            status = "success";
+            status = "ticket-status-closed";
         }
-        <tr class="@status">
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ID)
             </td>
@@ -24,7 +24,7 @@
                 @Html.ActionLink(item.Title.ToString(), "Details", new { id = item.ID })
 
             </td>
-            <td>
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
@@ -34,7 +34,10 @@
                 @Html.DisplayFor(modelItem => item.OpenDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CloseDate)
+                @if(item.CloseDate.ToString()=="12/31/9999 11:59:59 PM"){
+                    <span>N/A</span>
+                }
+                else{ @Html.DisplayFor(modelItem => item.CloseDate) }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.WorkHours)

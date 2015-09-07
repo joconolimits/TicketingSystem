@@ -164,13 +164,7 @@
                     {
                         var color = "black";
                         if (item.IsAdminMessage == true) { color = "red"; } // If the reply is from another admin make it red.
-
-
                         <tr style="color:@color;">
-                            <td>
-                                    @Html.DisplayFor(modelItem => item.Ticket.Title)
-                                </td>
-
                             <td>
                                 @Html.Raw(item.ReplyBody)
                             </td>

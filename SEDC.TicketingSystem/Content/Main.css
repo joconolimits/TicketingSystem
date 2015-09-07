@@ -419,6 +419,20 @@ body {
         box-shadow: 1px 1px 5px #999;
 
 }
+/*Bacground for the ticket status pending*/
+.ticket-status-pending{
+    background-color:rgba(255,0,0,0.5);
+}
+
+/*Bacground for the ticket status waitReply*/
+.ticket-status-waitReply{
+    background-color: rgba(0,128,128, 0.3);
+}
+
+/*Bacground for the ticket status closed*/
+.ticket-status-closed{
+    background-color: rgba(0,255,0, 0.2);
+}
 
 /* Wobble To Top Right */
 @-webkit-keyframes hvr-wobble-to-top-right {

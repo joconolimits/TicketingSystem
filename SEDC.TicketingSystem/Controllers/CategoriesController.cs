@@ -77,7 +77,8 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ModeratorID = new SelectList(db.Users, "ID", "Name", category.ModeratorID);
+            var moderators = db.Users.Where(t => t.IsAdmin != AccessLevel.Registered);
+            ViewBag.ModeratorID = new SelectList(moderators, "ID", "Name", category.ModeratorID);
             return View(category);
         }
 
