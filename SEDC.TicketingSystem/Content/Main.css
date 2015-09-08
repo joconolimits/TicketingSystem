@@ -1,30 +1,50 @@
-﻿/*@font-face {
-  font-family: 'RobotoDraft';
-  font-style: normal;
-  font-weight: 400;
-  src: local('RobotoDraft'), local('RobotoDraft-Regular'), url(https://fonts.gstatic.com/s/robotodraft/v1/0xES5Sl_v6oyT7dAKuoni4gp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotodraft/v1/0xES5Sl_v6oyT7dAKuoni7rIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+﻿/*Css-Reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-@font-face {
-  font-family: 'RobotoDraft';
-  font-style: normal;
-  font-weight: 500;
-  src: local('RobotoDraft Medium'), local('RobotoDraft-Medium'), url(https://fonts.gstatic.com/s/robotodraft/v1/u0_CMoUf3y3-4Ss4ci-VwXJuJo8UJJfpGKt7pXjBv4s.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotodraft/v1/u0_CMoUf3y3-4Ss4ci-VwaTA90I55Xt7owhZwpPnMsc.woff) format('woff');
-}
+/*End Css Reset*/
 
-@font-face {
-  font-family: 'RobotoDraft';
-  font-style: normal;
-  font-weight: 700;
-  src: local('RobotoDraft Bold'), local('RobotoDraft-Bold'), url(https://fonts.gstatic.com/s/robotodraft/v1/u0_CMoUf3y3-4Ss4ci-Vwf79_ZuUxCigM2DespTnFaw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotodraft/v1/u0_CMoUf3y3-4Ss4ci-VwRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'RobotoDraft';
-  font-style: italic;
-  font-weight: 400;
-  src: local('RobotoDraft Italic'), local('RobotoDraft-Italic'), url(https://fonts.gstatic.com/s/robotodraft/v1/er-TIW55l9KWsTS1x9bTfgeOulFbQKHxPa89BaxZzA0.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotodraft/v1/er-TIW55l9KWsTS1x9bTfoo3ZslTYfJv0R05CazkwN8.woff) format('woff');
-}*/
 
 
 
@@ -103,21 +123,20 @@ color:white;
     width:40%;
     height:500px;
 }
+
+
+.main-wrapper {
+    margin: auto;
+}
+
+
 footer {
     background-color:#3498DB;
-    /*position:absolute;*/
-    /*border-width: 2px;
-    width:100%;*/
-    /*box-shadow: 0px 500px 0px 500px #3498DB;*/
-    /*top:78%;*/
-    height:6%;
-    z-index:-1 !important;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top:30px;
 }
-
-.body-container {
-    z-index:1100;
-}
-
 
 .proper-deluxe{
      padding-top: 40px;
@@ -156,14 +175,7 @@ footer {
   height:300px;
 
 }*/
-.no-transform{
-      -webkit-transform: rotate(+1deg);
-  -moz-transform: rotate(+3deg);
-  -o-transform: rotate(+1deg);
-  -ms-transform: rotate(+1deg);
-  transform: rotate(+1deg);
 
-}
 /*.make-room{
     height:180px;
 }*/
@@ -196,19 +208,28 @@ footer {
 }
 .copyrightadmin {
     color:white;
-    position: absolute;
+    
     right: 5px;
 }
 body {
-    background-color: #ECF0F1;
-    height:100%;
-    width:100%;
-    position:relative; 
+        background-color: #ECF0F1;
     /*font-family: 'RobotoDraft', 'Roboto', sans-serif;*/
     font-family: 'Lato', sans-serif;
-    
-
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+main {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex: 1;
+}
+
+
 
 .login {
     display:block;
@@ -227,10 +248,33 @@ body {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
-    width:500px;
-    height:400px;
-    margin-top:0%;
+    width:600px;
+    margin:auto;
     background-color:white;
+    padding:2%;
+}
+
+@media (max-width: 768px) {
+  .shadow1 {
+    width:90%; 
+  }
+  .logo{
+      display:none;
+  }
+      .ikonaCovek {
+    font-size:70px!important;
+    }
+}
+@media (max-width: 480px) {
+  .shadow1 {
+    width:90%;
+  }
+  .logo{
+      display:none;
+  }
+      .ikonaCovek {
+    font-size:50px!important;
+    }
 }
 .shadow2 {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
@@ -245,12 +289,15 @@ body {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
     box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
-    width:40%;
+    max-width:400px;
      margin-left: auto;
     margin-right: auto;
     margin-top:0%;
     background-color:white;
     padding:2%;
+}
+.shadow1 p{
+    letter-spacing:1px;
 }
 .shadow3 {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
@@ -329,6 +376,17 @@ body {
 }
 .colorletter {
     color:#1E8BC3!important;
+    
+}
+.colorletter1 {
+    color:#1E8BC3!important;
+    font-size:35px;
+    margin-left:2%;
+}
+.colorletter2 {
+    color:#1E8BC3!important;
+    font-size:35px;
+ 
 }
 .wrapper{
     position:relative;
@@ -374,8 +432,8 @@ body {
 }
 .ikonaCovek{
    color:#1E8BC3!important;
-   font-size:60px;
-   margin-top:8%;
+   font-size:100px;
+   padding:10%;
    opacity:0.6;
     filter: alpha(opacity=50);
  	-webkit-transition: opacity 1s linear;
@@ -385,6 +443,18 @@ body {
 .ikona{
     width:27%;
     height:10%;
+    border:1px #BFBFBF solid;
+    border-radius:5px;
+    text-align:center;
+    filter: alpha(opacity=50);
+ 	-webkit-transition: opacity 1s linear;
+     text-decoration:none;
+     margin-right:8%;
+     margin-top:2%;
+}
+.ikona-edit{
+
+
     border:1px #BFBFBF solid;
     border-radius:5px;
     text-align:center;
@@ -531,9 +601,9 @@ body {
 }
 .biger p{
     text-align:center;
-    margin-top:5%;
     color:#1E8BC3;
-    font-size:115%;
+    font-size:20px;
+    padding:6%;
 }
 .colorwhite{
     color:white;
@@ -897,14 +967,12 @@ input:focus {
 .button-login-contact {
   cursor: pointer;
   background: #3498DB;
-  width: 112%;
   border: 0;
   padding: 10px 15px;
   color: #ffffff;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  margin-left:-3%;
-  
+  margin-left:-3%;  
 }
 .button-login:hover {
   background: #178ab4;

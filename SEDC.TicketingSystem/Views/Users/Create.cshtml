@@ -12,8 +12,8 @@
     }
 }
 
-<div class="container-fluid wraperHome">
-    <div class="shadow2">
+<div class="main-wrapper">
+    <div class="shadow1 blue-line">
         <div class="panel-body">
                 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "passForm" }))
                 {
@@ -21,7 +21,7 @@
 
                     <div class="form-horizontal">
 
-                        <h3 class="colorletter">Create New User</h3>
+                        <h3 class="colorletter2">Create New User</h3>
                       <hr class="crta" />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
