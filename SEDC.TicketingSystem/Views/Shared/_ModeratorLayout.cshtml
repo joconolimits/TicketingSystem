@@ -10,11 +10,12 @@
     @RenderSection("dataTableCss", required: false)
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 <body>
         <header>
-            <div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
-                <div class="container-fluid navigacija">
+            @*<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">*@
+                <div class="navbar container-fluid navigacija">
                     <div class="container">
                         <div class="navbar-header">
                             <img src="~/img/logo1.png" class="img-responsive logo" />
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            @*</div>*@
         </header>
         <main>
             @RenderBody()
