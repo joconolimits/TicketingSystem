@@ -9,14 +9,15 @@
     <link href="~/Content/Main.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     @RenderSection("dataTableCss", required: false)
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
 </head>
 <body>
         <header>
-            <div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
-                <div class="container-fluid navigacija">
+            @*<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">*@
+                <div class="navbar container-fluid navigacija">
                     <div class="container">
                         <div class="navbar-header">
                             <img src="~/img/logo1.png" class="img-responsive logo" />
@@ -75,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            @*</div>*@
         </header>
         <main>
             @RenderBody()

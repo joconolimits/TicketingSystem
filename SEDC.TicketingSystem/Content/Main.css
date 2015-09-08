@@ -213,8 +213,8 @@ footer {
 }
 body {
         background-color: #ECF0F1;
-    /*font-family: 'RobotoDraft', 'Roboto', sans-serif;*/
-    font-family: 'Lato', sans-serif;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
