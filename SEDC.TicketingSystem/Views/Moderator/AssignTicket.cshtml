@@ -10,12 +10,11 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
-<div class="container-fluid wraperHome">
+<div class="main-wrapper">
     <div class="shadow2 blue-line">
-        <div class="container-fluid edit-assign" >
-            <br/>
-            <br/>
-            <h4 class="msgText">AssignTicket</h4>
+        <div class="container-fluid" >
+
+            <h3 class="msgText">AssignTicket</h3>
 
             @using (Html.BeginForm("AssignTicket", "Moderator", FormMethod.Post))
             {

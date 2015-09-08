@@ -3,9 +3,9 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-<div class="container-fluid wraperHomeCreate">
-    <div class="centerCreateWhole">
-        <div class="shadow3">
+<div class="main-wrapper">
+        <div class="shadow2 blue-line">
+            <h2 class="colorletter2">Create Ticket</h2>
             <div class="createCenter">
                 @using (Html.BeginForm())
                 {
@@ -40,13 +40,11 @@
                             </div>
 
                         <div class="form-group">
-                            <div class="col-md-10">
-                                <input type="submit" value="Create" class="button-login" />
-                            </div>
+                                <input type="submit" value="Create" class="button-login" />                       
                         </div>
                     </div>
                 }
             </div>
         </div>
-    </div>
+
 </div>

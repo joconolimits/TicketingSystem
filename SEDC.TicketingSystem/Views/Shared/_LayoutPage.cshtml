@@ -16,89 +16,93 @@
 </head>
 <body>
     @*<div class="wrapper">*@
-    <div class="navbar navigacija">   
-        @*<header>*@
+    <header>
+        <div class="navbar navigacija">
+
             @*<div id="custom-bootstrap-menu" class="navbar-fixed-top navbar-default" role="navigation">*@
-                @*<div class="container-fluid navigacija">*@
-                    <div class="container">
-                        <div class="navbar-header">
-                            
-                            <a href="~/Home">
-                                <img src="~/img/logo1.png" class="img-responsive logo" />
-                            </a>
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse navbar-menubuilder">
-                            <ul class="nav navbar-nav navbar-right">
-                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
-                                {
-                                    <li>
-                                        <a href="~/Home/WelcomePage">Home</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li>
-                                        <a href="/">Home</a>
-                                    </li>
-                                }
+            @*<div class="container-fluid navigacija">*@
+            <div class="container">
+                <div class="navbar-header">
+
+                    <a href="~/Home">
+                        <img src="~/img/logo1.png" class="img-responsive logo" />
+                    </a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-menubuilder">
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="~/Home/WelcomePage">Home</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                        }
+                        <li>
+                            <a href="~/Home/AboutUs">About Us</a>
+                        </li>
+                        <li>
+                            <a href="~/Home/ContactUs">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="~/Home/HowItWorks">How It Works</a>
+                        </li>
+
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                        {
+                            if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+                            {
                                 <li>
-                                    <a href="~/Home/AboutUs">About Us</a>
+                                    <a href="~/Moderator/AllTickets/@Session["LogedUserID"]">All Tickets</a>
                                 </li>
+                            }
+                            else
+                            {
                                 <li>
-                                    <a href="~/Home/ContactUs">Contact Us</a>
+                                    <a href="~/Tickets/Index/@Session["LogedUserID"]">My Tickets</a>
                                 </li>
-                                <li>
-                                    <a href="~/Home/HowItWorks">How It Works</a>
-                                </li>
+                            }
+                            <li>
+                                <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
+                            </li>
 
-                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
-                                {
-                                    if (Convert.ToInt32(Session["IsAdmin"]) == 1)
-                                    {
-                                        <li>
-                                            <a href="~/Moderator/AllTickets/@Session["LogedUserID"]">All Tickets</a>
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li>
-                                            <a href="~/Tickets/Index/@Session["LogedUserID"]">My Tickets</a>
-                                        </li>
-                                    }
-                                    <li>
-                                        <a href="~/Users/Details/@Session["LogedUserID"]">My Account</a>
-                                    </li>
+                        }
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="~/Home/Logout">Logout</a>
+                            </li>
+                        }
 
-                                }
-                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
-                                {
-                                    <li>
-                                        <a href="~/Home/Logout">Logout</a>
-                                    </li>
-                                }
+                    </ul>
 
-                            </ul>
-
-                        </div>
-                    </div>
-                @*</div>*@
+                </div>
             </div>
-        @*</header>*@
-    @*<div class="wraper-deluxe">*@
-        <div class="body-container">
-
-            @RenderBody()
-
+            @*</div>*@
         </div>
+    </header>
+
+    @*<div class="wraper-deluxe">*@
+        @*<div class="body-container">*@
+    <main>
+
+        @RenderBody()
+
+    </main>
+        @*</div>*@
      
     @*</div>*@
-        <footer class="footer navbar-fixed-bottom">
+        <footer>
             @*<div class="container">*@
             @*<div class="row">
                 <section class="col-xs-4">
