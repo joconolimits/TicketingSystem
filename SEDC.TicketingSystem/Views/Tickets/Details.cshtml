@@ -105,7 +105,8 @@
                         <div class="form-group">
 
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })
+                                @*@Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })*@
+                                @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
                             </div>
                         </div>
 
