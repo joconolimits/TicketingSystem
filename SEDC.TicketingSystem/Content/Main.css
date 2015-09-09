@@ -254,6 +254,16 @@ main {
     padding:2%;
 }
 
+.shadow-search {
+    -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    background-color:white;
+    padding:2%;
+    margin:auto;
+    width:60%;
+}
+
 @media (max-width: 768px) {
   .shadow1 {
     width:90%; 
@@ -972,9 +982,14 @@ input:focus {
   color: #ffffff;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  margin-left:-3%;  
 }
+
 .button-login:hover {
+  background: #178ab4;
+  text-decoration:none;
+  color:white;
+}
+.button-login-contact:hover {
   background: #178ab4;
   text-decoration:none;
   color:white;
@@ -1160,4 +1175,8 @@ input:focus {
 
 .width-50 {
     width:50%;
+}
+
+.margin-top1{
+    margin-top:1%;
 }

@@ -10,9 +10,9 @@
         Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
     }
 }
-<div class="shadow1 blue-line">
+<div class="shadow-search blue-line">
         <div class="container-fluid">
-            <div class="row">
+       
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
                         <input type="text" name="query" class="input  search-query" placeholder="Search" />
@@ -22,11 +22,11 @@
                             </button>
                         </span>
                     </div>
-                </div>
+    
             </div>
         </div>
 
-        <div class="row moderatorCentering">
+        <div class="container-fluid">
             <div id="filter-panel" class="collapse filter-panel">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -73,8 +73,9 @@
             <button type="button" class="button-login" data-toggle="collapse" data-target="#filter-panel">
                 <span class="glyphicon glyphicon-cog"></span> Advanced Search
             </button>
+            <div id="tickets" class="container-fluid"></div>
         </div>
-    <div id="tickets"></div>
+    
 </div>
 @section SearchAjax{
     <script>

@@ -13,18 +13,17 @@
 <div class="main-wrapper">
     <div class="shadow2 blue-line">
         <div class="container-fluid" >
-
-            <h3 class="msgText">AssignTicket</h3>
+            <h3 class="colorletter">AssignTicket</h3>
 
             @using (Html.BeginForm("AssignTicket", "Moderator", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 <div class="form-horizontal">
-                    <h4 class="msgTextNoMrg">Message to Moderator</h4>
+                    <h4 class="colorletter">Message to Moderator</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <select name="moderatorId">
+                    <select name="moderatorId" class="margin-bottom1">
                         @foreach (var item in Model)
                         {
                             <option value="@item.ID">@item.Name</option>
@@ -36,8 +35,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Assign" class="btn loginbtn" id="submitReply" />
+                        <div class="col-md-10">
+                            <input type="submit" value="Assign" class="button-login-contact pull-left" id="submitReply" />
                         </div>
                     </div>
                 </div>
