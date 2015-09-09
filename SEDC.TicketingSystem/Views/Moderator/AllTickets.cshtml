@@ -13,11 +13,10 @@
 }
 
 <div class="shadow2 blue-line">
-    <h5 class="colorletter2">All Tickets</h5>
-
+    <h5 class="colorletter2 margin-top1">All Tickets</h5>
     <hr />
     <div>
-        <span class="msgText">Filter by: </span>
+        <span class="colorletter">Filter by: </span>
         @Html.DropDownList("CategoryID", null, "Category", htmlAttributes: new { @class = "" })
         <select id="status" name="status">
             <option value="">Status</option>

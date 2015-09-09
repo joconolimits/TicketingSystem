@@ -12,7 +12,7 @@
     }
 }
 
-<div class="main-wrapper">
+
     <div class="shadow1 blue-line">
         <div class="panel-body">
                 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "passForm" }))
@@ -22,11 +22,11 @@
                     <div class="form-horizontal">
 
                         <h3 class="colorletter2" >Create New User</h3>
-                      <hr class="crta" />
+                      <hr/>
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                      
-                            <div class="">
+                            <div>
                                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input", placeholder="First Name" } })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
@@ -34,7 +34,7 @@
 
                         <div class="form-group">
                          
-                            <div class="">
+                            <div>
                                 @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "input", placeholder="Last Name" } })
                                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                             </div>
@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                            
-                            <div class="">
+                            <div>
                                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "input", placeholder="User Name" } })
                                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                             </div>
@@ -50,7 +50,7 @@
 
                         <div class="form-group">
                            
-                            <div class="">
+                            <div>
                                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", placeholder = "Email" } })
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                             </div>
@@ -58,13 +58,13 @@
                         
                             <div class="form-group">
                                 
-                                <div class="">
+                                <div>
                                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @id = "passwordReg", @class = "input", placeholder = "Password" } })
                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="form-group">                       
-                                <div class="">
+                                <div>
                                     <input class="input" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password" />
                                 </div>
                             </div>
@@ -75,26 +75,24 @@
                         {
                          <div class="form-group">
                         
-                            <div class="">
-                                <div class="">
+                            <div>             
                                     @Html.EnumDropDownListFor(model => model.IsAdmin, htmlAttributes: new { @class = "input" })
-                                    @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
-                                </div>
+                                    @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })                 
                             </div>
                         </div>
                         }
                         
 
                         <div class="form-group">
-                            <div class="">
-                                <input type="submit" value="Confirm" class="button-login" />
+                            <div class="text-center">
+                                <input type="submit" value="Confirm" class="button-login-contact" />
                             </div>
                         </div>
                     </div>
                 }
         </div>
     </div>
-</div>
+
 @section passwordValidation{
     <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
     <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>

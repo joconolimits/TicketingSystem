@@ -4,47 +4,30 @@
 }
 
 
-<div class="main-wrapper">
-    <div class="shadow1 blue-line">
+
+    <div class="shadow1 blue-line main-wrapper">
         <div class="container-fluid">
-
-                    <h3 class="colorletter1">Contact Us</h3>
-                    <hr />
-                    <form class="form-horizontal" method="post">
-                        <h3 class="colorletter text-center">@ViewBag.Message</h3>
-                        <div class="container-fluid">
-                            <span class="text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="">
-                                <input id="fname" name="firstName" type="text" placeholder="First Name" class="input">
-                            </div>
-                        </div>
-                        <div class="container-fluid">
-                            <span class="text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="">
-                                <input id="lname" name="lastName" type="text" placeholder="Last Name" class="input">
-                            </div>
-                        </div>
-
-                        <div class="container-fluid">
-                            <span class="text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                            <div class="">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="input">
-                            </div>
-                        </div>
-
-                        <div class="container-fluid">
-                            <span class="text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="">
-                                <textarea class="form-control input" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="3"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="container-fluid">
-                            <div class="text-center">
-                                <button type="submit" class="button-login-contact ">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+            <h3 class="colorletter1">Contact Us</h3>
+            <hr />
+            <form class="form-horizontal" method="post">
+                <h3 class="colorletter margin-bottom1 text-center">@ViewBag.Message</h3>
+                <div class="container-fluid">             
+                        <input id="fname" name="firstName" type="text" placeholder="First Name" class="input">               
                 </div>
+                <div class="container-fluid">       
+                        <input id="lname" name="lastName" type="text" placeholder="Last Name" class="input">            
+                </div>
+                <div class="container-fluid">
+                        <input id="email" name="email" type="text" placeholder="Email Address" class="input">
+                </div>
+                <div class="container-fluid">
+                        <textarea class="form-control input" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="3"></textarea>
+                </div>
+                <div class="container-fluid">
+                    <div class="text-center">
+                        <button type="submit" class="button-login-contact ">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>

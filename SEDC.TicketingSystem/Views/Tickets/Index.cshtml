@@ -10,15 +10,17 @@
 
 
     <div>
-        <span class="msgText">Filter by: </span>
-        @Html.DropDownList("CategoryID", null, "Category", htmlAttributes: new { @class = "" })
-        <select id="status" name="status">
-            <option value="">Status</option>
-            <option value="1">Pending</option>
-            <option value="2">Wait reply</option>
-            <option value="3">Closed</option>
-        </select>
-        <p class="btn loginbtn pull-right" style="margin-bottom: 2%; margin-right: 5.5%; margin-top: 0;">
+        <div class="pull-right">
+            <span class="colorletter">Filter by: </span>
+            @Html.DropDownList("CategoryID", null, "Category", htmlAttributes: new { @class = "" })
+            <select id="status" name="status">
+                <option value="">Status</option>
+                <option value="1">Pending</option>
+                <option value="2">Wait reply</option>
+                <option value="3">Closed</option>
+            </select>
+        </div>
+        <p class="button-login-contact pull-left" style="margin-bottom: 2%; margin-right: 5.5%; margin-top: 0;">
             @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
         </p>
     </div>

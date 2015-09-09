@@ -431,7 +431,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -442,10 +441,7 @@
     <Content Include="Views\Tickets\Details.cshtml" />
     <Content Include="Views\Tickets\Edit.cshtml" />
     <Content Include="Views\Tickets\Index.cshtml" />
-    <Content Include="Views\Home\AboutUs.cshtml" />
-    <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
-    <Content Include="Views\Home\WelcomePage.cshtml" />
     <Content Include="Views\Moderator\AllTickets.cshtml" />
     <Content Include="Views\Moderator\Details.cshtml" />
     <Content Include="Views\Moderator\AssignTicket.cshtml" />
@@ -465,7 +461,11 @@
     <Content Include="Views\Users\ForgotPassword.cshtml" />
     <Content Include="Views\Users\ResetPassword.cshtml" />
     <Content Include="Views\Moderator\Search.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Home\HowItWorks.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\WelcomePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

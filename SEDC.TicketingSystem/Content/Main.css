@@ -253,6 +253,27 @@ main {
     background-color:white;
     padding:2%;
 }
+.shadow1-detail {
+    -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    width:100%;
+    margin:auto;
+    background-color:white;
+    padding:2%;
+    padding-right:2%;
+}
+
+
+.shadow-search {
+    -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    background-color:white;
+    padding:2%;
+    margin:auto;
+    width:60%;
+}
 
 @media (max-width: 768px) {
   .shadow1 {
@@ -432,13 +453,13 @@ main {
 }
 .ikonaCovek{
    color:#1E8BC3!important;
-   font-size:100px;
+   font-size:75px;
    padding:10%;
    opacity:0.6;
-    filter: alpha(opacity=50);
- 	-webkit-transition: opacity 1s linear;
-     display:block;
-     text-decoration:none;
+   filter: alpha(opacity=50);
+   -webkit-transition: opacity 1s linear;
+   display:block;
+   text-decoration:none;
 }
 .ikona{
     width:27%;
@@ -461,7 +482,7 @@ main {
     filter: alpha(opacity=50);
  	-webkit-transition: opacity 1s linear;
      text-decoration:none;
-     margin-right:8%;
+     
      margin-top:2%;
   
 
@@ -602,7 +623,7 @@ main {
 .biger p{
     text-align:center;
     color:#1E8BC3;
-    font-size:20px;
+    font-size:18px;
     padding:6%;
 }
 .colorwhite{
@@ -837,8 +858,6 @@ main {
 .margin-bottom1{
     margin-bottom:1%;
 }
-
-
 .blue-line {
   border-top: 5px solid #3498DB;
 }
@@ -867,28 +886,66 @@ main {
   line-height: 30px;
   text-align: center;
 }
-.form-module .toggle .tooltip {
-  position: absolute;
-  top: 5px;
-  right: -65px;
-  display: block;
-  background: rgba(0, 0, 0, 0.6);
-  width: auto;
-  padding: 5px;
-  font-size: 10px;
-  line-height: 1;
-  text-transform: uppercase;
+/*DATA-TOOLTIP*/
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
 }
-.form-module .toggle .tooltip:before {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: -5px;
-  display: block;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-right: 5px solid rgba(0, 0, 0, 0.6);
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
 }
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #3498DB;
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #3498DB;
+  border-top: 5px solid #3498DB;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/*END TOOLTIP*/
+
 .form-module .form {
   display: none;
   padding: 40px;
@@ -909,6 +966,17 @@ main {
   width: 100%;
   border: 1px solid #d9d9d9;
   margin: 0 0 20px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  font-weight: 400;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.input-no-margin{
+  outline: none;
+  display: block;
+  width: 100%;
+  border: 1px solid #d9d9d9;
   padding: 10px 15px;
   box-sizing: border-box;
   font-weight: 400;
@@ -972,9 +1040,14 @@ input:focus {
   color: #ffffff;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  margin-left:-3%;  
 }
+
 .button-login:hover {
+  background: #178ab4;
+  text-decoration:none;
+  color:white;
+}
+.button-login-contact:hover {
   background: #178ab4;
   text-decoration:none;
   color:white;
@@ -1157,3 +1230,15 @@ input:focus {
     /margin-top: -2%;
     margin-left: 85%;
     background-color: #3498DB;*/
+
+.width-50 {
+    width:50%;
+}
+
+.margin-top1{
+    margin-top:1%;
+}
+
+.padding-top1{
+    padding-top:3%;
+}
