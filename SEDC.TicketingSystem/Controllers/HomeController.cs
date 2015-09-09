@@ -15,11 +15,11 @@ namespace SEDC.TicketingSystem.Controllers
     public class HomeController : Controller
     {
 
-        //
-        // GET: /Home/
+
+        // Login
         public ActionResult Login(string LogoutMessage)
         {
-            // If Logged in user try to access the Login page redirect him.
+            // If Logged in user tries to access the Login page redirect him.
             if (HttpContext.User.Identity.IsAuthenticated){
                 if ((AccessLevel)Session["IsAdmin"] != AccessLevel.Registered)
                     return RedirectToAction("Index", "Moderator");
@@ -32,19 +32,15 @@ namespace SEDC.TicketingSystem.Controllers
             {
                Message = "Login to use the System.";
             }
-           
-                ViewBag.Message = Message;
-            
+            ViewBag.Message = Message;
             return View();
         }
 
-      
-        
+        // this action is for handle post (login)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string Email, string Password)
         {
-            // this action is for handle post (login)
             if (ModelState.IsValid) // this is check validity
             {
                 using (SEDCTicketingSystemContext dc = new SEDCTicketingSystemContext())
@@ -54,7 +50,7 @@ namespace SEDC.TicketingSystem.Controllers
                     if (v != null && pwdManager.IsPasswordMatch(Password, v.Salt, v.Password))
                     {
                         FormsAuthentication.SetAuthCookie(v.Username, false);
-                       
+                       // add user data in session sin order to use it on other places
                         Session["CurrentUser"] = v;
                         Session["Username"] = v.Username.ToString();
                         Session["LogedUserID"] = v.ID.ToString();
@@ -81,15 +77,14 @@ namespace SEDC.TicketingSystem.Controllers
             FormsAuthentication.SignOut();
             var Message = Session["LogedUserFullname"] + " you are succesfully logged out.";
             Session.Clear();
-            return RedirectToAction("Login", new {LogoutMessage = Message});
-            
-            
+            return RedirectToAction("Login", new {LogoutMessage = Message});   
         }
 
         public ActionResult AboutUs()
         {
             return View();
         }
+
         public ActionResult ContactUs()
         {
             return View();
@@ -113,14 +108,13 @@ namespace SEDC.TicketingSystem.Controllers
                 ViewBag.Message = "The email was sent successfully!";
                 return View("ContactUs");
             }
-            
         }
-
 
         public ActionResult WelcomePage()
         {
             return View();
         }
+
         public ActionResult HowItWorks()
         {
             return View();

@@ -42,14 +42,13 @@ namespace SEDC.TicketingSystem.Controllers
         // GET: Categories/Create
         public ActionResult Create()
         {
+            // send all the moderators in the view as select list
             var users = db.Users.Where(t => t.IsAdmin != AccessLevel.Registered);
             ViewBag.ModeratorID = new SelectList(users, "ID", "Name");
             return View();
         }
 
         // POST: Categories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,ModeratorID")] Category category)
@@ -83,8 +82,6 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // POST: Categories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,ModeratorID")] Category category)
@@ -121,6 +118,7 @@ namespace SEDC.TicketingSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
+            // Only categories without tickets in them can be deleted
             if (db.Tickets.Count(t => t.CategoryID == id) != 0)
                 return RedirectToAction("Delete", new {message = "This category has tickets assigned to it. Make sure there is no tickets in the category before you try to delete it."});
            

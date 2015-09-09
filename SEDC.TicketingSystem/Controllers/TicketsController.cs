@@ -18,13 +18,11 @@ namespace SEDC.TicketingSystem.Controllers
     {
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
-        // GET: Tickets
         // Show My tickets page.
-        public ActionResult Index() //int? id
+        public ActionResult Index()
         {
-            //var tickets = db.Tickets.Where(x => x.OwnerID == id);
-           int id = Convert.ToInt32(Session["LogedUserID"]);
-             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(x => x.OwnerID == id)
+            int id = Convert.ToInt32(Session["LogedUserID"]);
+            var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(x => x.OwnerID == id)
                  .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
 
             // Add the categories picklist into the view it is needed for teh filter
@@ -42,45 +40,9 @@ namespace SEDC.TicketingSystem.Controllers
                 tickets = tickets.Where(t => t.CategoryID == categoryId);
             if(statusId != null)
                 tickets = tickets.Where(t => t.Status == (TicketStatus)statusId);
+
             return PartialView(tickets.OrderBy(t => t.Status).ToList());
         }
-
-        // Ordering Filters
-        //public PartialViewResult OrderBy(int? x, int? ord)
-        //{
-        //    var id = Convert.ToInt32(Session["LogedUserID"]);
-        //    var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category).Where(t => t.OwnerID == id);
-        //    if (x == 1)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.Status);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.Status);
-        //    }
-        //    if (x == 2)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.OpenDate);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.OpenDate);
-        //    }
-        //    if (x == 3)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.Title);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.Title);
-        //    }
-        //    if (x == 4)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.WorkHours);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.WorkHours);
-        //    }
-        //    return PartialView(tickets.ToList());
-        //}
-
 
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
@@ -90,7 +52,7 @@ namespace SEDC.TicketingSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ticket ticket = db.Tickets.Find(id);
-            //Checkif the requested ticket is owned by the current user.
+            //Check if the requested ticket is owned by the current user.
             if (ticket.OwnerID != Convert.ToInt32(Session["LogedUserID"]))
             {
                 return RedirectToAction("Index");
@@ -105,7 +67,7 @@ namespace SEDC.TicketingSystem.Controllers
             return View(ticketAndRepliesViewModel);
         }
 
-        // Jordan Method for the user to close his ticket for both admin and user
+        //Method for the user to close his ticket for both moderators and users
         public ActionResult Close(int? id, int? workHours)
         {
             if (id == null)
@@ -115,7 +77,8 @@ namespace SEDC.TicketingSystem.Controllers
            
             db.Tickets.Find(id).Status = TicketStatus.Closed;
             db.Tickets.Find(id).CloseDate = DateTime.UtcNow;
-             if (workHours == null)  // If the user closed the ticket the work hours will be the  diference between the closed and open time.
+            // If the user closed the ticket the work hours will be the diference between the closed and open time.
+            if (workHours == null)  
             {
                 workHours = (int)(db.Tickets.Find(id).CloseDate - db.Tickets.Find(id).OpenDate).TotalHours;
             } 
@@ -136,8 +99,6 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // POST: Tickets/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Title,Body, CategoryID")] Ticket ticket)
@@ -145,7 +106,7 @@ namespace SEDC.TicketingSystem.Controllers
            
             if (ModelState.IsValid)
             {
-                ticket.OwnerID = Convert.ToInt32(Session["LogedUserID"]); // Jordan Set The owner Id to the id of the Current user.
+                ticket.OwnerID = Convert.ToInt32(Session["LogedUserID"]); //Set The owner Id to the id of the Current user.
                 // set moderatorID  to the id of the moderator who is assigned to that category.
                 ticket.ModeratorID = db.Categories.FirstOrDefault(t => t.ID == ticket.CategoryID).ModeratorID; 
                 ticket.OpenDate = DateTime.UtcNow;
@@ -178,11 +139,8 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // POST: Tickets/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        // jordan removed  fields from the bind, same  needs to be removed from  the view
         public ActionResult Edit([Bind(Include = "ID,Title,Body, CategoryID ")] Ticket ticket)
         {
             var orgTicket = db.Tickets.Find(ticket.ID);
@@ -191,7 +149,6 @@ namespace SEDC.TicketingSystem.Controllers
                 orgTicket.Title = ticket.Title;
                 orgTicket.Body = ticket.Body;
                 orgTicket.CategoryID = ticket.CategoryID;
-
                 db.Entry(orgTicket).State = EntityState.Modified;
                 db.SaveChanges();
                 if((AccessLevel)Session["IsAdmin"] != AccessLevel.Registered)

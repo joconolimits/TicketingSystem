@@ -25,18 +25,18 @@ namespace SEDC.TicketingSystem.Controllers
             return View();
         }
 
-        // Jordan Show a list of All Tickets in the system
+        //Show a list of All Tickets in the system
         public ActionResult AllTickets()
         {
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category)
                 .OrderBy(t => t.Status).ThenBy(t => t.OpenDate);
 
-            // Add the categories picklist into the view it is needed for teh filter
+            // Add the categories picklist into the view it is needed for the filter
             ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
             return View(tickets);
         }
 
-        // Jordan Show a list of the New Pending Tickets in the system (Ones who does not have a reply)
+        //Show a list of the New Pending Tickets in the system (Ones who does not have a reply)
         public ActionResult NewPending()
         {
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Replies).Include(t => t.Category);
@@ -44,7 +44,7 @@ namespace SEDC.TicketingSystem.Controllers
             return View(tickets);
         }
 
-        // Jordan Show a list of the All Pending Tickets in the system 
+        //Show a list of the All Pending Tickets in the system 
         public ActionResult AllPending()
         {
             var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
@@ -73,50 +73,14 @@ namespace SEDC.TicketingSystem.Controllers
             {
                 var id = Convert.ToInt32(Session["LogedUserID"]);
                 tickets = tickets.Where(t => t.ModeratorID == id);
-
             }
             if (categoryId != null)
                 tickets = tickets.Where(t => t.CategoryID == categoryId);
             if (statusId != null)
                 tickets = tickets.Where(t => t.Status == (TicketStatus)statusId);
+
             return PartialView(tickets.OrderBy(t => t.Status).ToList());
         }
-
-        // Ordering Filters
-        //public PartialViewResult OrderBy(int? x, int? ord) 
-        //{
-
-        //    var tickets = db.Tickets.Include(t => t.Moderator).Include(t => t.Owner).Include(t => t.Category);
-        //    if (x == 1)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.Status);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.Status);
-        //    }
-        //    if (x == 2)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.OpenDate);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.OpenDate);
-        //    }
-        //    if (x == 3)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.Title);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.Title);
-        //    }
-        //    if (x == 4)
-        //    {
-        //        if (ord != 2)
-        //            tickets = tickets.OrderBy(d => d.WorkHours);
-        //        else
-        //            tickets = tickets.OrderByDescending(d => d.WorkHours);
-        //    }
-        //    return PartialView(tickets);
-        //}
 
 
         public ActionResult Details(int? id)
@@ -136,6 +100,7 @@ namespace SEDC.TicketingSystem.Controllers
             return View(ticketAndRepliesViewModel);
         }
 
+        // Moderator can reopen a ticket that was already closed
         public ActionResult ReOpen(int? id)
         {
             var ticket = db.Tickets.Find(id);
@@ -147,20 +112,20 @@ namespace SEDC.TicketingSystem.Controllers
             return RedirectToAction("AllTickets");
         }
 
-
+        // Assign a ticket to another moderator and send him a message 
         public ActionResult AssignTicket(int? id)
         {
-            List<User> moderators = db.Users.Where(x => x.IsAdmin != AccessLevel.Registered).ToList(); // Get all Moderators
-            
-
+            // Get all Moderators
+            List<User> moderators = db.Users.Where(x => x.IsAdmin != AccessLevel.Registered).ToList();
             return View(moderators);
         }
 
         [HttpPost]
         public ActionResult AssignTicket(int moderatorId, string message, int? id)
         {
-
-            db.Tickets.Find(id).ModeratorID = moderatorId;  // change the moderator id on the ticket
+            // change the moderator id on the ticket
+            db.Tickets.Find(id).ModeratorID = moderatorId;
+            //Create the message for the new moderator
             Reply AdminMessage = new Reply(); 
             AdminMessage.TicketID = (int)id;
             AdminMessage.ReplyBody = message;
@@ -169,7 +134,9 @@ namespace SEDC.TicketingSystem.Controllers
             AdminMessage.TimeStamp = DateTime.UtcNow;
             db.Replies.Add(AdminMessage);
             db.SaveChanges();
+            //send notification to the new moderator
             SendNotificationEmail((int)id);
+
             return RedirectToAction("AllTickets");
         }
 
@@ -205,7 +172,6 @@ namespace SEDC.TicketingSystem.Controllers
         //Send Email notification on ticket assign
         public void SendNotificationEmail(int ticketId)
         {
-
             var user = db.Users.Find(db.Tickets.Find(ticketId).ModeratorID);
             var message = new MailMessage("blindcarrots1@gmail.com", user.Email)
             {
@@ -213,7 +179,6 @@ namespace SEDC.TicketingSystem.Controllers
                 Body = " Hello " + user.Name +
                          Environment.NewLine + Environment.NewLine + " The ticket with ID: "+ticketId +" has been assigned to you." + Environment.NewLine +
                          "to check the ticket please visit this url: http://localhost:50892/Tickets/Details/" + ticketId
-
             };
 
             SEDC.TicketingSystem.Email.EmailClient.Client(message);

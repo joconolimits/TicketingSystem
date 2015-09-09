@@ -22,21 +22,19 @@ namespace SEDC.TicketingSystem.ViewModels
 
         public string GetUsername(int UserID)
         {
-
             return db.Users.Find(UserID).Username;
         }
         public string GetCategory(int CategoryID)
         {
-
             return db.Categories.Find(CategoryID).Name;
         }
 
         // Method to show Text editor for the reply in the ticket details
-        public Reply ShowReply()
-        {
-            Reply reply = new Reply();
-            return reply;
-        }
+        //public Reply ShowReply()
+        //{
+        //    Reply reply = new Reply();
+        //    return reply;
+        //}
  
     }
 

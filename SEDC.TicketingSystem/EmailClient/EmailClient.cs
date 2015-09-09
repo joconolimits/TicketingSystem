@@ -17,8 +17,8 @@ namespace SEDC.TicketingSystem.Email
             var client = new SmtpClient();
             var credential = new NetworkCredential
             {
-                UserName = "blindcarrots1@gmail.com",  // replace with valid value
-                Password = "ticketingSystem"  // replace with valid value
+                UserName = "blindcarrots1@gmail.com",  
+                Password = "ticketingSystem"  
             };
             client.Host = "smtp.gmail.com";
             client.Port = 587;

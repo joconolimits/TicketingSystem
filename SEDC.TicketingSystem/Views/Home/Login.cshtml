@@ -102,34 +102,23 @@
             <div class="cta"><a href="~/Users/ForgotPassword">Forgot your password?</a></div>
         
     </div>
-    
-   
 </div>
-
-
-
 @section passwordValidation{
     <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
     <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <script src="~/Scripts/passwordValidation.js"></script>
-<script>
-
-    
-
-
-    // Toggle Function
-    $('.toggle').click(function () {
-        // Switches the Icon
-        $(this).children('i').toggleClass('glyphicon-refresh');
-        // Switches the forms
-        $('.form').animate({
-            height: "toggle",
-            'padding-top': 'toggle',
-            'padding-bottom': 'toggle',
-            opacity: "toggle"
-        }, "slow");
-    });
-
-
-</script>
+    <script>
+        // Toggle Function
+        $('.toggle').click(function () {
+            // Switches the Icon
+            $(this).children('i').toggleClass('glyphicon-refresh');
+            // Switches the forms
+            $('.form').animate({
+                height: "toggle",
+                'padding-top': 'toggle',
+                'padding-bottom': 'toggle',
+                opacity: "toggle"
+            }, "slow");
+        });
+    </script>
 }
