@@ -17,7 +17,7 @@ namespace SEDC.TicketingSystem.Controllers
         private SEDCTicketingSystemContext db = new SEDCTicketingSystemContext();
 
         
-        // Jordan Custom Action to Create a new reply in a ticket. 
+        //Create a new reply in a ticket. 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]  // We need this to be able to send html through the form.
@@ -30,22 +30,22 @@ namespace SEDC.TicketingSystem.Controllers
             reply.TicketID = id;
             reply.ReplyBody = replyBody;
             db.Replies.Add(reply);
-            // If the current user is moderator change  the ticket reply status and set him as moderator of the ticket.
+            // If the current user is moderator change  the ticket status and set him as moderator of the ticket.
             if ((AccessLevel)(Session["IsAdmin"]) != AccessLevel.Registered)
             {
                 db.Tickets.Find(id).Status = TicketStatus.WaitReply;
                 db.Tickets.Find(id).ModeratorID = loggedUserId;
                 db.SaveChanges();
-                SendNotificationEmail((int)id);  // send email notification to the user / Admin when a new reply
+                SendNotificationEmail((int)id);  // send email notification to the user/moderator when a new reply
 
                 return RedirectToAction("Details", "Moderator", new { id = id });
             }
-            // If he is not Moderator set the status as pending
+            // If he is regular user set the status as pending
             else
             {
                 db.Tickets.Find(id).Status = TicketStatus.Pending;
                 db.SaveChanges();
-                SendNotificationEmail((int)id);  // send email notification to the user / Admin when a new reply
+                SendNotificationEmail((int)id);  // send email notification to the user/moderator when a new reply
 
                 return RedirectToAction("Details", "Tickets", new { id = id });
             }
@@ -65,7 +65,7 @@ namespace SEDC.TicketingSystem.Controllers
         {
             User user = new User();
             // check  if you need to send notification to user or moderator
-            if (Convert.ToInt32(Session["IsAdmin"]) == 1)
+            if ((AccessLevel)Session["IsAdmin"] != AccessLevel.Registered)
                 user = db.Users.Find(db.Tickets.Find(ticketId).OwnerID);
             else
                 user = db.Users.Find(db.Tickets.Find(ticketId).ModeratorID);
@@ -77,10 +77,8 @@ namespace SEDC.TicketingSystem.Controllers
                          Environment.NewLine + Environment.NewLine + " You have a new reply. " + Environment.NewLine +
                          "to check the reply of your ticket please visit this url: http://localhost:50892/Tickets/Details/" + ticketId
             };
-
             // call the email client to send the message 
             SEDC.TicketingSystem.Email.EmailClient.Client(message);
-
         }
     }
 }

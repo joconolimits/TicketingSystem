@@ -1,4 +1,4 @@
-﻿// This script is used for the Ajax ordering of tickets for moderators and super admins
+﻿// This script is used for the Ajax filtering of tickets for moderators and super admins
 $(function () {
     $('select').on('change', function () {
         var categoryId = $('#CategoryID option:selected').val();

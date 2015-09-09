@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿// This script is used for the confirm password validation.
+$(function () {
     $("#passForm").validate({
         rules: {
             confirmPassword: {
@@ -9,5 +10,4 @@
             equalTo: "Please enter the same password as above"
         }
     });
-
 })

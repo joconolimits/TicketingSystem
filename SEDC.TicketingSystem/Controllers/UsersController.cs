@@ -56,8 +56,6 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,LastName,Username,Email,Password, IsAdmin")] User user)
@@ -75,10 +73,8 @@ namespace SEDC.TicketingSystem.Controllers
                 else
                 {
                     return RedirectToAction("Login", "Home");
-                }
-                   
+                }   
             }
-
             return View(user);
         }
 
@@ -99,8 +95,6 @@ namespace SEDC.TicketingSystem.Controllers
         }
 
         // POST: Users/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,LastName,Username,Email,IsAdmin")] User user, string Password)
@@ -165,9 +159,7 @@ namespace SEDC.TicketingSystem.Controllers
                 {
                     // set the first super admin to be moderator on those Tickets
                     item.ModeratorID = db.Users.Where(t => t.IsAdmin == AccessLevel.SuperAdmin).FirstOrDefault().ID;
-                }
-                
-                
+                }    
             }
             db.Users.Remove(user);
             db.SaveChanges();
