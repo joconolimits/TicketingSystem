@@ -253,6 +253,17 @@ main {
     background-color:white;
     padding:2%;
 }
+.shadow1-detail {
+    -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
+    width:100%;
+    margin:auto;
+    background-color:white;
+    padding:2%;
+    padding-right:2%;
+}
+
 
 .shadow-search {
     -webkit-box-shadow: -2px 8px 39px -13px rgba(0, 0, 0, 0.75);
@@ -471,7 +482,7 @@ main {
     filter: alpha(opacity=50);
  	-webkit-transition: opacity 1s linear;
      text-decoration:none;
-     margin-right:8%;
+     
      margin-top:2%;
   
 
@@ -612,7 +623,7 @@ main {
 .biger p{
     text-align:center;
     color:#1E8BC3;
-    font-size:20px;
+    font-size:18px;
     padding:6%;
 }
 .colorwhite{
@@ -961,6 +972,17 @@ main {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+.input-no-margin{
+  outline: none;
+  display: block;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  font-weight: 400;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
 /*.input:focus {
   border-color: #66afe9;
   outline: 0;
@@ -1215,4 +1237,8 @@ input:focus {
 
 .margin-top1{
     margin-top:1%;
+}
+
+.padding-top1{
+    padding-top:3%;
 }

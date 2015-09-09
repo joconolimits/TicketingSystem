@@ -4,15 +4,13 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-
-<div class="main-wrapper">
-    <div class="shadowDetail blue-line">
-        <h2 class="colorletter1">Ticket Details</h2>
+    <div class="shadow2 blue-line" >
+        <h2 class="colorletter2 margin-top1">Ticket Details</h2>
                 <hr />
         <div class="dl-horizontal">
         <div class="createCenter">
             <div class="container-fluid">
-                <div class="pull-left">
+                <div class="pull-left colorletter2">
                     <h3>
                         @Html.DisplayFor(model => model.Ticket.Title)
                     </h3>
@@ -20,62 +18,62 @@
 
                 <div class="pull-right">
                     <div class="container-fluid">
-                        <div class="butonCenter">
-                            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "btn loginbtn" })
+                        <div class="butonCenter margin-top1">
+                            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "button-login" })
                         </div>
-                        <div class="butonCenter">
-                            @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "btn loginbtn" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+                        <div class="butonCenter margin-top1">
+                            @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "button-login" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
                       </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="clearfix padding4">
-            <div class="pull-left body-width">
+        <div class="clearfix padding-top1">
+            <div class="pull-left width-50">
                 <div class="bodyText1">
                     @Html.Raw(Model.Ticket.Body)
                 </div>
             </div>
-            <div class="container-fluid pull-right">
+            <div class="width-50 pull-right">
                 <dl>
-                    <dt class="msgTextNoMrg">
+                    <dt class="colorletter">
                         Assigned:
                     </dt>
                     <dd>
                         @Model.GetUsername(Model.Ticket.ModeratorID)
                     </dd>
-                    <dt class="msgTextNoMrg">
+                    <dt class="colorletter">
                         Author:
                     </dt>
                     <dd>
                         @Model.GetUsername(Model.Ticket.OwnerID)
                     </dd>
-                    <dt class="msgTextNoMrg">
+                    <dt class="colorletter">
                         @Html.DisplayNameFor(model => model.Ticket.Status)
                     </dt>
 
                     <dd>
                         @Html.DisplayFor(model => model.Ticket.Status)
                     </dd>
-                    <dt class="msgTextNoMrg">
+                    <dt class="colorletter">
                         Category:
                     </dt>
                     <dd>
                         @Model.GetCategory(Model.Ticket.CategoryID)
                     </dd>
-                    <dt class="msgTextNoMrg">
+                    <dt class="colorletter">
                         @Html.DisplayNameFor(model => model.Ticket.OpenDate)
                     </dt>
                     <dd>
                         @Html.DisplayFor(model => model.Ticket.OpenDate)
                     </dd>
-                    <dt class="msgTextNoMrg">
+                    <dt class="colorletter">
                         @Html.DisplayNameFor(model => model.Ticket.CloseDate)
                     </dt>
                     <dd>
                         @Html.DisplayFor(model => model.Ticket.CloseDate)
                     </dd>
-                    <dt class="msgTextNoMrg">
+                    <dt class="colorletter">
                         @Html.DisplayNameFor(model => model.Ticket.WorkHours)
                     </dt>
                     <dd>
@@ -86,10 +84,14 @@
         </div>
     </div>
 
-    
-</div>
-    <div class="shadowDetail">
-        <div class="createCenter pad">
+
+
+
+        @*OD tuka pocnuva replay*@
+
+
+
+        <div class="pad">
             @if ((int)Model.Ticket.Status != 3)
             {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
 
@@ -98,7 +100,7 @@
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
-                        <h3 class="msgTextNoMrg">Reply</h3>
+                        <h3 class="colorletter2">Reply</h3>
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -112,7 +114,7 @@
 
                         <div class="form-group">
                             <div class="col-md-2">
-                                <input type="submit" value="Create" class="btn loginbtn" id="submitReply" />
+                                <input type="submit" value="Create" class="button-login" id="submitReply" />
                             </div>
                         </div>
                     </div>
@@ -149,7 +151,14 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
-</div>  
+
+
+
+    
+</div>
+    
+
+
+
 
