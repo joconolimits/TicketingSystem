@@ -1157,3 +1157,7 @@ input:focus {
     /margin-top: -2%;
     margin-left: 85%;
     background-color: #3498DB;*/
+
+.width-50 {
+    width:50%;
+}

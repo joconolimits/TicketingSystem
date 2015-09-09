@@ -5,18 +5,16 @@
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
 }
 
-<div class="shadow2-contact blue-line">
+<div class="shadow1 blue-line">
     <div class="container-fluid">
-        <div class="">
-            <div class="">
-                <h3 class="colorletter">Delete</h3>
+                <h3 class="colorletter2">Delete User</h3>
                 <hr />
 
-                <h3>Are you sure you want to delete this user?</h3>
+                <h3 class="colorletter">Are you sure you want to delete this user?</h3>
                 <div>
                     <hr />
-                    <dl class="dl-horizontal">
-                        <dt>
+                    <dl class="dl-horizontal margin-bottom1">
+                        <dt class="colorletter">
                             @Html.DisplayNameFor(model => model.Name)
                         </dt>
 
@@ -24,7 +22,7 @@
                             @Html.DisplayFor(model => model.Name)
                         </dd>
 
-                        <dt>
+                        <dt class="colorletter">
                             @Html.DisplayNameFor(model => model.LastName)
                         </dt>
 
@@ -32,7 +30,7 @@
                             @Html.DisplayFor(model => model.LastName)
                         </dd>
 
-                        <dt>
+                        <dt class="colorletter">
                             @Html.DisplayNameFor(model => model.Username)
                         </dt>
 
@@ -40,7 +38,7 @@
                             @Html.DisplayFor(model => model.Username)
                         </dd>
 
-                        <dt>
+                        <dt class="colorletter">
                             @Html.DisplayNameFor(model => model.Email)
                         </dt>
 
@@ -48,15 +46,7 @@
                             @Html.DisplayFor(model => model.Email)
                         </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Password)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Password)
-                        </dd>
-
-                        <dt>
+                        <dt class="colorletter">
                             @Html.DisplayNameFor(model => model.IsAdmin)
                         </dt>
 
@@ -70,13 +60,15 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="form-actions no-color">
-                            <input type="submit" value="Delete" class="btn btn-default" /> |
-                            @Html.ActionLink("Back to List", "Index")
+                        <div class="sameline1">
+                            <div class="pull-left">
+                                <input type="submit" value="Delete" class="button-login-contact col-xs-12" /> 
+                            </div>
+                            <div class="pull-right">
+                                @Html.ActionLink("Cancel", "Index", null, new { @class = "col-xs-12 button-login-contact" })
+                            </div>
                         </div>
                     }
                 </div>
-                </div>
-            </div>
         </div>
     </div>
