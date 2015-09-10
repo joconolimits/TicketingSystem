@@ -89,10 +89,27 @@
                                 @if (Convert.ToInt32(Session["IsAdmin"]) == 2)
                 {
                                     <td>
+
+
+                                        <a href='@Url.Action("Edit", "Tickets", new { id = item.ID })'>
+                                            <i class="fa fa-pencil-square-o fa-lg"></i>
+                                        </a>
+
+
                                         <span>|</span>
+
+
+                                        <a href='@Url.Action("Delete", "Tickets", new { id = item.ID })'>
+                                            <i class="fa fa-trash-o fa-lg"></i>
+                                        </a>
+
+
+
+
+                                        @*<span>|</span>
                                         @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.ID }, null)
                                         <span>|</span>
-                                        @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)
+                                        @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.ID }, null)*@
                                     </td>
                 }
                             </tr>

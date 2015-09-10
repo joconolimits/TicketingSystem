@@ -3,86 +3,86 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
-    <div class="shadow2 blue-line" >
-        <h2 class="colorletter2 margin-top1">Ticket Details</h2>
-                <hr />
+<div class="container-fluid">
+    <div class="shadowDetail blue-line">
+        <h2 class="colorletter1">Ticket Details</h2>
+        <hr />
         <div class="dl-horizontal">
-        <div class="createCenter">
-            <div class="container-fluid">
-                <div class="pull-left colorletter2">
-                    <h3>
-                        @Html.DisplayFor(model => model.Ticket.Title)
-                    </h3>
-                </div>
+            <div class="createCenter">
+                <div class="container-fluid">
+                    <div class="pull-left colorletter2">
+                        <h3>
+                            @Html.DisplayFor(model => model.Ticket.Title)
+                        </h3>
+                    </div>
 
-                <div class="pull-right">
-                    <div class="container-fluid">
-                        <div class="butonCenter margin-top1">
-                            @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "button-login" })
+                    <div class="pull-right">
+                        <div class="container-fluid">
+                            <div class="butonCenter margin-top1">
+                                @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "button-login" })
+                            </div>
+                            <div class="butonCenter margin-top1">
+                                @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "button-login" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+                            </div>
                         </div>
-                        <div class="butonCenter margin-top1">
-                            @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "button-login" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
-                      </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="clearfix padding-top1">
-            <div class="pull-left width-50">
-                <div class="bodyText1">
-                    @Html.Raw(Model.Ticket.Body)
+            <div class="clearfix padding-top1">
+                <div class="pull-left width-50 padding4">
+                    <div class="bodyText1">
+                        @Html.Raw(Model.Ticket.Body)
+                    </div>
+                </div>
+                <div class="width-50 pull-right">
+                    <dl>
+                        <dt class="colorletter">
+                            Assigned:
+                        </dt>
+                        <dd>
+                            @Model.GetUsername(Model.Ticket.ModeratorID)
+                        </dd>
+                        <dt class="colorletter">
+                            Author:
+                        </dt>
+                        <dd>
+                            @Model.GetUsername(Model.Ticket.OwnerID)
+                        </dd>
+                        <dt class="colorletter">
+                            @Html.DisplayNameFor(model => model.Ticket.Status)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.Status)
+                        </dd>
+                        <dt class="colorletter">
+                            Category:
+                        </dt>
+                        <dd>
+                            @Model.GetCategory(Model.Ticket.CategoryID)
+                        </dd>
+                        <dt class="colorletter">
+                            @Html.DisplayNameFor(model => model.Ticket.OpenDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.OpenDate)
+                        </dd>
+                        <dt class="colorletter">
+                            @Html.DisplayNameFor(model => model.Ticket.CloseDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.CloseDate)
+                        </dd>
+                        <dt class="colorletter">
+                            @Html.DisplayNameFor(model => model.Ticket.WorkHours)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ticket.WorkHours)
+                        </dd>
+                    </dl>
                 </div>
             </div>
-            <div class="width-50 pull-right">
-                <dl>
-                    <dt class="colorletter">
-                        Assigned:
-                    </dt>
-                    <dd>
-                        @Model.GetUsername(Model.Ticket.ModeratorID)
-                    </dd>
-                    <dt class="colorletter">
-                        Author:
-                    </dt>
-                    <dd>
-                        @Model.GetUsername(Model.Ticket.OwnerID)
-                    </dd>
-                    <dt class="colorletter">
-                        @Html.DisplayNameFor(model => model.Ticket.Status)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.Status)
-                    </dd>
-                    <dt class="colorletter">
-                        Category:
-                    </dt>
-                    <dd>
-                        @Model.GetCategory(Model.Ticket.CategoryID)
-                    </dd>
-                    <dt class="colorletter">
-                        @Html.DisplayNameFor(model => model.Ticket.OpenDate)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.OpenDate)
-                    </dd>
-                    <dt class="colorletter">
-                        @Html.DisplayNameFor(model => model.Ticket.CloseDate)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.CloseDate)
-                    </dd>
-                    <dt class="colorletter">
-                        @Html.DisplayNameFor(model => model.Ticket.WorkHours)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Ticket.WorkHours)
-                    </dd>
-                </dl>
-            </div>
         </div>
-    </div>
 
 
 
@@ -91,33 +91,33 @@
 
 
 
-        <div class="pad">
+        <div class="pad container-fluid">
             @if ((int)Model.Ticket.Status != 3)
             {     @*check if the ticket status is closed. If yes then don't show  the create reply block*@
 
                 using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
                 {
-                    @Html.AntiForgeryToken()
+            @Html.AntiForgeryToken()
 
-                    <div class="form-horizontal">
-                        <h3 class="colorletter2">Reply</h3>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <h3 class="colorletter2">Reply</h3>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
+                <div class="form-group">
 
-                            <div class="col-md-10">
-                                @*@Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })*@
-                                @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <input type="submit" value="Create" class="button-login" id="submitReply" />
-                            </div>
-                        </div>
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })*@
+                        @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <input type="submit" value="Create" class="button-login" id="submitReply" />
+                    </div>
+                </div>
+            </div>
 
                 }
             }
@@ -151,11 +151,7 @@
                 </tbody>
             </table>
         </div>
-
-
-
-
-    
+    </div>
 </div>
     
 

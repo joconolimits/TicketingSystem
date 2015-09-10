@@ -11,9 +11,10 @@
     }
 }
 <div class="main-wrapper">
-    <div class="shadow2 blue-line">
+    <div class="shadow1 blue-line">
         <div class="container-fluid" >
-            <h3 class="colorletter">AssignTicket</h3>
+            <h3 class="colorletter2">AssignTicket</h3>
+            <hr />
 
             @using (Html.BeginForm("AssignTicket", "Moderator", FormMethod.Post))
             {
@@ -30,8 +31,8 @@
                         }
                     </select>
                     <div class="form-group">
-                        <div class="col-md-10">
-                            <textarea id="reply" name="message"></textarea>
+                        <div class="col-md-12">
+                            <textarea class="form-control input"  id="reply" name="message" placeholder="Enter Message for the Moderator..."></textarea>
                         </div>
                     </div>
                     <div class="form-group">

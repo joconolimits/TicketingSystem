@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
 }
     <div class="shadow2 blue-line">
-    <h3 class="colorletter2">Users</h3>
+    <h3 class="colorletter2 margin-top1">Users</h3>
     <hr />
     <div class="padding pull-left">
         <a>
@@ -48,7 +48,7 @@
                                         @Html.DisplayFor(modelItem => item.ID)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.ActionLink(item.Name.ToString(), "Details", new { id = item.ID })
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.LastName)
@@ -62,10 +62,26 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IsAdmin)
                                     </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "modern-button" })
+                                    <td class="text-center">
+
+                                        <a href='@Url.Action("Edit", "Users", new { id = item.ID })' >
+                                            <i class="fa fa-pencil-square-o fa-lg"></i>
+                                        </a>
+
+
+                                        <span>|</span>
+
+
+                                        <a href='@Url.Action("Delete", "Users", new { id = item.ID })'>
+                                            <i class="fa fa-trash-o fa-lg"></i>
+                                        </a>
+
+
+
+
+                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "modern-button" })
                                         @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "modern-button-purple" })
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "modern-button-red" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "modern-button-red" })*@
                                     </td>
                                 </tr>
                             }
