@@ -30,82 +30,83 @@
         </div>
     </div>
 </div>
-    <div class="shadowDetail blue-line">
+<div class="main-wrapper">
+    <div class="shadow-search blue-line">
         <h3 class="container-fluid colorletter2">Ticket Details</h3>
-        <hr /> 
-        <div class="container-fluid sameline1">               
-                    <div class="pull-left">
-                        <h3 class="colorletter1">
-                            @Html.DisplayFor(model => model.Ticket.Title)
-                        </h3>
-                    </div>                 
-                    <div class="pull-right">
-                        <div class="container-fluid">
-                            <div class="butonCenter">
-                                <button id="Close" type="button" class="button-login" data-toggle="modal" data-target=".bs-example-modal-sm">Close Ticket</button>
-                            </div>
-                            <div class="butonCenter ">
-                                @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }, new { @class = "button-login" })
-                            </div>
-                            <div class="butonCenter ">
-                                @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID }, new { @class = "button-login" })
-                            </div>
-                        </div>
-                    </div>
+        <hr />
+        <div class="container-fluid sameline1">
+            <div class="pull-left">
+                <h3 class="colorletter1">
+                    @Html.DisplayFor(model => model.Ticket.Title)
+                </h3>
             </div>
+            <div class="pull-right">
+                <div class="container-fluid">
+                    <div class="butonCenter">
+                        <button id="Close" type="button" class="button-login" data-toggle="modal" data-target=".bs-example-modal-sm">Close Ticket</button>
+                    </div>
+                    <div class="butonCenter ">
+                        @Html.ActionLink("Re open Ticket", "ReOpen", new { id = Model.Ticket.ID }, new { @class = "button-login" })
+                    </div>
+                    <div class="butonCenter ">
+                        @Html.ActionLink("Asign Ticket", "AssignTicket", new { id = Model.Ticket.ID }, new { @class = "button-login" })
+                    </div>
+                </div>
+            </div>
+        </div>
         @* Display a modal  for entering the  Hours Worked when you close the ticket *@
-        <div class="sameline1 clearfix padding4">           
-                <div class="width-50 pull-left" >
-                    @Html.Raw(Model.Ticket.Body)
-                </div>           
-                <div class="pull-right">
-                    <dl>
-                        <dt class="colorletter">
-                            Assigned:
-                        </dt>
-                        <dd>
-                            @Model.GetUsername(Model.Ticket.ModeratorID)
-                        </dd>
-                        <dt class="colorletter">
-                            Author:
-                        </dt>
-                        <dd>
-                            @Model.GetUsername(Model.Ticket.OwnerID)
-                        </dd>
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.Ticket.Status)
-                        </dt>
+        <div class="sameline1 clearfix padding4">
+            <div class="width-50 pull-left">
+                @Html.Raw(Model.Ticket.Body)
+            </div>
+            <div class="pull-right">
+                <dl>
+                    <dt class="colorletter">
+                        Assigned:
+                    </dt>
+                    <dd>
+                        @Model.GetUsername(Model.Ticket.ModeratorID)
+                    </dd>
+                    <dt class="colorletter">
+                        Author:
+                    </dt>
+                    <dd>
+                        @Model.GetUsername(Model.Ticket.OwnerID)
+                    </dd>
+                    <dt class="colorletter">
+                        @Html.DisplayNameFor(model => model.Ticket.Status)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Ticket.Status)
-                        </dd>
-                        <dt class="colorletter">
-                            Category:
-                        </dt>
-                        <dd>
-                            @Model.GetCategory(Model.Ticket.CategoryID)
-                        </dd>
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.Ticket.OpenDate)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Ticket.OpenDate)
-                        </dd>
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.Ticket.CloseDate)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Ticket.CloseDate)
-                        </dd>
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.Ticket.WorkHours)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Ticket.WorkHours)
-                        </dd>
-                    </dl>
-                </div>  
-        </div> 
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.Status)
+                    </dd>
+                    <dt class="colorletter">
+                        Category:
+                    </dt>
+                    <dd>
+                        @Model.GetCategory(Model.Ticket.CategoryID)
+                    </dd>
+                    <dt class="colorletter">
+                        @Html.DisplayNameFor(model => model.Ticket.OpenDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.OpenDate)
+                    </dd>
+                    <dt class="colorletter">
+                        @Html.DisplayNameFor(model => model.Ticket.CloseDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.CloseDate)
+                    </dd>
+                    <dt class="colorletter">
+                        @Html.DisplayNameFor(model => model.Ticket.WorkHours)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ticket.WorkHours)
+                    </dd>
+                </dl>
+            </div>
+        </div>
         <hr />
         <div class="container-fluid main-wrapper">
             @* The  post reply  block *@
@@ -113,11 +114,11 @@
             {
                 @Html.AntiForgeryToken()
                 <div class="form-horizontal">
-                    <h3 class="colorletter2 margin-bottom1">Replay</h3>             
+                    <h3 class="colorletter2 margin-bottom1">Reply</h3>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        <div class="col-md-10">                          
-                            @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })                          
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -156,4 +157,4 @@
             </table>
         </div>
     </div>
-
+</div>

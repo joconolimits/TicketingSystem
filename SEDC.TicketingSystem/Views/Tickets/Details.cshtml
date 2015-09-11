@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 <div class="container-fluid">
-    <div class="shadowDetail blue-line">
+    <div class="shadow-search blue-line">
         <h2 class="colorletter1">Ticket Details</h2>
         <hr />
         <div class="dl-horizontal container-fluid">
@@ -92,24 +92,24 @@
 
                 using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
                 {
-            @Html.AntiForgeryToken()
+                    @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h3 class="colorletter2">Reply</h3>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
-                    </div>
-                </div>
+                    <div class="form-horizontal">
+                        <h3 class="colorletter2">Reply</h3>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <div class="col-md-2">
-                        <input type="submit" value="Create" class="button-login-contact" id="submitReply" />
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <input type="submit" value="Create" class="button-login-contact" id="submitReply" />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
                 }
             }
             <table class="table " id="replies">
