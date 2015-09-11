@@ -19,17 +19,16 @@
 }
         
             <div class="shadowEdit blue-line">
-                <h3 class="colorletter1 margin-top1">Edit Tickets</h3>
-                <hr />
-                <div class="">
-                    <br>
-                    @using (Html.BeginForm())
+                    <h3 class="colorletter1 margin-top1">Edit Tickets</h3>
+                    <hr />
+                    <div>
+                        <br>
+                        @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.HiddenFor(model => model.ID)
-
                             <div class="form-group colorletter">
                                 @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-1 margin-bottom1" })
                                 <div class="col-md-12">
@@ -38,7 +37,6 @@
                                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group colorletter">
                                 @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-1" })
                                 <div class="col-md-12">
@@ -47,7 +45,6 @@
                                     @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                             <div class="form-group colorletter">
                                 @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-1" })
                                 <div class="col-md-12">
@@ -56,11 +53,12 @@
                                     @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <input type="submit" value="Save" class="button-login" />
+                            <div class="form-group container-fluid">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Save" class="button-login-contact" />                                  
+                                        @Html.ActionLink("Cancel", "Index", null, new { @class = "button-login-contact pull-right margin-bottom1" })                          
                                 </div>
+                                
                             </div>
                         </div>
                     }

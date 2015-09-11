@@ -14,7 +14,7 @@
 
 @*Close Ticket Modal*@ 
 
-<div id="modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div id="modal" class="main-wrapper modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm">
         <div class="modal-content shadow2 blue-line">
             @using (Html.BeginForm("Close", "Tickets", new { id = Model.Ticket.ID }, FormMethod.Post))
@@ -30,10 +30,6 @@
         </div>
     </div>
 </div>
-
-
-
-<div class="container-fluid">
     <div class="shadowDetail blue-line">
         <h3 class="container-fluid colorletter2">Ticket Details</h3>
         <hr /> 
@@ -62,7 +58,7 @@
                 <div class="width-50 pull-left" >
                     @Html.Raw(Model.Ticket.Body)
                 </div>           
-                <div class="width-50 pull-right"  >
+                <div class="pull-right">
                     <dl>
                         <dt class="colorletter">
                             Assigned:
@@ -116,27 +112,21 @@
             @using (Html.BeginForm("Create", "Replies", new { id = Model.Ticket.ID }, FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-
                 <div class="form-horizontal">
-                    <h3 class="colorletter2 margin-bottom1">Replay</h3>
-                    
+                    <h3 class="colorletter2 margin-bottom1">Replay</h3>             
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                     <div class="form-group">
-                        <div class="col-md-10">
-                           
-                            @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
-                           
+                        <div class="col-md-10">                          
+                            @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })                          
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <input type="submit" value="Send Replay" class="button-login" id="submitReply" />
                         </div>
                     </div>
                 </div>
             }
-
             <table class="table " id="replies">
                 <thead>
                     <tr class="colorletter">
@@ -145,7 +135,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach (var item in Model.Replies)
                     {
                         var color = "black";
@@ -161,11 +150,10 @@
                                     replied @Html.DisplayFor(modelItem => item.TimeStamp)
                                 </span>
                             </td>
-
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
-</div>
+

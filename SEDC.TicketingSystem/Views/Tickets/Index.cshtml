@@ -5,12 +5,12 @@
 }
 <div class="shadow2 blue-line">
     <h3 class="colorletter2">My Tickets</h3>
-
     <hr />
-
-
+    <div class="clearfix margin-bottom1">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite button-login-contact pull-left" })
+    </div>
     <div class="margin-bottom1">
-        <div class="pull-right margin-bottom1">
+        <div class="pull-left margin-bottom1">
             <span class="colorletter">Filter by: </span>
             @Html.DropDownList("CategoryID", null, "Category", htmlAttributes: new { @class = "" })
             <select id="status" name="status">
@@ -20,9 +20,6 @@
                 <option value="3">Closed</option>
             </select>
         </div>
-        <p class="button-login-contact pull-left">
-            @Html.ActionLink("Create New", "Create", null, new { @class = "colorwhite" })
-        </p>
     </div>
     <div class="clearfix container">
         <div class="row">
@@ -117,23 +114,15 @@
 
                                         }
                                         else
-                                        {
-                                   
+                                        {                                
                                                 <a href='@Url.Action("Edit", "Tickets", new { id = item.ID })' class="col-md-offset-1">
                                                     <i class="fa fa-pencil-square-o fa-lg"></i>
                                                 </a>
-                                            
-                                                @*@Html.ActionLink("Edit", "Edit",new { id = item.ID }, new { @class = "fa fa-pencil-square-o fa-lg" })*@
-
-                                                <span>|</span>
-                                      
+                                                <span>|</span>                                     
                                                 <a href='@Url.Action("Delete", "Tickets", new { id = item.ID })'>
                                                     <i class="fa fa-trash-o fa-lg"></i>
                                                 </a>
-                                           
-                                            @*@Html.ActionLink("Delete", "Delete","", new { id = item.ID }, new { @class = "fa fa-trash-o fa-lg" })*@
                                         }
-
                                     </td>
                                 </tr>
                             }
@@ -143,10 +132,8 @@
             </div>
         </div>
     </div>
-
     <br />
 </div>
-
 @section dataTableCss{
     <link href="http://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="http://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css" rel="stylesheet" />

@@ -7,7 +7,7 @@
     <div class="shadowDetail blue-line">
         <h2 class="colorletter1">Ticket Details</h2>
         <hr />
-        <div class="dl-horizontal">
+        <div class="dl-horizontal container-fluid">
             <div class="createCenter">
                 <div class="container-fluid">
                     <div class="pull-left colorletter2">
@@ -22,7 +22,7 @@
                                 @Html.ActionLink("Close Ticket", "Close", new { id = Model.Ticket.ID }, new { @class = "button-login" })
                             </div>
                             <div class="butonCenter margin-top1">
-                                @Html.ActionLink("Back to Tickets", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "button-login" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
+                                @Html.ActionLink("Cancel", "Index", new { id = Model.Ticket.OwnerID }, new { @class = "button-login" })  @*Here I return The ownerID as well So it will show only  the Tickets raised by the loged in user*@
                             </div>
                         </div>
                     </div>
@@ -84,12 +84,7 @@
             </div>
         </div>
 
-
-
-
-        @*OD tuka pocnuva replay*@
-
-
+        @*OD tuka pocnuva reply*@
 
         <div class="pad container-fluid">
             @if ((int)Model.Ticket.Status != 3)
@@ -103,29 +98,25 @@
                 <h3 class="colorletter2">Reply</h3>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                 <div class="form-group">
-
                     <div class="col-md-10">
-                        @*@Html.EditorFor(model => model.ShowReply().ReplyBody, new { @name = "replyBody" })*@
                         @Html.EditorFor(model => model.replyBody, new { @name = "replyBody" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-2">
-                        <input type="submit" value="Create" class="button-login" id="submitReply" />
+                        <input type="submit" value="Create" class="button-login-contact" id="submitReply" />
                     </div>
                 </div>
             </div>
-
                 }
             }
             <table class="table " id="replies">
                 <thead>
                     <tr>
-                        <th class="msgTextNoMrg">Replies</th>
-                        <th class="msgTextNoMrg">Details</th>
+                        <th class="colorletter">Replies</th>
+                        <th class="colorletter">Details</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -137,10 +128,10 @@
                                 @Html.Raw(item.ReplyBody)
                             </td>
                             <td>
-                                <span class="msgTextNoMrg"> Author:  @Model.GetUsername(item.UserID)</span>
+                                <span class="colorletter"> Author:  @Model.GetUsername(item.UserID)</span>
                                 <br />
 
-                                <span class="msgTextNoMrg">
+                                <span class="colorletter">
                                     Replied:
                                     @Html.DisplayFor(modelItem => item.TimeStamp)
                                 </span>

@@ -3,9 +3,9 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-<div class="main-wrapper">
-        <div class="shadow2 blue-line">
-            <h2 class="colorletter2">Create Ticket</h2>
+
+        <div class="shadowEdit blue-line">
+            <h2 class="colorletter2 margin-top1">Create Ticket</h2>
             <div class="container-fluid">
                 @using (Html.BeginForm())
                 {
@@ -19,7 +19,6 @@
                                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                             </div>
                         </div>
-
                         <div class="form-group">
                             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "col-md-6 colorletter margin-bottom1" })
                             <div class="col-md-12">
@@ -27,7 +26,6 @@
                                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
                             </div>
                         </div>
-
                         <div class="form-group">
                                 @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2 colorletter" })
                                 <div class="col-md-10">
@@ -35,7 +33,6 @@
                                     @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
                         <div class="form-group">
                             <div class="col-md-10">
                                 <input type="submit" value="Create" class="button-login-contact pull-left" />
@@ -48,5 +45,3 @@
                 }
             </div>
         </div>
-
-</div>
