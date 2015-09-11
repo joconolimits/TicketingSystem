@@ -892,6 +892,7 @@ input:focus {
 a:hover{
     text-decoration:none;
 }
+<<<<<<< HEAD
 
 
 /*Defining media queries for the icon responsivenes*/
@@ -922,3 +923,5 @@ a:hover{
       display:none;
   }
 }
+=======
+>>>>>>> 3a6098ab5e0740e805f2afb322ee5e531199cbe4

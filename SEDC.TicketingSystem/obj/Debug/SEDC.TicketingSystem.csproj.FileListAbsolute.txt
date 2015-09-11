@@ -85,6 +85,7 @@ C:\Users\bojad_000\Documents\Ticketing System Blind Carrots SEDC\SEDC.TicketingS
 C:\Users\bojad_000\Documents\Ticketing System Blind Carrots SEDC\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csproj.GenerateResource.Cache
 C:\Users\bojad_000\Documents\Ticketing System Blind Carrots SEDC\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
 C:\Users\bojad_000\Documents\Ticketing System Blind Carrots SEDC\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
+<<<<<<< HEAD
 D:\New folder\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
 D:\New folder\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
 D:\New folder\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
@@ -114,3 +115,34 @@ D:\New folder\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.Gui
 D:\New folder\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csproj.GenerateResource.Cache
 D:\New folder\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
 D:\New folder\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
+=======
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll.config
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.pdb
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\EntityFramework.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.Helpers.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.Mvc.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.Razor.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.WebPages.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\WebActivatorEx.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\SEDC.TicketingSystem.HashingAndSalting.pdb
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\EntityFramework.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\EntityFramework.SqlServer.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.Helpers.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.Mvc.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.Razor.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.WebPages.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.WebPages.Deployment.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\bin\System.Web.WebPages.Razor.xml
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csprojResolveAssemblyReference.cache
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.InitialCreate.resources
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.SaltInUser.resources
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.Migrations.Guid.resources
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.csproj.GenerateResource.Cache
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.dll
+C:\Users\bojad_000\Documents\Ticketing System\SEDC.TicketingSystem\obj\Debug\SEDC.TicketingSystem.pdb
+>>>>>>> 3a6098ab5e0740e805f2afb322ee5e531199cbe4
