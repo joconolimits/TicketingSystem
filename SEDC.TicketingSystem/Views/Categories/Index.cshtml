@@ -32,9 +32,25 @@
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.Moderator.Name)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                    <td class="text-center">
+
+                                        <a href='@Url.Action("Edit", "Categories", new { id = item.ID })'>
+                                            <i class="fa fa-pencil-square-o fa-lg"></i>
+                                        </a>
+                              
+
+                                        <span>|</span>
+
+                                        <a href='@Url.Action("Delete", "Categories", new { id = item.ID })'>
+                                            <i class="fa fa-trash-o fa-lg"></i>
+                                        </a>
+
+
+
+
+
+                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
                                     </td>
                                 </tr>
                             }

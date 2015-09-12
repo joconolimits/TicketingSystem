@@ -13,72 +13,77 @@
                 <div>
                     <h4 class="colorletter">Ticket</h4>
                     <hr />
-                    <dl class="dl-horizontal">
-                        <dt class="colorletter">
-                            Moderator:
-                        </dt>
+                    <div class="sameline1 clearfix margin-bottom1">
+                        <div class="pull-right width-50">
+                            <dl class="dl-horizontal">
+                                <dt class="colorletter">
+                                    Moderator:
+                                </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Moderator.Name)
-                        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Moderator.Name)
+                                </dd>
 
-                        <dt class="colorletter">
-                            Author:
-                        </dt>
+                                <dt class="colorletter">
+                                    Author:
+                                </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Owner.Name)
-                        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Owner.Name)
+                                </dd>
 
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.Title)
-                        </dt>
+                                <dt class="colorletter">
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Title)
-                        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Title)
+                                </dd>
 
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.Status)
-                        </dt>
+                                <dt class="colorletter">
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Status)
-                        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Status)
+                                </dd>
 
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.OpenDate)
-                        </dt>
+                                <dt class="colorletter">
+                                    @Html.DisplayNameFor(model => model.OpenDate)
+                                </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.OpenDate)
-                        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OpenDate)
+                                </dd>
 
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.CloseDate)
-                        </dt>
+                                <dt class="colorletter">
+                                    @Html.DisplayNameFor(model => model.CloseDate)
+                                </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.CloseDate)
-                        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.CloseDate)
+                                </dd>
 
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.WorkHours)
-                        </dt>
+                                <dt class="colorletter">
+                                    @Html.DisplayNameFor(model => model.WorkHours)
+                                </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.WorkHours)
-                        </dd>
-
-                        <dt class="colorletter">
-                            @Html.DisplayNameFor(model => model.Body)
-                        </dt>
-
-                        <dd>
-                            @Html.Raw(Model.Body)
-                        </dd>
-                    </dl>
-
+                                <dd>
+                                    @Html.DisplayFor(model => model.WorkHours)
+                                </dd>
+                             </dl> 
+                        </div>
+                        <div class="pull-left width-50">
+                            <dl>
+                                <dt class="colorletter">
+                                    @Html.DisplayNameFor(model => model.Body)
+                                </dt>
+                                <dd>
+                                    @Html.Raw(Model.Body)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
@@ -88,7 +93,7 @@
                                 <input type="submit" value="Delete" class="button-login" />
                             </div>
                             <div class="pull-right">
-                                @Html.ActionLink("Back to List", "Index", new { id = Model.OwnerID }, new { @class = "button-login pull-right margin-bottom1" })
+                                @Html.ActionLink("Cancel", "Index", new { id = Model.OwnerID }, new { @class = "button-login pull-right margin-bottom1" })
                             </div>
                         </div>
                     }
@@ -96,6 +101,4 @@
 
                 </div>
             </div>
-        </div>
-    </div>
 

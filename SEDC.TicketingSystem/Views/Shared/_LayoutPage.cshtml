@@ -9,21 +9,16 @@
     <link href="~/Content/Main.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     @RenderSection("dataTableCss", required: false)
-    @*<link href="~/Content/select2.min.css" rel="stylesheet" />*@
     @*The jQuery Script needs to be called here because Tiny MCE needs it loaded in order to work*@
     <script src="~/Scripts/jquery-2.1.4.js"></script>
 </head>
 <body>
-    @*<div class="wrapper">*@
     <header>
         <div id="custom-bootstrap-menu" class="navbar navigacija">
-
-            @*<div id="custom-bootstrap-menu" class="navbar-fixed-top navbar-default" role="navigation">*@
-            @*<div class="container-fluid navigacija">*@
             <div class="container">
                 <div class="navbar-header">
-
                     <a href="~/Home">
                         <img src="~/img/logo1.png" class="img-responsive logo" />
                     </a>
@@ -88,65 +83,21 @@
 
                 </div>
             </div>
-            @*</div>*@
         </div>
     </header>
-
-    @*<div class="wraper-deluxe">*@
-        @*<div class="body-container">*@
     <main>
 
         @RenderBody()
 
-    </main>
-        @*</div>*@
-     
-    @*</div>*@
-        <footer>
-            @*<div class="container">*@
-            @*<div class="row">
-                <section class="col-xs-4">
-                    <h3 class="columnPostH">Fun Fact of the Day 1</h3>
-                    <p class="columnPostH">
-                        45% of consumers will abandon an online transaction
-                        if their questions or concerns are not addressed quickly
-                        ________________________________________________________
-                        Forrester
-                    </p>
-                </section>
-                <section class="col-xs-4">
-                    <h3 class="columnPostH">Fun Fact of the Day 2</h3>
-                    <p class="columnPost">
-                        88% of consumers are less likely to buy from companies
-                        that leave complaints on social media unanswered.
-                        ______________________________________________________
-                        Conversocial
-                    </p>
-                </section>
-                <section class="col-xs-4">
-                    <h3 class="columnPostH">Fun Fact of the Day 3</h3>
-                    <p class="columnPost">
-                        On average ,loyal customers are worth up to 10 times
-                        as much as their first purchase.
-                        ______________________________________________________________
-                        White House Office of Consumer Affairs
-                    </p>
-
-                </section>
-
-            </div>*@
+    </main>   
+        <footer>         
             <p class="copyrightadmin">
                 Copyright &copy 2015 Blind Carrots
             </p>
-            @*</div>*@
         </footer>
-    @*</div>*@
     @RenderSection("OrderByScript", required: false)
     @RenderSection("passwordValidation", required: false)
         <script src="~/Scripts/bootstrap.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-    @*<script src="~/Scripts/select2.min.js"></script>*@
-
-
 </body>
 </html>

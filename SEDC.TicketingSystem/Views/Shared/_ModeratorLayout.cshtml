@@ -7,14 +7,15 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/Main.css" rel="stylesheet" />
-    @RenderSection("dataTableCss", required: false)
-    <script src="~/Scripts/jquery-2.1.4.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    @RenderSection("dataTableCss", required: false)
+    @*The jQuery Script needs to be called here because Tiny MCE needs it loaded in order to work*@
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
 </head>
 <body>
         <header>
-            @*<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">*@
                 <div class="navbar container-fluid navigacija">
                     <div class="container">
                         <div class="navbar-header">
@@ -72,14 +73,15 @@
                         </div>
                     </div>
                 </div>
-            @*</div>*@
         </header>
         <main>
             @RenderBody()
         </main>
 
     <footer>
-
+        <p class="copyrightadmin">
+            Copyright &copy 2015 Blind Carrots
+        </p>
     </footer>
     @RenderSection("passwordValidation", required: false)
     @RenderSection("SearchAjax", required: false)

@@ -46,15 +46,20 @@
 
                 @if ((int)item.Status == 3)
                 {
-                    <span>Edit |</span>
+                   
                     @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 
                 }
                 else
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                    
+                    <a href='@Url.Action("Edit", "Tickets", new { id = item.ID })' class="col-md-offset-1">
+                        <i class="fa fa-pencil-square-o fa-lg"></i>
+                    </a>
                     <span>|</span>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    <a href='@Url.Action("Delete", "Tickets", new { id = item.ID })'>
+                        <i class="fa fa-trash-o fa-lg"></i>
+                    </a>
                 }
 
             </td>

@@ -28,13 +28,6 @@ namespace SEDC.TicketingSystem.ViewModels
         {
             return db.Categories.Find(CategoryID).Name;
         }
-
-        // Method to show Text editor for the reply in the ticket details
-        //public Reply ShowReply()
-        //{
-        //    Reply reply = new Reply();
-        //    return reply;
-        //}
  
     }
 
